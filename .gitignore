@@ -132,3 +132,15 @@ _attachments/
 # v1.8 methodology mode (host-specific by default; `git add -f` to commit if desired)
 .vault-meta/mode.json
 .vault-meta/mode.*.tmp
+
+# OMC Wiki (project-local knowledge base)
+.omc/wiki/
+
+# Personal vault - do not commit
+wiki/assets/*.png
+wiki/assets/*.jpg
+.raw/*
+wiki/hot.md
+.env
+*.key
+*_token*
