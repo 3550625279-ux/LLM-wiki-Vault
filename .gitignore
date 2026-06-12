@@ -144,3 +144,4 @@ wiki/hot.md
 .env
 *.key
 *_token*
+.mcp.json
