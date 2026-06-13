@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "skills/wiki-ingest/SKILL.md",
+                "file": "MASTER-INDEX.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SKILL"
+              "title": "MASTER-INDEX"
             }
           }
         ]
@@ -208,9 +208,10 @@
   },
   "active": "a31de1b302cdc5cf",
   "lastOpenFiles": [
+    "DEPLOY-GUIDE.md",
+    "skills/wiki-ingest/SKILL.md",
     "hooks/README.md",
     "MASTER-INDEX.md",
-    "DEPLOY-GUIDE.md",
     "AGENTS.md",
     "CLAUDE.md",
     "skills/lint/SKILL.md",
@@ -235,7 +236,6 @@
     "_templates/insight.md",
     "wiki/meta/dashboard.md",
     "wiki/meta/contradiction-register.md",
-    "skills/wiki-cli/SKILL.md",
     "scripts/log-write.sh",
     "scripts/post-session.sh",
     "scripts/align-check.sh",
