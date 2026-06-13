@@ -11,17 +11,26 @@
             "id": "a31de1b302cdc5cf",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "wiki/sources/claude-code-config-and-mcp-flow.md",
-                "mode": "source",
-                "source": false
+                "file": "_attachments/assets/mcp-tool-calling-flow.png"
               },
-              "icon": "lucide-file",
-              "title": "claude-code-config-and-mcp-flow"
+              "icon": "lucide-image",
+              "title": "mcp-tool-calling-flow"
+            }
+          },
+          {
+            "id": "886a7efc8d6fb4a0",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -206,44 +215,50 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a31de1b302cdc5cf",
+  "active": "886a7efc8d6fb4a0",
   "lastOpenFiles": [
-    "wiki/sources/claude-code-config-and-mcp-flow.md.tmp.102896.f506fe51f022",
-    "wiki/sources/claude-code-config-and-mcp-flow.md",
-    "CLAUDE.md.tmp.102896.6226f1a8d22c",
-    "raw/articles/claude-code-config-and-mcp-flow.md",
-    "raw/articles/claude-code-config-and-mcp-flow.md.tmp.102896.57c6761eabbe",
-    "wiki/concepts/concepts-idx.md",
-    "wiki/index.md",
-    "wiki/concepts/concepts-idx.md.tmp.102896.a53c6697777b",
-    "wiki/operations/operations-idx.md",
-    "wiki/concepts/mcp-tool-calling-flow.md",
+    "skills/flux-illustrate/SKILL.md.tmp.29296.b082762979ed",
+    "skills/ingest/SKILL.md.tmp.29296.a08bf51edb4c",
+    "CLAUDE.md.tmp.29296.584cb68427a0",
+    "CLAUDE.md.tmp.29296.50d1f2bd6098",
     "wiki/concepts/mcp-protocol.md",
+    "wiki/concepts/concepts-idx.md",
+    "wiki/entities/entities-idx.md",
+    "skills/flux-illustrate/SKILL.md",
+    "skills/flux-illustrate/SKILL.md.tmp.12824.bcf106036a4f",
+    "skills/flux-illustrate",
+    "CLAUDE.md",
+    "wiki/concepts/mcp-tool-calling-flow.md",
+    "_attachments/assets/mcp-tool-calling-flow.png",
+    "_attachments/assets/mcp-protocol-architecture.png",
+    "wiki/meta/flux-queue.md",
+    "wiki/meta/flux-queue.md.tmp.12824.cf6dd137c1fe",
+    "wiki/meta/flux-queue.md.tmp.12824.77afc5bb50e7",
+    "wiki/meta/contradiction-register.md",
+    "assets/diagrams/vault-flow.svg",
+    "assets/diagrams/multi-writer-locking.svg",
+    "assets/social-preview.png",
+    "assets/diagrams/hybrid-retrieval.svg",
+    "wiki/concepts/mcp-protocol.md.tmp.12824.9c8ca221386d",
+    "wiki/concepts/mcp-tool-calling-flow.md.tmp.12824.e8133d4a6194",
+    "wiki/meta/flux-queue.md.tmp.12824.3b885f37e0dc",
     "wiki/concepts/claude-code-configuration.md",
+    "wiki/index.md",
+    "wiki/domains/Engineering.md",
+    "wiki/sources/claude-code-config-and-mcp-flow.md",
+    "raw/articles/claude-code-config-and-mcp-flow.md",
+    "wiki/operations/operations-idx.md",
     "wiki/getting-started.md",
     "wiki/meta/dashboard.md",
-    "wiki/meta/dashboard.md.tmp.102896.360379e26a94",
     "wiki/meta/lint-report-2026-06-13.md",
-    "wiki/meta/dashboard.md.tmp.102896.33ec065d5ffb",
-    "wiki/meta/dashboard.md.tmp.102896.b8d28c0eef06",
-    "wiki/meta/dashboard.md.tmp.102896.b5da2098bdc4",
-    "wiki/sources/claude-code-config-and-mcp-flow.md.tmp.102896.317d2f44d4fe",
-    "wiki/log.md.tmp.102896.13a261dfc0eb",
-    "wiki/getting-started.md.tmp.102896.9077b4ef462b",
     "wiki/log.md",
     "wiki/insights/insights-idx.md",
-    "wiki/entities/entities-idx.md",
     "wiki/domains/domains-idx.md",
     "wiki/overview.md",
     "wiki/operations/idx.md",
     "wiki/insights/idx.md",
     "wiki/domains/idx.md",
     "wiki/hot.md",
-    "hooks/README.md",
-    "raw/claude-obsidian-ecosystem-research.md",
-    "wiki/concepts/idx.md",
-    "wiki/entities/idx.md",
-    "2026-06-13.md",
     "wiki/Wiki Map.canvas"
   ]
 }

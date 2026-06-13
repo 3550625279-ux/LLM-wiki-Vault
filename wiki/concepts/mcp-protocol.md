@@ -4,7 +4,8 @@ title: "MCP — Model Context Protocol"
 created: 2026-06-13
 updated: 2026-06-13
 tags: [mcp, protocol, tool-calling, claude-code, engineering]
-status: seed
+status: developing
+thumbnail: "_attachments/assets/mcp-protocol-architecture.png"
 complexity: intermediate
 domain: Engineering
 sources:
@@ -22,6 +23,8 @@ related:
 ---
 
 ## 核心定义
+
+![[mcp-protocol-architecture.png]]
 
 **MCP (Model Context Protocol)** 基于 **JSON-RPC 2.0** 的通信协议，定义了 LLM 客户端与外部工具服务器之间的标准交互方式。
 

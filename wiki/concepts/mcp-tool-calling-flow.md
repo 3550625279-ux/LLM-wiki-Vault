@@ -4,7 +4,8 @@ title: "MCP 工具调用完整流程"
 created: 2026-06-13
 updated: 2026-06-13
 tags: [mcp, tool-calling, flow, claude-code, engineering]
-status: seed
+status: developing
+thumbnail: "_attachments/assets/mcp-tool-calling-flow.png"
 complexity: intermediate
 domain: Engineering
 sources:
@@ -18,6 +19,8 @@ related:
 # MCP 工具调用完整流程
 
 > 从用户输入到结果返回的 5 阶段全链路。
+
+![[mcp-tool-calling-flow.png]]
 
 ---
 

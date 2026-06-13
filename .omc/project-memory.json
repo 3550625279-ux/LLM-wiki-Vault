@@ -178,20 +178,20 @@
   "hotPaths": [
     {
       "path": "",
-      "accessCount": 20,
-      "lastAccessed": 1781355672685,
+      "accessCount": 22,
+      "lastAccessed": 1781360155965,
       "type": "directory"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 17,
+      "lastAccessed": 1781360145218,
+      "type": "file"
     },
     {
       "path": "wiki\\index.md",
       "accessCount": 14,
       "lastAccessed": 1781355449294,
-      "type": "file"
-    },
-    {
-      "path": "CLAUDE.md",
-      "accessCount": 12,
-      "lastAccessed": 1781356097924,
       "type": "file"
     },
     {
@@ -208,8 +208,8 @@
     },
     {
       "path": "wiki\\hot.md",
-      "accessCount": 8,
-      "lastAccessed": 1781355031055,
+      "accessCount": 9,
+      "lastAccessed": 1781359927668,
       "type": "file"
     },
     {

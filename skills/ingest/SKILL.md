@@ -121,7 +121,7 @@ thumbnail: ""
    - contradictions: [若有]
 3. 更新 wiki/hot.md（最新学习重心 + 新增节点摘要）
 4. 若发现矛盾 → 追加 wiki/meta/contradiction-register.md
-5. 若 status=developing → 触发 Flux 图像生成（若配置）
+5. 若 status=developing → 触发 Flux 图像生成（若配置），见 `skills/flux-illustrate/SKILL.md`
 6. 更新 wiki/meta/dashboard.md（系统状态 + 待办进度 + 月度目标计数）
 ```
 

@@ -219,6 +219,7 @@ bash scripts/align-check.sh "查询关键词"
 - `Stop hook` → 运行 `scripts/post-session.sh` → 更新 hot.md + 封印 log
 - `PostToolUse(Write/Edit) hook` → 运行 `scripts/log-write.sh` → 轻量写操作记录
 - `PostToolUse(Write) prompt hook` → 写入 `wiki/concepts/` 或 `wiki/sources/` 后，询问用户是否生成 Flux 概念插画 → 存入 `_attachments/assets/` + 填写 frontmatter `thumbnail` + 页面内嵌 `![[...]]`
+  详细交互流程见 `skills/flux-illustrate/SKILL.md`
 
 ### 关系语义词典（严格遵守，禁止自创新前缀）
 
@@ -257,10 +258,9 @@ seed → developing → mature → evergreen
 | flux | ✅ 已配置（全局 HTTP） | status=developing 节点生成概念插画 |
 
 **flux 使用规则**：
-- 仅对 `type: concept/entity` 且 `status: developing` 的节点生成
-- Prompt: `"[节点标题] concept illustration, flat design, knowledge graph node, minimal color palette, white background, educational diagram, clean vector style"`
-- 保存到: `_attachments/assets/[node-slug].png`
-- 填写 frontmatter: `thumbnail: "_attachments/assets/[node-slug].png"`
+- 仅对 `type: concept/source` 且 `thumbnail` 为空的节点生成
+- 交互式 5 步工作流：询问 → 推荐方向 → 设计 prompt → 生成 → 整合
+- 详细规则见 `skills/flux-illustrate/SKILL.md`
 
 ---
 
