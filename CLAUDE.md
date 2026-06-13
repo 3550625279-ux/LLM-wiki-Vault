@@ -254,7 +254,7 @@ seed → developing → mature → evergreen
 | filesystem | ✅ 活跃 | 文件读写底层传输 |
 | github | ✅ 活跃 | autoresearch 查询代码仓库 |
 | mcpvault | ⚠️ 已配置 | 激活后替代 grep 检索（BM25+语义） |
-| flux | ⚠️ 需填Token | status=developing 节点生成概念插画 |
+| flux | ✅ 已配置（全局 HTTP） | status=developing 节点生成概念插画 |
 
 **flux 使用规则**：
 - 仅对 `type: concept/entity` 且 `status: developing` 的节点生成
