@@ -178,9 +178,75 @@
   "hotPaths": [
     {
       "path": "",
-      "accessCount": 8,
-      "lastAccessed": 1781282396193,
+      "accessCount": 10,
+      "lastAccessed": 1781347255180,
       "type": "directory"
+    },
+    {
+      "path": "wiki\\index.md",
+      "accessCount": 10,
+      "lastAccessed": 1781354446906,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\hot.md",
+      "accessCount": 7,
+      "lastAccessed": 1781354477617,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\log.md",
+      "accessCount": 7,
+      "lastAccessed": 1781354495706,
+      "type": "file"
+    },
+    {
+      "path": "wiki",
+      "accessCount": 6,
+      "lastAccessed": 1781354339925,
+      "type": "directory"
+    },
+    {
+      "path": "wiki\\concepts\\_index.md",
+      "accessCount": 6,
+      "lastAccessed": 1781354435905,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\meta\\SYSTEM-STATUS.md",
+      "accessCount": 5,
+      "lastAccessed": 1781347491015,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\_index.md",
+      "accessCount": 5,
+      "lastAccessed": 1781353572235,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\getting-started.md",
+      "accessCount": 4,
+      "lastAccessed": 1781347259427,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\overview.md",
+      "accessCount": 4,
+      "lastAccessed": 1781347263246,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\meta\\dashboard.md",
+      "accessCount": 4,
+      "lastAccessed": 1781347452360,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Engineering.md",
+      "accessCount": 4,
+      "lastAccessed": 1781354440822,
+      "type": "file"
     },
     {
       "path": "CLAUDE.md",
@@ -189,33 +255,15 @@
       "type": "file"
     },
     {
-      "path": "wiki\\index.md",
+      "path": "wiki\\meta\\contradiction-register.md",
       "accessCount": 3,
-      "lastAccessed": 1781283484735,
+      "lastAccessed": 1781347290093,
       "type": "file"
     },
     {
-      "path": "wiki\\hot.md",
-      "accessCount": 2,
-      "lastAccessed": 1781281851204,
-      "type": "file"
-    },
-    {
-      "path": "wiki\\overview.md",
-      "accessCount": 2,
-      "lastAccessed": 1781281855618,
-      "type": "file"
-    },
-    {
-      "path": "wiki\\getting-started.md",
-      "accessCount": 2,
-      "lastAccessed": 1781281863203,
-      "type": "file"
-    },
-    {
-      "path": "wiki\\log.md",
-      "accessCount": 2,
-      "lastAccessed": 1781281869090,
+      "path": "wiki\\meta\\delta-register.md",
+      "accessCount": 3,
+      "lastAccessed": 1781347290798,
       "type": "file"
     },
     {
@@ -234,6 +282,18 @@
       "path": "C:\\Users\\35506\\.claude.json",
       "accessCount": 2,
       "lastAccessed": 1781282674667,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Agents.md",
+      "accessCount": 2,
+      "lastAccessed": 1781353555414,
+      "type": "file"
+    },
+    {
+      "path": "skills\\wiki\\references\\mcp-setup.md",
+      "accessCount": 2,
+      "lastAccessed": 1781354340378,
       "type": "file"
     },
     {
@@ -315,12 +375,6 @@
       "type": "file"
     },
     {
-      "path": "skills\\wiki\\references\\mcp-setup.md",
-      "accessCount": 1,
-      "lastAccessed": 1781282420520,
-      "type": "file"
-    },
-    {
       "path": "WIKI.md",
       "accessCount": 1,
       "lastAccessed": 1781282422492,
@@ -372,6 +426,54 @@
       "path": "wiki\\wiki 1\\index.md",
       "accessCount": 1,
       "lastAccessed": 1781283485945,
+      "type": "file"
+    },
+    {
+      "path": "skills\\lint\\SKILL.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347202812,
+      "type": "file"
+    },
+    {
+      "path": "skills\\wiki-lint\\SKILL.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347203467,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Alignment.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347266784,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Architecture.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347267656,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Foundations.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347269136,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Inference.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347270027,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Multimodal.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347271036,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\domains\\Training.md",
+      "accessCount": 1,
+      "lastAccessed": 1781347271840,
       "type": "file"
     }
   ],

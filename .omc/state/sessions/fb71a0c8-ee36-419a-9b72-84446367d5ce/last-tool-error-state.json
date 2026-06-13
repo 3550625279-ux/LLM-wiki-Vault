@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd \\\"D:\\\\Workspace\\\\AI_Learning\\\\AI Vault\\\" && python3 -c \\\"\\nwith open('wiki/domains/_index.md', 'rb') as f:\\n    lines = f.readlines()\\nfor i, line in enumerate(lines, 1):\\n    if b'Agen...",
+  "error": "Exit code 49",
+  "timestamp": "2026-06-13T12:25:30.557Z",
+  "retry_count": 1
+}

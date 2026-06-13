@@ -78,6 +78,11 @@ Engineering
 - [ ] [[entities/wandb]] — 实验追踪工具
 - [ ] [[entities/vllm]] — 部署框架（与 Inference 共享）
 
+### MCP & Claude Code
+- [x] [[concepts/mcp-protocol]] — MCP 协议架构与 JSON-RPC 2.0
+- [x] [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系
+- [x] [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路
+
 ---
 
 ## 🔗 领域间关系
@@ -109,7 +114,7 @@ Engineering
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 12+)
+concept 节点: 3 (目标: 12+)
 entity 节点:  0 (目标: 8+)
 maturity:    seed
 ```

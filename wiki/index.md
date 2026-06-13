@@ -67,7 +67,9 @@ wiki/
 ## 🏷️ 节点类型索引
 
 ### type: concept
-*(待 ingest 填充)*
+- [[concepts/mcp-protocol]] — MCP 协议架构与 JSON-RPC 2.0 | status:seed | domain:Engineering
+- [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系 | status:seed | domain:Engineering
+- [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路 | status:seed | domain:Engineering
 
 ### type: entity
 *(待 ingest 填充)*
@@ -79,7 +81,7 @@ wiki/
 *(待 ingest 填充)*
 
 ### type: source
-*(待 ingest 填充)*
+- [[sources/claude-code-config-and-mcp-flow]] — Claude Code 配置与 MCP 流程笔记 | status:seed | domain:Engineering
 
 ### type: comparison
 *(待 ingest 填充)*
@@ -93,12 +95,12 @@ wiki/
 
 | 指标 | 数值 |
 |------|------|
-| 总节点数 | 0 |
-| concept | 0 |
+| 总节点数 | 4 |
+| concept | 3 |
 | entity | 0 |
 | operation | 0 |
 | insight | 0 |
-| source | 0 |
+| source | 1 |
 | comparison | 0 |
 | question/gap | 0 |
 | mature 节点 | 0 |

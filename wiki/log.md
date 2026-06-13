@@ -38,3 +38,26 @@
 - hook: Stop
 - vault: /d/Workspace/AI_Learning/AI Vault
 - hot_file_exists: yes
+
+## [2026-06-13 20:24] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-13 20:26] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-13 20:38] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-13 20:40] ingest | Claude Code 配置文件和 MCP 工具调用流程
+- Source: .raw/articles/claude-code-config-and-mcp-flow.md
+- Summary: [[sources/claude-code-config-and-mcp-flow]]
+- Pages created: [[concepts/mcp-protocol]], [[concepts/claude-code-configuration]], [[concepts/mcp-tool-calling-flow]], [[sources/claude-code-config-and-mcp-flow]]
+- Pages updated: [[wiki/index]], [[wiki/hot]], [[wiki/concepts/_index]], [[wiki/domains/Engineering]]
+- Key insight: MCP 协议本质是 JSON-RPC 2.0 的工具通信封装，claude mcp add 只是 JSON 写入的 CLI 封装
+- contradictions: 0

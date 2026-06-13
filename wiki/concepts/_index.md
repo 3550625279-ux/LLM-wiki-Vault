@@ -30,7 +30,9 @@
 > *待填充*
 
 ### [[domains/Engineering|Engineering]]
-> *待填充*
+- [[concepts/mcp-protocol]] — MCP 协议架构与 JSON-RPC 2.0 | status:seed
+- [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系 | status:seed
+- [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路 | status:seed
 
 ---
 

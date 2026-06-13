@@ -1,0 +1,5 @@
+{"t":0,"agent":"a54fde5","agent_type":"Explore","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"ab1c588","agent_type":"Explore","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"ab1c588","agent_type":"Explore","event":"agent_stop","success":true,"duration_ms":74712}
+{"t":0,"agent":"a54fde5","agent_type":"Explore","event":"agent_stop","success":true,"duration_ms":137400}
+{"t":0,"agent":"system","event":"keyword_detected","keyword":"wiki"}
