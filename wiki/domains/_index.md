@@ -16,5 +16,5 @@ status: evergreen
 | [[Alignment]] | 模型怎么对齐人类？ | RLHF、DPO、安全 |
 | [[Inference]] | 模型怎么高效运行？ | 量化、KV Cache、推测解码 |
 | [[Multimodal]] | 多种信息怎么融合？ | CLIP、扩散模型、VLM |
-| [[Agents]] | 模型怎么自主行动？ | ReAct、工具调用、记忆 |
+| [[wiki/domains/Agents|Agents]] | 模型怎么自主行动？ | ReAct、工具调用、记忆 |
 | [[Engineering]] | 怎么工程化落地？ | 分布式训练、MLOps、评估 |
