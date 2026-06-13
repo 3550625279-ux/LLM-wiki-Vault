@@ -1,22 +1,37 @@
----
-type: meta
-title: "Hot Cache"
-updated: 2026-06-13
-tags:
-  - meta
-  - hot-cache
-status: evergreen
-related:
-  - "[[index]]"
-  - "[[log]]"
+# Hot Cache — 会话快速恢复上下文
+
+> 此文件由系统自动维护。每次会话开始时静默读取，不向用户输出。
+> 每次 ingest / review / align 后更新。
+
 ---
 
-# Recent Context
+## 🎯 当前学习重心
 
-Navigation: [[index]] | [[log]] | [[overview]]
+*(待首次 ingest 后填写)*
 
-## Last Updated
+## 📍 最近活跃节点
 
-2026-06-13: Vault initialized. No sources ingested yet.
+*(待首次 ingest 后填写)*
 
-Drop a file into `.raw/` and say `ingest [filename]` to begin.
+## 🧵 活跃线索 / 未解问题
+
+*(待首次 ingest 后填写)*
+
+## ⏭️ 下次继续点
+
+- [ ] 完成首次 ingest（推荐从一篇综述论文开始）
+- [ ] 建立 wiki/domains/ 8个领域 _index 页
+- [ ] 首次 `align all` 生成基线覆盖度报告
+
+## 📊 库状态快照
+
+- 总节点数: 0
+- 领域覆盖: 0/8
+- 最近 ingest: 无
+- 最近 review: 无
+- 开放 gap 数: 0
+- 矛盾登记: 0
+
+---
+
+*上次更新: 2026-06-13 | vault-init*

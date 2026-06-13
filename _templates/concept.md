@@ -1,40 +1,81 @@
 ---
+title: "{{title}}"
 type: concept
-title: "<% tp.file.title %>"
-complexity: intermediate
-domain: ""
-aliases: []
-created: <% tp.date.now("YYYY-MM-DD") %>
-updated: <% tp.date.now("YYYY-MM-DD") %>
-tags:
-  - concept
 status: seed
-related: []
+domain: {{domain}}
+tags: [{{tags}}]
+created: {{date}}
+updated: {{date}}
 sources: []
+related: []
+confidence: medium
+thumbnail: ""
 ---
 
-# <% tp.file.title %>
+# {{title}}
 
-## Definition
+> **一句话定义**: （用一句话精确定义这个概念，不超过 30 字）
 
-[What this concept is. Declarative, present tense. One clear paragraph.]
+---
 
-## How It Works
+## 核心定义
 
-[Mechanism or explanation]
+（1-3 句精确定义。避免废话，直接给出最关键的描述。）
 
-## Why It Matters
+**数学表达** (如适用):
+$$
+\text{公式}
+$$
 
-[Significance in this domain]
+---
 
-## Examples
+## 关键机制
 
--
+（核心工作原理。用 2-4 个步骤或要点描述这个概念是"怎么运作的"。）
 
-## Connections
+1. **步骤/要点 1**: 
+2. **步骤/要点 2**: 
+3. **步骤/要点 3**: 
 
--
+---
 
-## Sources
+## 直觉解释
 
--
+（用类比或具体例子建立直觉。目标：让一个懂编程但不懂 ML 的人也能理解。）
+
+> 类比：这就像 ___，因为 ___。
+
+---
+
+## 与相关概念的关系
+
+（展开说明 related: 字段中的关系。每个关系 1-2 句。）
+
+- **依赖**: 理解本概念前需要先掌握 `[[]]`，因为 ___。
+- **对比**: 与 `[[]]` 的区别在于 ___。
+- **应用**: 本概念在 `[[]]` 中具体体现为 ___。
+
+---
+
+## 局限与边界
+
+（什么情况下这个概念不适用？已知的问题或限制？）
+
+- ⚠️ 限制 1: 
+- ⚠️ 限制 2: 
+
+---
+
+## 开放问题
+
+（还不确定/有争议的部分，标记为 `[gap]`）
+
+- `[gap]` 问题 1
+- `[gap]` 问题 2
+
+---
+
+## 参考
+
+<!-- 填写后更新 sources: 字段 -->
+- 

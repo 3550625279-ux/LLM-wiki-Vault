@@ -1,0 +1,47 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/post-session.sh 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/log-write.sh 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Write(wiki/**)",
+      "Write(scripts/**)",
+      "Edit(wiki/**)",
+      "Glob(wiki/**)",
+      "Grep(wiki/**)",
+      "Bash(bash scripts/*.sh*)"
+    ],
+    "deny": [
+      "Write(.raw/**)"
+    ]
+  },
+  "env": {
+    "VAULT_ROOT": ".",
+    "WIKI_DIR": "wiki",
+    "LOG_FILE": "wiki/log.md",
+    "HOT_FILE": "wiki/hot.md",
+    "INDEX_FILE": "wiki/index.md"
+  }
+}

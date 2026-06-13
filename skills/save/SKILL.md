@@ -1,187 +1,165 @@
 ---
 name: save
 description: >
-  Save the current conversation, answer, or insight into the Obsidian wiki vault as a
-  structured note. Analyzes the chat, determines the right note type, creates frontmatter,
-  files it in the correct wiki folder, and updates index, log, and hot cache.
-  Triggers on: "save this", "save that answer", "/save", "file this",
-  "save to wiki", "save this session", "file this conversation", "keep this",
-  "save this analysis", "add this to the wiki".
+  将当前对话内容归档为 wiki 节点。分析对话，判断类型，
+  填写标准 frontmatter，归档到正确目录，更新 index + log + hot.md。
+  触发词: save, /save, file this, 归档, 保存这个, 记录下来.
 allowed-tools: Read Write Edit Glob Grep
 ---
 
-# save: File Conversations Into the Wiki
+# save — 对话归档 Skill
 
-Good answers and insights shouldn't disappear into chat history. This skill takes what was just discussed and files it as a permanent wiki page.
-
-The wiki compounds. Save often.
-
----
-
-## Transport (v1.7+)
-
-The session-note write itself follows the standard transport policy. Read `.vault-meta/transport.json` (auto-created by `bash scripts/detect-transport.sh`):
-
-- **cli** — `obsidian-cli write "$VAULT" "$NOTE" < session.md`; see [`skills/wiki-cli/SKILL.md`](../wiki-cli/SKILL.md)
-- **mcp-obsidian** / **mcpvault** — `mcp__obsidian-vault__write_note`
-- **filesystem** — Claude's `Write` tool with absolute path
-
-Full decision tree: [`wiki/references/transport-fallback.md`](../../wiki/references/transport-fallback.md). Index/log/hot updates use the same transport.
+> 对话是最容易丢失的知识。save 让有价值的讨论成为永久知识节点。
+> 核心原则: 归档 ≠ 复制粘贴。归档 = 提炼 + 结构化 + 关联。
 
 ---
 
-## Mode awareness (v1.8+)
+## 触发条件
 
-Before creating the session note, consult the vault's methodology mode via `python3 scripts/wiki-mode.py route session "<topic-summary>"`. The router returns the vault-relative path:
+| 触发词 | 处理方式 |
+|--------|----------|
+| `save` / `/save` | 归档当前完整对话 |
+| `save this insight` | 仅归档洞察部分 |
+| `save the code` | 归档代码为 operation 节点 |
+| `file this` / `归档` | 同 `save` |
+| `save as question` | 归档为待解答问题 |
 
-- **generic**: `wiki/sessions/<date>-<topic>.md` (v1.7 default)
-- **LYT**: `wiki/notes/<date>-<topic>.md` + update the relevant session/journal MOC
-- **PARA**: `wiki/projects/inbox/<date>-<topic>.md` (user reroutes to specific projects)
-- **Zettelkasten**: `wiki/<ID>-session-<topic>.md` (timestamped ID becomes the filename prefix)
+---
 
-If `.vault-meta/mode.json` is absent, the router returns mode=generic paths. **Important global rule**: per global CLAUDE.md `/save` convention, sessions for cross-project work should still file to `~/Documents/Obsidian Vault/sessions/` rather than the project's wiki. The mode router applies when filing to the project's own wiki/, not when filing to the global personal vault.
+## 归档流程（5步）
 
-## Concurrency (v1.7+)
+### Step 1 — 分析对话
 
-Session-note writes MUST be preceded by `wiki-lock acquire`:
-
-```bash
-NOTE_PATH="wiki/questions/<slug>.md"   # or wiki/concepts/, wiki/meta/, etc.
-bash scripts/wiki-lock.sh acquire "$NOTE_PATH" || {
-  echo "skipped: $NOTE_PATH currently locked by another writer"; exit 0
-}
-# … write the note via §Transport-selected method …
-bash scripts/wiki-lock.sh release "$NOTE_PATH"
+```
+扫描对话内容，判断：
+  主要价值类型:
+    ① 定义/原理 → type: concept
+    ② 模型/论文/工具 → type: entity
+    ③ 代码/步骤/经验 → type: operation
+    ④ 个人洞察/避坑 → type: insight
+    ⑤ 提问+回答 → type: question
+    ⑥ 对比分析 → type: comparison
+  
+  所属领域: Foundations | Architecture | Training | Alignment |
+            Inference | Multimodal | Agents | Engineering
+  
+  关联的已有节点: 读 wiki/index.md 查找
 ```
 
-For multi-file saves (e.g., session note + index update + log append), acquire each lock in sorted-path order to avoid deadlocks. Index/log/hot updates lock just like content pages.
+### Step 2 — 确认归档目标
 
-See `skills/wiki-ingest/SKILL.md` §Concurrency for the full lock semantics.
+向用户确认（若类型不明确）：
+```
+📁 准备归档:
+- 标题: [建议标题]
+- 类型: [type]
+- 领域: [domain]
+- 目标路径: wiki/[类型目录]/[slug].md
+- 关联节点: [[X]], [[Y]]
 
----
+确认归档？(直接说"确认"或修改参数)
+```
 
-## Note Type Decision
+### Step 3 — 创建节点
 
-Determine the best type from the conversation content:
+**去重检查（先于创建）:**
+```bash
+grep -rl "title:.*建议标题" wiki/ --include="*.md"
+```
 
-| Type | Folder | Use when |
-|------|--------|---------|
-| synthesis | wiki/questions/ | Multi-step analysis, comparison, or answer to a specific question |
-| concept | wiki/concepts/ | Explaining or defining an idea, pattern, or framework |
-| source | wiki/sources/ | Summary of external material discussed in the session |
-| decision | wiki/meta/ | Architectural, project, or strategic decision that was made |
-| session | wiki/meta/ | Full session summary: captures everything discussed |
-
-If the user specifies a type, use that. If not, pick the best fit based on the content. When in doubt, use `synthesis`.
-
----
-
-## Save Workflow
-
-**Step 0: Decide the destination root.** Check in order:
-
-1. **User explicit override.** If the user said "save to this project's wiki" / "save to the personal vault" / a specific path, respect it.
-2. **Project CLAUDE.md or global `~/.claude/CLAUDE.md` `/save` rule.** If either declares a personal-vault destination (e.g., `~/Documents/Obsidian Vault/`), that is the destination ROOT. The Note Type table below describes paths relative to whichever root is active. Append the new note to `<root>/log/ingest-log.md` at the top, in the format that file already uses.
-3. **Default.** The project's own `wiki/` folder.
-
-The mode router (`python3 scripts/wiki-mode.py route session "<topic>"`) applies when filing into the project's own `wiki/`. When filing into a personal-vault root, use the canonical folders documented in that vault's CLAUDE.md (commonly `sessions/`, `concepts/`, `sources/`) — the mode router is NOT consulted for personal-vault writes by default. Filename sanitization (slug + safe_name) still applies regardless of root: strip path separators, NUL bytes, control chars, leading dots/hyphens.
-
-**Then continue the workflow:**
-
-1. **Scan** the current conversation. Identify the most valuable content to preserve.
-2. **Ask** (if not already named): "What should I call this note?" Keep the name short and descriptive.
-3. **Determine** note type using the table above.
-4. **Extract** all relevant content from the conversation. Rewrite it in declarative present tense (not "the user asked" but the actual content itself).
-5. **Create** the note in `<destination-root>/<chosen-folder>/<title>.md` (per Step 0). Full frontmatter. If a note with the same path already exists, ASK before overwriting.
-6. **Collect links**: identify any wiki pages mentioned in the conversation. Add them to `related` in frontmatter.
-7. **Update** `wiki/index.md`. Add the new entry at the top of the relevant section.
-8. **Append** to `wiki/log.md`. New entry at the TOP:
-   ```
-   ## [YYYY-MM-DD] save | Note Title
-   - Type: [note type]
-   - Location: wiki/[folder]/Note Title.md
-   - From: conversation on [brief topic description]
-   ```
-9. **Update** `wiki/hot.md` to reflect the new addition.
-10. **Confirm**: "Saved as [[Note Title]] in wiki/[folder]/."
-
----
-
-## Frontmatter Template
-
+**生成节点文件:**
 ```yaml
 ---
-type: <synthesis|concept|source|decision|session>
-title: "Note Title"
+type: insight
+title: "洞察: [主题]"
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-tags:
-  - <relevant-tag>
-status: developing
+tags: [相关标签]
+status: seed
+complexity: intermediate
+domain: [领域]
+sources: ["conversation-YYYY-MM-DD"]
 related:
-  - "[[Any Wiki Page Mentioned]]"
-sources:
-  - "[[.raw/source-if-applicable.md]]"
+  - "extends::[[关联概念]]"
+  - "applied_in::[[应用实体]]"
+thumbnail: ""
 ---
+
+# [标题]
+
+## 核心洞察
+[1-3句话，精炼的核心发现]
+
+## 详细说明
+[来自对话的关键内容，去除冗余]
+
+## 实践意义
+[这个洞察如何影响实际行动]
+
+## 关联知识
+- [[相关概念]] — [关联说明]
+
+## 来源
+对话归档 | [日期] | [简短上下文描述]
 ```
 
-For `question` type, add:
+### Step 4 — 更新语义网络
+
+```
+1. 更新 wiki/index.md：添加新节点记录
+2. 更新关联节点的 related: 字段（添加反向链接）
+3. 更新 wiki/domains/<domain>.md（若有新洞察）
+```
+
+### Step 5 — 封印
+
+```
+追加 wiki/log.md:
+## [YYYY-MM-DD HH:MM] save | [节点标题]
+- type: [type]
+- domain: [domain]
+- path: wiki/[目录]/[slug].md
+- related_nodes: [列表]
+
+更新 wiki/hot.md（若洞察重要）
+```
+
+---
+
+## 特殊情况处理
+
+### 归档代码片段
 ```yaml
-question: "The original query as asked."
-answer_quality: solid
+type: operation
+title: "实现: [算法名]"
+tags: [语言, 框架, 算法]
 ```
+代码块用 ` ```python ``` ` 包裹，添加注释说明关键步骤。
 
-For `decision` type, add:
+### 归档问答
 ```yaml
-decision_date: YYYY-MM-DD
-status: active
+type: question
+title: "Q: [问题]"
+status: answered
 ```
+包含问题、答案摘要、置信度、后续追问方向。
+
+### 归档对比分析
+```yaml
+type: comparison
+title: "[A] vs [B]: [维度]"
+```
+包含对比维度表格 + 适用场景结论。
 
 ---
 
-## Writing Style
+## 输出确认
 
-- Declarative, present tense. Write the knowledge, not the conversation.
-- Not: "The user asked about X and Claude explained..."
-- Yes: "X works by doing Y. The key insight is Z."
-- Include all relevant context. Future sessions should be able to read this page cold.
-- Link every mentioned concept, entity, or wiki page with wikilinks.
-- Cite sources where applicable: `(Source: [[Page]])`.
-
----
-
-## What to Save vs. Skip
-
-Save:
-- Non-obvious insights or synthesis
-- Decisions with rationale
-- Analyses that took significant effort
-- Comparisons that are likely to be referenced again
-- Research findings
-
-Skip:
-- Mechanical Q&A (lookup questions with obvious answers)
-- Setup steps already documented elsewhere
-- Temporary debugging sessions with no lasting insight
-- Anything already in the wiki
-
-If it's already in the wiki, update the existing page instead of creating a duplicate.
-
----
-
-## How to think (10-principle mapping)
-
-When working on this skill, apply the 10-principle loop. See [`skills/think/SKILL.md`](../think/SKILL.md) for the canonical framework.
-
-| # | Principle | Application here |
-|---|-----------|-------------------|
-| 1 | OBSERVE (ext) | Read the full conversation. Identify the actual decisions and synthesis, not the verbatim transcript. |
-| 2 | OBSERVE (int) | Am I in a save-everything mood? Some sessions don't have lasting insight; the Skip criteria exists for a reason. |
-| 3 | LISTEN | Did the user specify destination or type? Their explicit override comes first; defaults come second. |
-| 4 | THINK | Pick destination root (Step 0), then note type, then folder. Match path sanitization to destination convention. |
-| 5 | CONNECT (lat) | Does this content already have a wiki page? Update vs create matters — duplicates pollute the index. |
-| 6 | CONNECT (sys) | Index + log + hot cache + frontmatter relations all update together — atomicity matters. |
-| 7 | FEEL | Filename future-me can read cold; frontmatter that supports search. Avoid noise that drowns the signal. |
-| 8 | ACCEPT | Some sessions don't deserve saving. Honor the Skip criteria; don't archive everything. |
-| 9 | CREATE | Write the note, append to log at top, update index, refresh hot cache. |
-| 10 | GROW | Skipped saves are also signal — what threshold filtered them? Refine the type table over time. |
+```
+✅ 归档完成
+- 路径: wiki/[目录]/[slug].md
+- 类型: [type] | 领域: [domain]
+- 语义边: N 条新增
+- log.md: 已追加
+- hot.md: [已更新/未变动]
+```

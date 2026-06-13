@@ -1,29 +1,14 @@
----
-type: meta
-title: "Operation Log"
-updated: 2026-06-13
-tags:
-  - meta
-  - log
-status: evergreen
-related:
-  - "[[index]]"
-  - "[[hot]]"
-  - "[[overview]]"
----
+# Wiki Log
 
-# Operation Log
-
-Navigation: [[index]] | [[hot]] | [[overview]]
-
-Append-only. New entries go at the TOP. Never edit past entries.
-
-Entry format: `## [YYYY-MM-DD] operation | Title`
+> 格式: `## [YYYY-MM-DD HH:MM] verb | Title`
+> 动词: `ingest` | `review` | `align` | `query` | `save` | `lint` | `session-end` | `session-start`
 
 ---
 
-## [2026-06-13] setup | Vault initialized
+## [2026-06-13 00:00] session-start | AI Vault v2.0 初始化
+- action: vault-init
+- files_created: CLAUDE.md, skills/align/SKILL.md, skills/review/SKILL.md
+- scripts: align-check.sh, post-session.sh, log-write.sh
+- status: system-ready
+- note: 首次启动，wiki/ 目录待 ingest 填充
 
-- Plugin: claude-obsidian (personal vault fork)
-- Structure: clean scaffold, ready for first ingest
-- Source files in `.raw/`: 0

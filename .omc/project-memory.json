@@ -1,0 +1,379 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1781278708111,
+  "projectRoot": "D:\\Workspace\\AI_Learning\\claude-obsidian",
+  "techStack": {
+    "languages": [
+      {
+        "name": "C/C++",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "Makefile"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "make build",
+    "testCommand": "make test",
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "assets",
+      "bin",
+      "docs",
+      "scripts",
+      "tests"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "agents": {
+      "path": "agents",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1781278708086,
+      "keyFiles": [
+        "verifier.md",
+        "wiki-ingest.md",
+        "wiki-lint.md"
+      ]
+    },
+    "assets": {
+      "path": "assets",
+      "purpose": "Static assets",
+      "fileCount": 1,
+      "lastAccessed": 1781278708087,
+      "keyFiles": [
+        "social-preview.png"
+      ]
+    },
+    "bin": {
+      "path": "bin",
+      "purpose": "Executable scripts",
+      "fileCount": 5,
+      "lastAccessed": 1781278708087,
+      "keyFiles": [
+        "setup-dragonscale.sh",
+        "setup-mode.sh",
+        "setup-multi-agent.sh",
+        "setup-retrieve.sh",
+        "setup-vault.sh"
+      ]
+    },
+    "commands": {
+      "path": "commands",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1781278708088,
+      "keyFiles": [
+        "autoresearch.md",
+        "canvas.md",
+        "save.md",
+        "wiki.md"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 5,
+      "lastAccessed": 1781278708088,
+      "keyFiles": [
+        "compound-vault-guide.md",
+        "dragonscale-guide.md",
+        "install-guide.md",
+        "install-guide.pdf",
+        "methodology-modes-guide.md"
+      ]
+    },
+    "hooks": {
+      "path": "hooks",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1781278708088,
+      "keyFiles": [
+        "hooks.json",
+        "README.md"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 12,
+      "lastAccessed": 1781278708089,
+      "keyFiles": [
+        "allocate-address.sh",
+        "baseline-v16.py",
+        "benchmark-runner.py",
+        "bm25-index.py",
+        "boundary-score.py"
+      ]
+    },
+    "skills": {
+      "path": "skills",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1781278708089,
+      "keyFiles": []
+    },
+    "tests": {
+      "path": "tests",
+      "purpose": "Test files",
+      "fileCount": 9,
+      "lastAccessed": 1781278708090,
+      "keyFiles": [
+        "test_allocate_address.sh",
+        "test_bm25_index.py",
+        "test_boundary_score.py",
+        "test_concurrent_write.sh",
+        "test_contextual_prefix.py"
+      ]
+    },
+    "wiki": {
+      "path": "wiki",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1781278708090,
+      "keyFiles": [
+        "getting-started.md",
+        "hot.md",
+        "index.md",
+        "log.md",
+        "overview.md"
+      ]
+    },
+    "_templates": {
+      "path": "_templates",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1781278708091,
+      "keyFiles": [
+        "comparison.md",
+        "concept.md",
+        "entity.md",
+        "question.md",
+        "source.md"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "",
+      "accessCount": 8,
+      "lastAccessed": 1781282396193,
+      "type": "directory"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 3,
+      "lastAccessed": 1781283406774,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\index.md",
+      "accessCount": 3,
+      "lastAccessed": 1781283484735,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\hot.md",
+      "accessCount": 2,
+      "lastAccessed": 1781281851204,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\overview.md",
+      "accessCount": 2,
+      "lastAccessed": 1781281855618,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\getting-started.md",
+      "accessCount": 2,
+      "lastAccessed": 1781281863203,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\log.md",
+      "accessCount": 2,
+      "lastAccessed": 1781281869090,
+      "type": "file"
+    },
+    {
+      "path": ".mcp.json",
+      "accessCount": 2,
+      "lastAccessed": 1781282376079,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude",
+      "accessCount": 2,
+      "lastAccessed": 1781282412410,
+      "type": "directory"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude.json",
+      "accessCount": 2,
+      "lastAccessed": 1781282674667,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\AppData\\Local\\Temp\\claude\\D--Workspace-AI-Learning-AI-Vault\\c0cb2c7d-b05a-4975-b9fb-3f777cfa8185\\tasks\\bmno8mye8.output",
+      "accessCount": 1,
+      "lastAccessed": 1781281255770,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\AppData\\Local\\Temp\\claude\\D--Workspace-AI-Learning-AI-Vault\\c0cb2c7d-b05a-4975-b9fb-3f777cfa8185\\tasks\\bz8aovgu9.output",
+      "accessCount": 1,
+      "lastAccessed": 1781281295165,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\settings.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282376924,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1781282377691,
+      "type": "file"
+    },
+    {
+      "path": ".obsidian\\community-plugins.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282379666,
+      "type": "file"
+    },
+    {
+      "path": ".obsidian\\app.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282380527,
+      "type": "file"
+    },
+    {
+      "path": ".obsidian\\core-plugins.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282381435,
+      "type": "file"
+    },
+    {
+      "path": ".obsidian\\plugins\\realclaudian\\data.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282382292,
+      "type": "file"
+    },
+    {
+      "path": ".claudian\\sessions\\conv-1781282341990-td9vuqg8v.meta.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282390162,
+      "type": "file"
+    },
+    {
+      "path": ".claudian\\sessions\\conv-1781282068018-6g3s411x7.meta.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282391455,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\plugins\\cache\\omc\\oh-my-claudecode\\4.14.6\\.mcp.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282417660,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\plugins\\marketplaces\\omc\\.mcp.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282418362,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\plugins\\cache\\omc\\oh-my-claudecode\\4.14.6\\commands\\mcp-setup.md",
+      "accessCount": 1,
+      "lastAccessed": 1781282419517,
+      "type": "file"
+    },
+    {
+      "path": "skills\\wiki\\references\\mcp-setup.md",
+      "accessCount": 1,
+      "lastAccessed": 1781282420520,
+      "type": "file"
+    },
+    {
+      "path": "WIKI.md",
+      "accessCount": 1,
+      "lastAccessed": 1781282422492,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\paste-cache",
+      "accessCount": 1,
+      "lastAccessed": 1781282431048,
+      "type": "directory"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\file-history",
+      "accessCount": 1,
+      "lastAccessed": 1781282432171,
+      "type": "directory"
+    },
+    {
+      "path": ".obsidian\\appearance.json",
+      "accessCount": 1,
+      "lastAccessed": 1781282433109,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\paste-cache\\03cb84ef41629792.txt",
+      "accessCount": 1,
+      "lastAccessed": 1781282438166,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\paste-cache\\ef1ed92c30ce7ff5.txt",
+      "accessCount": 1,
+      "lastAccessed": 1781282439314,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\paste-cache\\68f843cc54d02d04.txt",
+      "accessCount": 1,
+      "lastAccessed": 1781282440537,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\35506\\.claude\\paste-cache\\497208930a8e72ff.txt",
+      "accessCount": 1,
+      "lastAccessed": 1781282441737,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\wiki 1\\index.md",
+      "accessCount": 1,
+      "lastAccessed": 1781283485945,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
