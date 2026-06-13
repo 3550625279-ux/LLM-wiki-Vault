@@ -21,7 +21,7 @@
 
 ### 🔴 绝对禁止
 ```
-NEVER write to .raw/           # 隔离区不可变
+NEVER write to raw/           # 隔离区不可变
 NEVER delete contradicts:: edges  # 矛盾边永久保留
 NEVER skip hot.md update on session end  # 热缓存必须更新
 NEVER create nodes without frontmatter   # schema 强制
@@ -180,7 +180,7 @@ confidence: speculative  # 推测，待验证
 
 | 工具 | 可访问的范围 | 禁止访问 |
 |------|------------|---------|
-| filesystem MCP | wiki/, _templates/, .vault-meta/ | .raw/ (隔离区) |
+| filesystem MCP | wiki/, _templates/, .vault-meta/ | raw/ (隔离区) |
 | github MCP | 读取参考仓库 | 不直接提交到用户仓库 |
 | mcpvault MCP | 全文检索 wiki/ | 不修改索引结构 |
 | flux MCP | 生成 thumbnail | 不修改 wiki 内容 |

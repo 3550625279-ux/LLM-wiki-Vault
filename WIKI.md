@@ -198,7 +198,7 @@ wiki/concepts/attention.md                 ❌ 太模糊
 
 ### sources/ 节点
 - 每次 ingest 后创建对应 source 页
-- 是 `.raw/` 内容在 wiki 中的唯一代理
+- 是 `raw/` 内容在 wiki 中的唯一代理
 - 包含原始资料摘要、可信度评估、提炼节点列表
 
 ### questions/ 节点

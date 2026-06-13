@@ -10,7 +10,7 @@
 ## 🧭 系统架构总览
 
 ```
-.raw/                    ← Layer 1: 不可变原始资料（只进不出）
+raw/                    ← Layer 1: 不可变原始资料（只进不出）
     papers/              ← 论文 PDF / arXiv 摘录
     articles/            ← 博客、技术文章
     transcripts/         ← 视频/播客文字稿
@@ -139,6 +139,7 @@ thumbnail: ""
    - contradictions: [若有，描述矛盾点]
 3. 更新 wiki/hot.md（最新学习重心 + 新增节点摘要）
 4. 若发现矛盾 → 追加 wiki/meta/contradiction-register.md
+5. 更新 wiki/meta/dashboard.md（系统状态 + 待办进度 + 月度目标计数）
 ```
 
 **单次 ingest 预期触碰页面数**：6–15页

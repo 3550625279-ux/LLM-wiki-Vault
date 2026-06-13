@@ -107,7 +107,7 @@ AI Vault/
 ├── _attachments/
 │   └── assets/                       ← Flux 生成的概念插画 (按需)
 │
-└── .raw/                             ← 【隔离区】不可变原始资料
+└── raw/                             ← 【隔离区】不可变原始资料
     ├── papers/                       ← 论文 PDF / arXiv 摘录
     ├── articles/                     ← 博客、技术文章
     ├── transcripts/                  ← 视频/播客文字稿
@@ -130,7 +130,7 @@ AI Vault/
 ### 🔧 配置文件 (3个)
 | 文件 | 用途 |
 |------|------|
-| `.claude/settings.json` | Hooks 守卫（禁止污染 .raw/，强制 frontmatter）|
+| `.claude/settings.json` | Hooks 守卫（禁止污染 raw/，强制 frontmatter）|
 | `.mcp.json` | MCP 服务（filesystem/github/mcpvault/flux）|
 | `.vault-meta/mode.json` | 当前运行模式（research/review/maintenance）|
 
@@ -207,7 +207,7 @@ AI Vault/
 
 | 触发时机 | 规则 | 违反后果 |
 |---------|------|---------|
-| PreToolUse (Write) | 禁止向 `.raw/` 写入 | 操作被阻止 |
+| PreToolUse (Write) | 禁止向 `raw/` 写入 | 操作被阻止 |
 | PreToolUse (Write) | `log.md` 必须以 `## [YYYY-MM-DD]` 开头 | 操作被阻止 |
 | PostToolUse (Write) | 新建 wiki 节点必须有 `type:` frontmatter | 警告提示 |
 | Stop | 会话结束前提醒更新 `hot.md` | 提醒（非阻止）|
@@ -241,7 +241,7 @@ AI Vault/
 ## 七、首次使用建议
 
 ```
-第1步: 放入一篇论文到 .raw/papers/
+第1步: 放入一篇论文到 raw/papers/
        建议: "Attention Is All You Need" (Vaswani et al. 2017)
 
 第2步: ingest attention-is-all-you-need.pdf

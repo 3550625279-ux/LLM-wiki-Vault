@@ -101,7 +101,7 @@ from now on:
 5. **Git hygiene** — any new file path written by code in this diff (open
    files, log writes, cache writes, temp files, lockfiles) that is NOT
    already in `.gitignore` → **HIGH**. The PostToolUse auto-commit hook
-   stages everything under `wiki/`, `.raw/`, `.vault-meta/`; an unignored
+   stages everything under `wiki/`, `raw/`, `.vault-meta/`; an unignored
    runtime artifact creates a self-pollution loop on the next hook fire.
    Grep the diff for `open(...,"w")`, `>>`, `>`, `write_text`, `mkdir`,
    `touch` and verify each destination path matches an ignore rule.

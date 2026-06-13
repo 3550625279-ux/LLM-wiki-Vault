@@ -14,7 +14,7 @@ status: evergreen
 
 ### 1. Drop a source
 
-Put any document into `.raw/`:
+Put any document into `raw/`:
 - PDFs, markdown files, transcripts, articles, URLs
 
 ### 2. Ingest it

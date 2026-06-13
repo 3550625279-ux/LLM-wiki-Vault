@@ -7,8 +7,10 @@ tags: [source, claude-code, mcp, configuration, engineering]
 status: seed
 domain: Engineering
 source_type: notes
-source_path: "raw/articles/claude-code-config-and-mcp-flow.txt"
+source_path: "raw/articles/claude-code-config-and-mcp-flow.md"
 ---
+
+> 📄 原始资料: [[raw/articles/claude-code-config-and-mcp-flow]]
 
 # Claude Code 配置文件和 MCP 工具调用流程
 

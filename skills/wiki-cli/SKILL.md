@@ -144,7 +144,7 @@ obsidian-cli bookmarks "$VAULT"
 
 ## When CLI is NOT the right choice
 
-- **Mobile (iOS Share extension)**: filesystem write into `.raw/` is the only path; CLI is desktop-only.
+- **Mobile (iOS Share extension)**: filesystem write into `raw/` is the only path; CLI is desktop-only.
 - **CI / headless ingest jobs**: filesystem with manual frontmatter parsing.
 - **Cross-vault operations**: CLI binds to one vault root per invocation; for federation, fall back to filesystem walks.
 - **Live edits while Obsidian is mid-save**: rare race; CLI handles it correctly but in pathological cases the v1.7 `wiki-lock.sh` advisory locks (see [skills/wiki-fold/](../wiki-fold/SKILL.md) and `agents/wiki-ingest.md`) should be acquired first.

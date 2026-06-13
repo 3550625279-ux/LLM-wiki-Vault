@@ -9,9 +9,11 @@
 ```
 系统版本:   AI Vault v2.0
 初始化:     2026-06-13
-最近会话:   2026-06-13 (vault-rebuild + lint)
-健康状态:   🟡 就绪，待首次 ingest
-死链数:     78 (concepts: 69, entities: 9)
+最近会话:   2026-06-13 (ingest + 机制优化)
+健康状态:   🟢 活跃，首次 ingest 完成
+总节点数:   4 (concept: 3, source: 1)
+领域覆盖:   1/8 (Engineering)
+死链数:     75 (concepts: 66, entities: 9)
 孤儿页:     9
 Frontmatter 缺失: 11
 ```
@@ -22,7 +24,7 @@ Frontmatter 缺失: 11
 
 | 优先级  | 任务                    | 类型     | 状态    |
 | ---- | --------------------- | ------ | ----- |
-| 🔴 高 | 完成首次 ingest           | ingest | ⬜ 待执行 |
+| 🔴 高 | 完成首次 ingest           | ingest | ✅ 已完成 |
 | 🔴 高 | 建立 Foundations 核心节点   | ingest | ⬜ 待执行 |
 | 🔴 高 | 建立 Architecture 核心节点  | ingest | ⬜ 待执行 |
 | 🟡 中 | 首次 `align all` 生成基线报告 | align  | ⬜ 待执行 |
@@ -71,9 +73,9 @@ Frontmatter 缺失: 11
   □ 完成 1次 align all
   □ 完成 3次 review
 
-当前进度: 0/4
+当前进度: 1/4
 ```
 
 ---
 
-*AI Vault v2.0 | dashboard | 2026-06-13*
+*AI Vault v2.0 | dashboard | 2026-06-13 | 自动更新 by ingest*

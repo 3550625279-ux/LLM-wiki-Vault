@@ -122,6 +122,38 @@ thumbnail: ""
 3. 更新 wiki/hot.md（最新学习重心 + 新增节点摘要）
 4. 若发现矛盾 → 追加 wiki/meta/contradiction-register.md
 5. 若 status=developing → 触发 Flux 图像生成（若配置）
+6. 更新 wiki/meta/dashboard.md（系统状态 + 待办进度 + 月度目标计数）
+```
+
+---
+
+## Raw 源文件规范
+
+所有 ingest 资料必须以 `.md` 格式存入 `raw/` 目录，无论原始格式：
+
+| 原始格式 | 处理方式 | 存入路径 |
+|----------|----------|----------|
+| URL/网页 | WebFetch + defuddle 清洗 | `raw/articles/{slug}-{YYYY-MM-DD}.md` |
+| .txt 文本 | 添加 frontmatter 包装 | `raw/articles/{slug}-{YYYY-MM-DD}.md` |
+| .pdf 论文 | 提取摘要 + 关键段落 | `raw/papers/{slug}-{YYYY-MM-DD}.md` |
+| 视频/播客 | 文字稿 | `raw/transcripts/{slug}-{YYYY-MM-DD}.md` |
+| 代码片段 | 说明 + 代码 | `raw/code/{slug}-{YYYY-MM-DD}.md` |
+| 对话记录 | 提炼内容 | `raw/conversations/{slug}-{YYYY-MM-DD}.md` |
+
+**Raw 文件 frontmatter 格式**：
+```markdown
+---
+source_url: "https://..." (如有)
+original_format: "txt|pdf|url|video|code|conversation"
+fetched: YYYY-MM-DD
+ingested: YYYY-MM-DD
+---
+```
+
+**Source 页链接规范**：`wiki/sources/` 页面必须在正文开头包含可点击的原始资料链接：
+```markdown
+> 📄 原始资料: [[raw/articles/slug-YYYY-MM-DD]]
+```
 ```
 
 ---

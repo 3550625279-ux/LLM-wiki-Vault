@@ -3,7 +3,7 @@
   "created": "2026-04-23",
   "description": "Ingest delta tracker and address map for the claude-obsidian vault. Do not hand-edit; wiki-ingest maintains this.",
   "sources": {
-    ".raw/articles/claude-code-config-and-mcp-flow.md": {
+    "raw/articles/claude-code-config-and-mcp-flow.md": {
       "hash": "initial",
       "ingested_at": "2026-06-13",
       "pages_created": [
@@ -16,7 +16,7 @@
         "wiki/index.md",
         "wiki/hot.md",
         "wiki/log.md",
-        "wiki/concepts/_index.md",
+        "wiki/concepts/concepts-idx.md",
         "wiki/domains/Engineering.md"
       ]
     }

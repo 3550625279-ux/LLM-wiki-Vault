@@ -55,7 +55,7 @@
 - hot_file_exists: yes
 
 ## [2026-06-13 20:40] ingest | Claude Code 配置文件和 MCP 工具调用流程
-- Source: .raw/articles/claude-code-config-and-mcp-flow.md
+- Source: raw/articles/claude-code-config-and-mcp-flow.md
 - Summary: [[sources/claude-code-config-and-mcp-flow]]
 - Pages created: [[concepts/mcp-protocol]], [[concepts/claude-code-configuration]], [[concepts/mcp-tool-calling-flow]], [[sources/claude-code-config-and-mcp-flow]]
 - Pages updated: [[wiki/index]], [[wiki/hot]], [[wiki/concepts/concepts-idx]], [[wiki/domains/Engineering]]
@@ -68,6 +68,11 @@
 - hot_file_exists: yes
 
 ## [2026-06-13 20:52] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-13 20:57] session-end | 会话封印
 - hook: Stop
 - vault: /d/Workspace/AI_Learning/AI Vault
 - hot_file_exists: yes

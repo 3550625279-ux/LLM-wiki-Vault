@@ -58,7 +58,7 @@ Navigation: [[idx]] | [[overview]]
 
 ---
 
-## 推荐资源 (待注入 .raw/)
+## 推荐资源 (待注入 raw/)
 
 - [ ] 
 
