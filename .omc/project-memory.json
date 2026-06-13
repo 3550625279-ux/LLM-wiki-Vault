@@ -178,26 +178,26 @@
   "hotPaths": [
     {
       "path": "",
-      "accessCount": 14,
-      "lastAccessed": 1781355051980,
+      "accessCount": 17,
+      "lastAccessed": 1781355435518,
       "type": "directory"
     },
     {
       "path": "wiki\\index.md",
-      "accessCount": 12,
-      "lastAccessed": 1781355039082,
+      "accessCount": 14,
+      "lastAccessed": 1781355449294,
+      "type": "file"
+    },
+    {
+      "path": "wiki\\log.md",
+      "accessCount": 9,
+      "lastAccessed": 1781355424154,
       "type": "file"
     },
     {
       "path": "wiki\\hot.md",
       "accessCount": 8,
       "lastAccessed": 1781355031055,
-      "type": "file"
-    },
-    {
-      "path": "wiki\\log.md",
-      "accessCount": 8,
-      "lastAccessed": 1781355031557,
       "type": "file"
     },
     {
@@ -219,15 +219,21 @@
       "type": "file"
     },
     {
+      "path": "CLAUDE.md",
+      "accessCount": 6,
+      "lastAccessed": 1781355412020,
+      "type": "file"
+    },
+    {
       "path": "wiki\\domains\\_index.md",
       "accessCount": 5,
       "lastAccessed": 1781353572235,
       "type": "file"
     },
     {
-      "path": "CLAUDE.md",
+      "path": "wiki\\meta\\dashboard.md",
       "accessCount": 5,
-      "lastAccessed": 1781354987935,
+      "lastAccessed": 1781355372496,
       "type": "file"
     },
     {
@@ -240,12 +246,6 @@
       "path": "wiki\\overview.md",
       "accessCount": 4,
       "lastAccessed": 1781347263246,
-      "type": "file"
-    },
-    {
-      "path": "wiki\\meta\\dashboard.md",
-      "accessCount": 4,
-      "lastAccessed": 1781347452360,
       "type": "file"
     },
     {

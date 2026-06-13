@@ -122,7 +122,7 @@ thumbnail: ""
 1. 更新所属 domain 页（在"关键概念"段添加 [[wikilink]]）
 2. 更新相关 concept/entity 页（related: 字段加语义边）
 3. 更新 wiki/index.md（添加新页到对应分类，附一行说明）
-4. 更新 wiki/domains/<domain>/idx.md
+4. 更新 wiki/domains/<domain>/domains-idx.md
 5. 检查反向链接（被引用页的 related: 是否需要更新）
 ```
 

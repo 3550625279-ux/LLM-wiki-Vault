@@ -162,7 +162,7 @@ AI Vault/
 `wiki/domains/`: foundations / architecture / training / alignment / inference / multimodal / agents / engineering
 
 ### 📁 子目录 MoC (4个)
-`wiki/concepts/idx.md` / `wiki/entities/idx.md` / `wiki/operations/idx.md` / `wiki/insights/idx.md`
+`wiki/concepts/concepts-idx.md` / `wiki/entities/entities-idx.md` / `wiki/operations/operations-idx.md` / `wiki/insights/insights-idx.md`
 
 ### 📝 节点模板 (5个)
 `_templates/`: concept / entity / operation / insight / domain

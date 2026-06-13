@@ -22,7 +22,7 @@ thumbnail: ""
 
 > 一句话描述。
 
-Navigation: [[entities/idx]] | [[overview]]
+Navigation: [[entities/entities-idx]] | [[overview]]
 
 ---
 

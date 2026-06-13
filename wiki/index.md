@@ -22,10 +22,10 @@ wiki/
 │   ├── multimodal/
 │   ├── agents/
 │   └── engineering/
-├── concepts/           ← 原理/算法/定义 (idx.md)
-├── entities/           ← 模型/论文/作者/机构 (idx.md)
-├── operations/         ← 代码/调参/工程实践 (idx.md)
-├── insights/           ← 个人洞察/避坑 (idx.md)
+├── concepts/           ← 原理/算法/定义 (concepts-idx.md)
+├── entities/           ← 模型/论文/作者/机构 (entities-idx.md)
+├── operations/         ← 代码/调参/工程实践 (operations-idx.md)
+├── insights/           ← 个人洞察/避坑 (insights-idx.md)
 ├── sources/            ← 原始资料摘要页
 ├── comparisons/        ← 横向对比
 ├── questions/          ← 已回答问题 + gap页面

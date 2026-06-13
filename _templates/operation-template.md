@@ -19,7 +19,7 @@ sources:
 
 > 这个操作/实现解决什么工程问题。
 
-Navigation: [[operations/idx]] | [[{{domain}}]] | [[overview]]
+Navigation: [[operations/operations-idx]] | [[{{domain}}]] | [[overview]]
 
 ---
 
