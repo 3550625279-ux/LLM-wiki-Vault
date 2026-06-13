@@ -22,7 +22,7 @@ thumbnail: ""
 
 > 一句话定义。
 
-Navigation: [[_index]] | [[{{domain}}]] | [[overview]]
+Navigation: [[idx]] | [[{{domain}}]] | [[overview]]
 
 ---
 

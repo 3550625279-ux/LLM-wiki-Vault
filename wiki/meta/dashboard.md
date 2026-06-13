@@ -20,15 +20,15 @@ Frontmatter 缺失: 11
 
 ## 📋 待办队列
 
-| 优先级 | 任务 | 类型 | 状态 |
-|--------|------|------|------|
-| 🔴 高 | 完成首次 ingest | ingest | ⬜ 待执行 |
-| 🔴 高 | 建立 Foundations 核心节点 | ingest | ⬜ 待执行 |
-| 🔴 高 | 建立 Architecture 核心节点 | ingest | ⬜ 待执行 |
-| 🟡 中 | 首次 `align all` 生成基线报告 | align | ⬜ 待执行 |
-| 🟡 中 | 首次 `review` 测试记忆效果 | review | ⬜ 待执行 |
-| 🟢 低 | 激活 mcpvault（BM25检索升级） | 配置 | ⬜ 待执行 |
-| 🟢 低 | 配置 flux Token（概念图像生成） | 配置 | ⬜ 待执行 |
+| 优先级  | 任务                    | 类型     | 状态    |
+| ---- | --------------------- | ------ | ----- |
+| 🔴 高 | 完成首次 ingest           | ingest | ⬜ 待执行 |
+| 🔴 高 | 建立 Foundations 核心节点   | ingest | ⬜ 待执行 |
+| 🔴 高 | 建立 Architecture 核心节点  | ingest | ⬜ 待执行 |
+| 🟡 中 | 首次 `align all` 生成基线报告 | align  | ⬜ 待执行 |
+| 🟡 中 | 首次 `review` 测试记忆效果    | review | ⬜ 待执行 |
+| 🟢 低 | 激活 mcpvault（BM25检索升级） | 配置     | ⬜ 待执行 |
+| 🟢 低 | 配置 flux Token（概念图像生成） | 配置     | ⬜ 待执行 |
 
 ---
 

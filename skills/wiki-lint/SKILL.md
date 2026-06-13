@@ -194,7 +194,7 @@ Before validating anything, classify the page:
 
 | Classification | Criteria |
 |---|---|
-| **Meta / fold / excluded** | File is in `wiki/folds/` OR filename in `{_index.md, index.md, log.md, hot.md, overview.md, dashboard.md, dashboard.base, Wiki Map.md, getting-started.md}`. Address not required. |
+| **Meta / fold / excluded** | File is in `wiki/folds/` OR filename in `{idx.md, index.md, log.md, hot.md, overview.md, dashboard.md, dashboard.base, Wiki Map.md, getting-started.md}`. Address not required. |
 | **Post-rollout (must have address)** | `type` is not meta/fold AND frontmatter `created:` date is >= 2026-04-23 AND file path is NOT in the legacy baseline manifest. |
 | **Legacy (backfill-eligible)** | `type` is not meta/fold AND frontmatter `created:` date is < 2026-04-23 OR file path IS in the legacy baseline manifest. Address not required until backfill. |
 
@@ -299,7 +299,7 @@ esac
 
 - Includes: every `.md` under `wiki/` **except** the exclusion set below. The scope is "candidate tileable pages," not just `type: concept`.
 - Excludes (path): anything under `wiki/folds/` or `wiki/meta/`.
-- Excludes (filename): `_index.md`, `index.md`, `log.md`, `hot.md`, `overview.md`, `dashboard.md`, `Wiki Map.md`, `getting-started.md`.
+- Excludes (filename): `idx.md`, `index.md`, `log.md`, `hot.md`, `overview.md`, `dashboard.md`, `Wiki Map.md`, `getting-started.md`.
 - Excludes (frontmatter): `type: meta` or `type: fold`.
 - Excludes (security): symlinks. Any page file that is a symlink, or whose resolved path escapes the vault root, is skipped.
 

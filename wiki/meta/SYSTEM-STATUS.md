@@ -51,7 +51,7 @@
 1. **首要**: 在 Claude Code 中运行 `/vault` 或 `ingest` 第一篇资料
 2. **配置**: 手动创建 `.claude/settings.json`（见下方模板）
 3. **验证**: 运行 `bash scripts/align-check.sh "Transformer"` 测试检索
-4. **建立**: 8个领域 `_index.md` 页面
+4. **建立**: 8个领域 `idx.md` 页面
 
 ### .claude/settings.json 手动配置模板
 

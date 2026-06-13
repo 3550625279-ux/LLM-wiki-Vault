@@ -178,26 +178,26 @@
   "hotPaths": [
     {
       "path": "",
-      "accessCount": 10,
-      "lastAccessed": 1781347255180,
+      "accessCount": 14,
+      "lastAccessed": 1781355051980,
       "type": "directory"
     },
     {
       "path": "wiki\\index.md",
-      "accessCount": 10,
-      "lastAccessed": 1781354446906,
+      "accessCount": 12,
+      "lastAccessed": 1781355039082,
       "type": "file"
     },
     {
       "path": "wiki\\hot.md",
-      "accessCount": 7,
-      "lastAccessed": 1781354477617,
+      "accessCount": 8,
+      "lastAccessed": 1781355031055,
       "type": "file"
     },
     {
       "path": "wiki\\log.md",
-      "accessCount": 7,
-      "lastAccessed": 1781354495706,
+      "accessCount": 8,
+      "lastAccessed": 1781355031557,
       "type": "file"
     },
     {
@@ -214,14 +214,20 @@
     },
     {
       "path": "wiki\\meta\\SYSTEM-STATUS.md",
-      "accessCount": 5,
-      "lastAccessed": 1781347491015,
+      "accessCount": 6,
+      "lastAccessed": 1781354971852,
       "type": "file"
     },
     {
       "path": "wiki\\domains\\_index.md",
       "accessCount": 5,
       "lastAccessed": 1781353572235,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 5,
+      "lastAccessed": 1781354987935,
       "type": "file"
     },
     {
@@ -249,12 +255,6 @@
       "type": "file"
     },
     {
-      "path": "CLAUDE.md",
-      "accessCount": 3,
-      "lastAccessed": 1781283406774,
-      "type": "file"
-    },
-    {
       "path": "wiki\\meta\\contradiction-register.md",
       "accessCount": 3,
       "lastAccessed": 1781347290093,
@@ -264,6 +264,12 @@
       "path": "wiki\\meta\\delta-register.md",
       "accessCount": 3,
       "lastAccessed": 1781347290798,
+      "type": "file"
+    },
+    {
+      "path": "WIKI.md",
+      "accessCount": 3,
+      "lastAccessed": 1781354990331,
       "type": "file"
     },
     {
@@ -294,6 +300,12 @@
       "path": "skills\\wiki\\references\\mcp-setup.md",
       "accessCount": 2,
       "lastAccessed": 1781354340378,
+      "type": "file"
+    },
+    {
+      "path": "skills\\wiki-lint\\SKILL.md",
+      "accessCount": 2,
+      "lastAccessed": 1781354976181,
       "type": "file"
     },
     {
@@ -375,12 +387,6 @@
       "type": "file"
     },
     {
-      "path": "WIKI.md",
-      "accessCount": 1,
-      "lastAccessed": 1781282422492,
-      "type": "file"
-    },
-    {
       "path": "C:\\Users\\35506\\.claude\\paste-cache",
       "accessCount": 1,
       "lastAccessed": 1781282431048,
@@ -432,12 +438,6 @@
       "path": "skills\\lint\\SKILL.md",
       "accessCount": 1,
       "lastAccessed": 1781347202812,
-      "type": "file"
-    },
-    {
-      "path": "skills\\wiki-lint\\SKILL.md",
-      "accessCount": 1,
-      "lastAccessed": 1781347203467,
       "type": "file"
     },
     {

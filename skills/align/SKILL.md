@@ -167,7 +167,7 @@ related:
 触发：`align all` / `全库对齐` / `月度审计`
 
 ```
-1. 读取 wiki/domains/_index.md（8个领域列表）
+1. 读取 wiki/domains/idx.md（8个领域列表）
 2. 对每个领域执行 Step 2-3
 3. 计算全库覆盖度热力图
 4. 输出综合审计报告：wiki/meta/audit-YYYY-MM-DD.md

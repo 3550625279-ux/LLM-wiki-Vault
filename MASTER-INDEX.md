@@ -45,19 +45,19 @@ AI Vault/
 │   │   └── engineering.md            ✅ 工程实践
 │   │
 │   ├── concepts/                     ← Permanent Notes: 原理/算法
-│   │   └── _index.md                 ✅ Concepts 目录 MoC
+│   │   └── idx.md                 ✅ Concepts 目录 MoC
 │   │   └── [待 ingest 后创建...]
 │   │
 │   ├── entities/                     ← 模型/论文/作者/数据集
-│   │   └── _index.md                 ✅ Entities 目录 MoC
+│   │   └── idx.md                 ✅ Entities 目录 MoC
 │   │   └── [待 ingest 后创建...]
 │   │
 │   ├── operations/                   ← How-to: 代码/调参/SOP
-│   │   └── _index.md                 ✅ Operations 目录 MoC
+│   │   └── idx.md                 ✅ Operations 目录 MoC
 │   │   └── [待 ingest 后创建...]
 │   │
 │   ├── insights/                     ← Evergreen Notes: 个人洞察
-│   │   └── _index.md                 ✅ Insights 目录 MoC
+│   │   └── idx.md                 ✅ Insights 目录 MoC
 │   │   └── [待 ingest 后创建...]
 │   │
 │   ├── sources/                      ← 原始资料摘要页
@@ -162,7 +162,7 @@ AI Vault/
 `wiki/domains/`: foundations / architecture / training / alignment / inference / multimodal / agents / engineering
 
 ### 📁 子目录 MoC (4个)
-`wiki/concepts/_index.md` / `wiki/entities/_index.md` / `wiki/operations/_index.md` / `wiki/insights/_index.md`
+`wiki/concepts/idx.md` / `wiki/entities/idx.md` / `wiki/operations/idx.md` / `wiki/insights/idx.md`
 
 ### 📝 节点模板 (5个)
 `_templates/`: concept / entity / operation / insight / domain

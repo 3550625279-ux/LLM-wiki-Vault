@@ -25,7 +25,7 @@ Claude Code 工具链与 MCP 协议 — 理解 AI 工具调用的工程实现
 ## ⏭️ 下次继续点
 
 - [ ] 完成首次 ingest（推荐从一篇综述论文开始）
-- [ ] 建立 wiki/domains/ 8个领域 _index 页
+- [ ] 建立 wiki/domains/ 8个领域 idx 页
 - [ ] 首次 `align all` 生成基线覆盖度报告
 
 ## 📊 库状态快照

@@ -131,7 +131,7 @@ Scan the section headers first to determine which sections to read.
 
 ## Domain Sub-Index Format
 
-Each domain folder has a `_index.md` for focused lookups:
+Each domain folder has a `idx.md` for focused lookups:
 
 ```markdown
 ---

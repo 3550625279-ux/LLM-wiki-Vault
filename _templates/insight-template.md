@@ -19,7 +19,7 @@ sources:
 
 > 核心洞察一句话。
 
-Navigation: [[insights/_index]] | [[{{domain}}]] | [[overview]]
+Navigation: [[insights/idx]] | [[{{domain}}]] | [[overview]]
 
 ---
 

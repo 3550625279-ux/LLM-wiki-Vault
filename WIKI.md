@@ -190,8 +190,8 @@ wiki/concepts/attention.md                 ❌ 太模糊
 
 ## 九、特殊节点规则
 
-### _index.md 文件
-每个子目录的 `_index.md` 是该目录的 Map of Content (MoC)：
+### idx.md 文件
+每个子目录的 `idx.md` 是该目录的 Map of Content (MoC)：
 - 列出该目录下所有节点，按 status 分组
 - 不需要 frontmatter，不作为知识节点
 - 由 lint 检查是否缺失

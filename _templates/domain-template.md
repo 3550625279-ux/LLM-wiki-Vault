@@ -17,7 +17,7 @@ thumbnail: ""
 
 > 一句话说明这个领域研究什么。
 
-Navigation: [[_index]] | [[overview]]
+Navigation: [[idx]] | [[overview]]
 
 ---
 
