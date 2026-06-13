@@ -11,10 +11,14 @@
             "id": "a31de1b302cdc5cf",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "raw/articles/claude-code-config-and-mcp-flow.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "claude-code-config-and-mcp-flow"
             }
           }
         ]
@@ -202,8 +206,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a31de1b302cdc5cf",
+  "active": "5565f1231fe95c42",
   "lastOpenFiles": [
+    "wiki/sources/claude-code-config-and-mcp-flow.md.tmp.102896.9852148534de",
+    "raw/articles/claude-code-config-and-mcp-flow.txt",
+    "wiki/meta/dashboard.md",
+    "wiki/overview.md",
     "wiki/meta/lint-report-2026-06-13.md.tmp.102896.05911ca01a9f",
     "wiki/sources/claude-code-config-and-mcp-flow.md",
     "wiki/hot.md.tmp.102896.afa2f5f889b0",
@@ -220,10 +228,7 @@
     "WIKI.md.tmp.102896.1ee352c8189d",
     "MASTER-INDEX.md.tmp.102896.d3a5cd48d162",
     "agents/wiki-ingest.md.tmp.102896.7f38b0ac1b2d",
-    "CLAUDE.md.tmp.102896.afe9a941e756",
-    "skills/wiki-ingest/SKILL.md.tmp.102896.31b9fe1c9030",
     "wiki/concepts/idx.md",
-    "wiki/meta/dashboard.md",
     "wiki/entities/idx.md",
     "2026-06-13.md",
     "raw/articles/claude-code-config-and-mcp-flow.md",
@@ -238,7 +243,6 @@
     "wiki/concepts/mcp-protocol.md",
     "wiki/concepts/claude-code-configuration.md",
     "wiki/getting-started.md",
-    "wiki/overview.md",
     "wiki/domains/Architecture.md",
     "wiki/Wiki Map.canvas"
   ]
