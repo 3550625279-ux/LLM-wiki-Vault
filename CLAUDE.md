@@ -218,6 +218,7 @@ bash scripts/align-check.sh "查询关键词"
 ### Hooks 自动化（.claude/settings.json）
 - `Stop hook` → 运行 `scripts/post-session.sh` → 更新 hot.md + 封印 log
 - `PostToolUse(Write/Edit) hook` → 运行 `scripts/log-write.sh` → 轻量写操作记录
+- `PostToolUse(Write) prompt hook` → 写入 `wiki/concepts/` 或 `wiki/sources/` 后，询问用户是否生成 Flux 概念插画 → 存入 `_attachments/assets/` + 填写 frontmatter `thumbnail` + 页面内嵌 `![[...]]`
 
 ### 关系语义词典（严格遵守，禁止自创新前缀）
 

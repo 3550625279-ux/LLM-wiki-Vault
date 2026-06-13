@@ -8,28 +8,28 @@
 
 ## 按领域分组
 
-### [[domains/Foundations|Foundations]]
+### Foundations
 > *待填充 — 首次 ingest 后追加*
 
-### [[domains/Architecture|Architecture]]
+### Architecture
 > *待填充*
 
-### [[domains/Training|Training]]
+### Training
 > *待填充*
 
-### [[domains/Alignment|Alignment]]
+### Alignment
 > *待填充*
 
-### [[domains/Inference|Inference]]
+### Inference
 > *待填充*
 
-### [[domains/Multimodal|Multimodal]]
+### Multimodal
 > *待填充*
 
-### [[domains/Agents|Agents]]
+### Agents
 > *待填充*
 
-### [[domains/Engineering|Engineering]]
+### Engineering
 - [[concepts/mcp-protocol]] — MCP 协议架构与 JSON-RPC 2.0 | status:seed
 - [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系 | status:seed
 - [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路 | status:seed
@@ -39,7 +39,9 @@
 ## 按状态分组
 
 ### 🌱 seed (草稿)
-> *无*
+- [[concepts/mcp-protocol]] — MCP 协议架构与 JSON-RPC 2.0
+- [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系
+- [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路
 
 ### 🔨 developing (完善中)
 > *无*
@@ -76,7 +78,7 @@
 ## 统计
 
 ```
-总 concept 节点: 0
+总 concept 节点: 3
 目标总数:        50+
 上次更新:        2026-06-13
 ```

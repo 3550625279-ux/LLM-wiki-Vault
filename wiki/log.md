@@ -76,3 +76,8 @@
 - hook: Stop
 - vault: /d/Workspace/AI_Learning/AI Vault
 - hot_file_exists: yes
+
+## [2026-06-13 21:01] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes

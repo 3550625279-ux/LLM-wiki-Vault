@@ -20,6 +20,15 @@
             "command": "bash scripts/log-write.sh 2>/dev/null || true"
           }
         ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "If a file was just written under wiki/concepts/ or wiki/sources/, ask the user: '要为这个知识点生成 Flux 概念插画吗？' If they say yes, generate an image using Flux with the prompt '[节点标题] concept illustration, flat design, knowledge graph node, minimal color palette, white background, educational diagram, clean vector style', save to _attachments/assets/[node-slug].png, add the thumbnail field to the concept/source page frontmatter, and embed the image in the page. If they say no, do nothing."
+          }
+        ]
       }
     ]
   },

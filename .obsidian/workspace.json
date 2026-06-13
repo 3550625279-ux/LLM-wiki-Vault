@@ -11,10 +11,14 @@
             "id": "a31de1b302cdc5cf",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "wiki/sources/claude-code-config-and-mcp-flow.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "claude-code-config-and-mcp-flow"
             }
           }
         ]
@@ -204,6 +208,19 @@
   },
   "active": "a31de1b302cdc5cf",
   "lastOpenFiles": [
+    "wiki/sources/claude-code-config-and-mcp-flow.md.tmp.102896.f506fe51f022",
+    "wiki/sources/claude-code-config-and-mcp-flow.md",
+    "CLAUDE.md.tmp.102896.6226f1a8d22c",
+    "raw/articles/claude-code-config-and-mcp-flow.md",
+    "raw/articles/claude-code-config-and-mcp-flow.md.tmp.102896.57c6761eabbe",
+    "wiki/concepts/concepts-idx.md",
+    "wiki/index.md",
+    "wiki/concepts/concepts-idx.md.tmp.102896.a53c6697777b",
+    "wiki/operations/operations-idx.md",
+    "wiki/concepts/mcp-tool-calling-flow.md",
+    "wiki/concepts/mcp-protocol.md",
+    "wiki/concepts/claude-code-configuration.md",
+    "wiki/getting-started.md",
     "wiki/meta/dashboard.md",
     "wiki/meta/dashboard.md.tmp.102896.360379e26a94",
     "wiki/meta/lint-report-2026-06-13.md",
@@ -213,19 +230,10 @@
     "wiki/sources/claude-code-config-and-mcp-flow.md.tmp.102896.317d2f44d4fe",
     "wiki/log.md.tmp.102896.13a261dfc0eb",
     "wiki/getting-started.md.tmp.102896.9077b4ef462b",
-    "raw/articles/claude-code-config-and-mcp-flow.md",
-    "wiki/concepts/mcp-protocol.md",
-    "wiki/sources/claude-code-config-and-mcp-flow.md.tmp.102896.e414e81daf9b",
-    "wiki/concepts/claude-code-configuration.md",
-    "skills/wiki-ingest/SKILL.md.tmp.102896.0b5f8e9980c1",
-    "skills/wiki-ingest/SKILL.md.tmp.102896.937c6be10e78",
-    "wiki/sources/claude-code-config-and-mcp-flow.md",
     "wiki/log.md",
-    "wiki/operations/operations-idx.md",
     "wiki/insights/insights-idx.md",
     "wiki/entities/entities-idx.md",
     "wiki/domains/domains-idx.md",
-    "wiki/concepts/concepts-idx.md",
     "wiki/overview.md",
     "wiki/operations/idx.md",
     "wiki/insights/idx.md",
@@ -236,9 +244,6 @@
     "wiki/concepts/idx.md",
     "wiki/entities/idx.md",
     "2026-06-13.md",
-    "wiki/operations/_index.md",
-    "wiki/meta/delta-register.md",
-    "wiki/meta/contradiction-register.md",
     "wiki/Wiki Map.canvas"
   ]
 }

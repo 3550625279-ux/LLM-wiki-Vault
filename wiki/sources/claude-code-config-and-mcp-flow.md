@@ -8,9 +8,11 @@ status: seed
 domain: Engineering
 source_type: notes
 source_path: "raw/articles/claude-code-config-and-mcp-flow.md"
+thumbnail: ""
 ---
 
 > 📄 原始资料: [[raw/articles/claude-code-config-and-mcp-flow]]
+> ![[raw/articles/claude-code-config-and-mcp-flow]]
 
 # Claude Code 配置文件和 MCP 工具调用流程
 
