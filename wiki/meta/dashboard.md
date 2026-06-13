@@ -9,8 +9,11 @@
 ```
 系统版本:   AI Vault v2.0
 初始化:     2026-06-13
-最近会话:   2026-06-13 (vault-init)
+最近会话:   2026-06-13 (vault-rebuild + lint)
 健康状态:   🟡 就绪，待首次 ingest
+死链数:     78 (concepts: 69, entities: 9)
+孤儿页:     9
+Frontmatter 缺失: 11
 ```
 
 ---

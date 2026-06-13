@@ -12,3 +12,29 @@
 - status: system-ready
 - note: 首次启动，wiki/ 目录待 ingest 填充
 
+
+## [2026-06-13 18:38] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-13 18:50] lint | Wiki 首次健康检查
+- action: lint
+- pages_scanned: 22
+- dead_links: 78 (concepts: 69, entities: 9)
+- orphan_pages: 9
+- frontmatter_missing: 11
+- frontmatter_incomplete: 2
+- contradictions: 0
+- stale: 0
+- report: wiki/meta/lint-report-2026-06-13.md
+
+## [2026-06-13 18:45] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-13 20:23] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes

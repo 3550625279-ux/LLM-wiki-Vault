@@ -8,7 +8,7 @@
 
 ## 按领域分组
 
-### Training & Fine-tuning
+### [[domains/Training|Training]] & Fine-tuning
 > *待填充*
 
 **高优先级待创建**:
@@ -16,7 +16,7 @@
 - `qlora-training-setup` — QLoRA 训练环境配置
 - `data-cleaning-pipeline` — 训练数据清洗流程
 
-### Inference & Deployment
+### [[domains/Inference|Inference]] & Deployment
 > *待填充*
 
 **高优先级待创建**:
@@ -24,21 +24,21 @@
 - `deploy-vllm` — vLLM 部署 SOP
 - `ollama-local-setup` — Ollama 本地部署
 
-### Evaluation
+### [[domains/Engineering|Evaluation]]
 > *待填充*
 
 **高优先级待创建**:
 - `run-mmlu-eval` — 运行 MMLU 评估
 - `custom-eval-design` — 自定义评估集设计
 
-### Prompting
+### [[domains/Engineering|Prompting]]
 > *待填充*
 
 **高优先级待创建**:
 - `few-shot-prompt-template` — Few-shot 提示模板
 - `system-prompt-hardening` — 系统提示安全加固
 
-### MLOps
+### [[domains/Engineering|MLOps]]
 > *待填充*
 
 ---

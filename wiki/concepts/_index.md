@@ -8,28 +8,28 @@
 
 ## 按领域分组
 
-### Foundations
+### [[domains/Foundations|Foundations]]
 > *待填充 — 首次 ingest 后追加*
 
-### Architecture
+### [[domains/Architecture|Architecture]]
 > *待填充*
 
-### Training
+### [[domains/Training|Training]]
 > *待填充*
 
-### Alignment
+### [[domains/Alignment|Alignment]]
 > *待填充*
 
-### Inference
+### [[domains/Inference|Inference]]
 > *待填充*
 
-### Multimodal
+### [[domains/Multimodal|Multimodal]]
 > *待填充*
 
-### Agents
+### [[domains/Agents|Agents]]
 > *待填充*
 
-### Engineering
+### [[domains/Engineering|Engineering]]
 > *待填充*
 
 ---

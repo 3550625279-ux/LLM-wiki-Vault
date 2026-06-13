@@ -45,10 +45,10 @@
 
 | 矛盾 | 相关节点 | 状态 |
 |------|---------|------|
-| Scaling Laws 是否能预测涌现 | training + alignment | 待研究 |
-| RLHF vs DPO 等效性 | training | 待研究 |
-| 长上下文 vs RAG | agents + inference | 待研究 |
-| 多 Agent vs 单 Agent | agents | 待研究 |
+| Scaling Laws 是否能预测涌现 | [[domains/Training\|training]] + [[domains/Alignment\|alignment]] | 待研究 |
+| RLHF vs DPO 等效性 | [[domains/Training\|training]] | 待研究 |
+| 长上下文 vs RAG | [[domains/Agents\|agents]] + [[domains/Inference\|inference]] | 待研究 |
+| 多 Agent vs 单 Agent | [[domains/Agents\|agents]] | 待研究 |
 
 ---
 
