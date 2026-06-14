@@ -10,16 +10,18 @@
     "allow": [
       "Read(**)",
       "Write(wiki/**)",
-      "Write(scripts/**)",
       "Write(log.md)",
       "Edit(wiki/**)",
       "Edit(log.md)",
+      "Read(scripts/**)",
       "Glob(wiki/**)",
       "Grep(wiki/**)",
       "Bash(bash scripts/*.sh*)"
     ],
     "deny": [
-      "Write(raw/**)"
+      "Write(raw/**)",
+      "Write(scripts/**)",
+      "Edit(scripts/**)"
     ]
   },
   "hooks": {

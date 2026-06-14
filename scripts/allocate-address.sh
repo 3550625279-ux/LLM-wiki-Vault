@@ -1,27 +1,34 @@
 #!/usr/bin/env bash
-# allocate-address.sh — atomic creation-order address allocation for the vault.
+# allocate-address.sh - atomic creation-order address allocation for the vault.
 #
 # Reserves the next address of the form c-NNNNNN and increments the counter
-# under an exclusive flock. On missing counter file, recovers by scanning the
-# vault for the highest existing c-NNNNNN in page frontmatter and resuming from
-# max+1. Never silently resets to 1 in a non-empty vault.
+# under a mkdir-based lock (cross-platform, no flock dependency).
 #
 # Usage:
-#   ./scripts/allocate-address.sh           # prints the reserved address (e.g. c-000042) to stdout
-#   ./scripts/allocate-address.sh --peek    # prints the next value without incrementing
-#   ./scripts/allocate-address.sh --rebuild # recomputes counter from max observed and exits
+#   ./scripts/allocate-address.sh           # prints the reserved address
+#   ./scripts/allocate-address.sh --peek    # prints next value without incrementing
+#   ./scripts/allocate-address.sh --rebuild # recomputes counter from max observed
 #
 # Exit codes:
-#   0 — success
-#   1 — lock acquisition failed (another writer is holding the lock)
-#   2 — vault-meta directory missing and cannot be created
-#   3 — counter value corrupt or non-numeric
+#   0 - success
+#   1 - lock acquisition failed
+#   2 - vault-meta directory missing and cannot be created
+#   3 - counter value corrupt or non-numeric
 
 set -euo pipefail
 
-VAULT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VAULT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Defensive validation: ensure VAULT_ROOT contains expected structure
+if [ ! -d "$VAULT_ROOT/wiki" ] && [ ! -d "$VAULT_ROOT/.vault-meta" ]; then
+  echo "ERR: VAULT_ROOT resolution failed: $VAULT_ROOT" >&2
+  echo "     Expected wiki/ or .vault-meta/ subdir." >&2
+  exit 2
+fi
+
 COUNTER_FILE="${VAULT_ROOT}/.vault-meta/address-counter.txt"
-LOCK_FILE="${VAULT_ROOT}/.vault-meta/.address.lock"
+LOCK_DIR="${VAULT_ROOT}/.vault-meta/.address.lock.d"
 WIKI_DIR="${VAULT_ROOT}/wiki"
 
 MODE="${1:-allocate}"
@@ -31,17 +38,31 @@ mkdir -p "$(dirname "$COUNTER_FILE")" || {
   exit 2
 }
 
-# Acquire exclusive lock with 5-second timeout. Release automatically on scope exit.
-exec 9>"$LOCK_FILE"
-if ! flock -x -w 5 9; then
-  echo "ERR: could not acquire address allocator lock within 5s" >&2
+# Acquire exclusive lock via mkdir (atomic on all platforms)
+acquire_lock() {
+  local max_wait=50 waited=0
+  while ! mkdir "$LOCK_DIR" 2>/dev/null; do
+    sleep 0.1
+    waited=$((waited + 1))
+    [ "$waited" -ge "$max_wait" ] && {
+      echo "ERR: could not acquire address allocator lock within 5s" >&2
+      return 1
+    }
+  done
+  echo "$$" > "$LOCK_DIR/.pid" 2>/dev/null
+  return 0
+}
+
+release_lock() { rm -rf "$LOCK_DIR" 2>/dev/null; }
+
+# Cleanup lock on exit
+trap 'release_lock' EXIT
+
+if ! acquire_lock; then
   exit 1
 fi
 
 scan_max_c_address() {
-  # Emit the largest NNNNNN from "address: c-NNNNNN" lines that appear inside
-  # the FIRST YAML frontmatter block of each wiki .md file. Code-block examples
-  # and body prose are excluded. Returns 0 if none found.
   if [ ! -d "$WIKI_DIR" ]; then
     echo 0
     return
@@ -81,7 +102,16 @@ read_or_recover_counter() {
 
 case "$MODE" in
   --peek)
-    read_or_recover_counter
+    # BUG-002 fix: pure read-only, never create or modify counter file
+    if [ ! -f "$COUNTER_FILE" ]; then
+      echo "ERR: counter file missing. Run --rebuild first to recover." >&2
+      exit 3
+    fi
+    raw="$(cat "$COUNTER_FILE")"
+    if ! [[ "$raw" =~ ^[0-9]+$ ]]; then
+      echo "ERR: counter file corrupt: $raw" >&2; exit 3
+    fi
+    printf 'c-%06d\n' "$raw"
     ;;
   --rebuild)
     max_c="$(scan_max_c_address)"

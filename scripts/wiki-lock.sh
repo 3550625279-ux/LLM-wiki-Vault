@@ -203,10 +203,16 @@ _cmd_acquire() {
 
   if [ "$age" -gt "$STALE_AFTER_SEC" ]; then
     # Age exceeds threshold → reap and re-acquire (regardless of holder PID)
+    # BUG-006 fix: retry with backoff to handle TOCTOU race with concurrent reapers
     rm -f "$lf"
-    if (set -o noclobber; printf '%s %s %s\n' "$$" "$now" "$path" > "$lf") 2>/dev/null; then
-      return 0
-    fi
+    local attempt
+    for attempt in 1 2 3; do
+      if (set -o noclobber; printf '%s %s %s\n' "$$" "$now" "$path" > "$lf") 2>/dev/null; then
+        return 0
+      fi
+      sleep 0.1
+    done
+    log "WARN: acquire failed after stale reap (attempts=3) for: $path"
     return 75
   fi
 
