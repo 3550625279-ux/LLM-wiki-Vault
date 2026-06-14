@@ -139,8 +139,8 @@ _attachments/
 # Personal vault - do not commit
 wiki/assets/*.png
 wiki/assets/*.jpg
-.raw/*
-wiki/hot.md
+# .raw/* — 旧路径已迁移至 raw/，此规则已废弃 (2026-06-14)
+# wiki/hot.md — 恢复跟踪以支持跨机器同步 (2026-06-14)
 .env
 *.key
 *_token*

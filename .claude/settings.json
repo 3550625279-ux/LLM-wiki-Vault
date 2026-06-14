@@ -11,7 +11,9 @@
       "Read(**)",
       "Write(wiki/**)",
       "Write(scripts/**)",
+      "Write(log.md)",
       "Edit(wiki/**)",
+      "Edit(log.md)",
       "Glob(wiki/**)",
       "Grep(wiki/**)",
       "Bash(bash scripts/*.sh*)"
