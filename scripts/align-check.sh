@@ -31,23 +31,23 @@ else
 fi
 echo ""
 
-# ── Step 2: index.md 精确搜索 ────────────────────────────────────────────────
-echo "── [2] wiki/index.md 导航 ──"
-if [[ -f "$WIKI_DIR/index.md" ]]; then
-  if grep -qi "$QUERY" "$WIKI_DIR/index.md"; then
-    echo "✅ 命中 index.md:"
-    grep -in "$QUERY" "$WIKI_DIR/index.md" | head -10
+# ── Step 2: concepts-idx.md 精确搜索 ─────────────────────────────────────────
+echo "── [2] wiki/concepts-idx.md 导航 ──"
+if [[ -f "$WIKI_DIR/concepts-idx.md" ]]; then
+  if grep -qi "$QUERY" "$WIKI_DIR/concepts-idx.md"; then
+    echo "✅ 命中 concepts-idx.md:"
+    grep -in "$QUERY" "$WIKI_DIR/concepts-idx.md" | head -10
   else
-    echo "❌ index.md 未命中"
+    echo "❌ concepts-idx.md 未命中"
   fi
 else
-  echo "⚠️  index.md 不存在"
+  echo "⚠️  concepts-idx.md 不存在"
 fi
 echo ""
 
 # ── Step 3: 全库 grep（标题 + related 字段）──────────────────────────────────
 echo "── [3] 全库 grep 兜底 ──"
-CANDIDATES=$(grep -rli "$QUERY" "$WIKI_DIR" --include="*.md" 2>/dev/null | grep -v "hot.md\|log.md\|index.md" | head -8)
+CANDIDATES=$(grep -rli "$QUERY" "$WIKI_DIR" --include="*.md" 2>/dev/null | grep -v "hot.md\|log.md\|concepts-idx.md" | head -8 || true)
 
 if [[ -n "$CANDIDATES" ]]; then
   echo "✅ 找到以下候选页面:"
@@ -70,13 +70,13 @@ fi
 
 # ── Step 4: related:: 语义边搜索 ─────────────────────────────────────────────
 echo "── [4] 语义边搜索 (depends_on/corrects/extends) ──"
-SEMANTIC=$(grep -rli "depends_on::.*$QUERY\|corrects::.*$QUERY\|extends::.*$QUERY\|implements::.*$QUERY" "$WIKI_DIR" --include="*.md" 2>/dev/null | head -5)
+SEMANTIC=$(grep -rli "depends_on::.*$QUERY\|corrects::.*$QUERY\|extends::.*$QUERY\|implements::.*$QUERY" "$WIKI_DIR" --include="*.md" 2>/dev/null | head -5 || true)
 
 if [[ -n "$SEMANTIC" ]]; then
   echo "✅ 相关语义边页面:"
   while IFS= read -r FILE; do
     REL_PATH="${FILE#$VAULT_ROOT/}"
-    grep -n "depends_on::.*$QUERY\|corrects::.*$QUERY\|extends::.*$QUERY\|implements::.*$QUERY" "$FILE" | sed "s|^|  $REL_PATH:|"
+    grep -n "depends_on::.*$QUERY\|corrects::.*$QUERY\|extends::.*$QUERY\|implements::.*$QUERY" "$FILE" | sed "s|^|  $REL_PATH:|" || true
   done <<< "$SEMANTIC"
 else
   echo "❌ 无相关语义边"

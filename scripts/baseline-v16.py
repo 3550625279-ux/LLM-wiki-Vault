@@ -7,7 +7,7 @@ the regular vault workflow.
 
 The v1.6 query path (per skills/wiki-query/SKILL.md before v1.7):
   1. Read wiki/hot.md (always; quick context)
-  2. Read wiki/index.md (scan for descriptions matching query terms)
+  2. Read wiki/concepts-idx.md (scan for descriptions matching query terms)
   3. Read top-N pages cited in the index whose entries best match query
   4. Caller synthesizes answer
 
@@ -17,7 +17,7 @@ This script approximates that path by:
      (case-insensitive substring on the full file body; no semantic matching)
   3. Returning top-K pages by score, with ties broken by:
      a. Presence in hot.md (boost +5)
-     b. Presence in index.md (boost +3)
+     b. Presence in concepts-idx.md (boost +3)
      c. Total raw term-occurrence count
 
 The simulation is intentionally simple — it represents what a human or a
@@ -44,7 +44,7 @@ from pathlib import Path
 VAULT_ROOT = Path(__file__).resolve().parent.parent
 WIKI_DIR = VAULT_ROOT / "wiki"
 HOT_PATH = WIKI_DIR / "hot.md"
-INDEX_PATH = WIKI_DIR / "index.md"
+INDEX_PATH = WIKI_DIR / "concepts-idx.md"
 
 # Mirror bm25-index.py's tokenizer + stopword list so comparisons are fair.
 STOPWORDS = frozenset("""

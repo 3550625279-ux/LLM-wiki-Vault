@@ -472,3 +472,32 @@
 - hook: Stop
 - vault: /d/Workspace/AI_Learning/AI Vault
 - hot_file_exists: yes
+
+## [2026-06-14 12:36] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-14 12:39] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-14 20:30] lint | v2.0 路径失联全面修复
+- action: path-alignment-fix
+- 触发: 重构后 .raw→raw、index→concepts-idx、log.md 移根目录导致自动化链断裂
+- 修复文件 (7个):
+  - hooks/hooks.json: PostToolUse git add .raw/→raw/ + 补 log.md
+  - scripts/align-check.sh: index.md→concepts-idx.md (3处) + pipefail 退出码修复 (3处)
+  - scripts/baseline-v16.py: INDEX_PATH index.md→concepts-idx.md + 注释修复
+  - scripts/boundary-score.py: EXCLUDE_FILENAMES index.md→concepts-idx.md
+  - scripts/tiling-check.py: EXCLUDE_FILENAMES index.md→concepts-idx.md
+  - .claude/settings.json: deny 规则 .raw/→raw/
+- 验证: align-check.sh SetFit/MCP 查询均 EXIT=0，全项目零残留扫描通过
+- pages_created: 0
+- pages_updated: 7 (脚本+配置文件)
+
+## [2026-06-14 14:30] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes

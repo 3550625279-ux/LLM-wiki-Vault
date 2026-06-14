@@ -51,7 +51,7 @@ WIKI_DIR = VAULT_ROOT / "wiki"
 
 EXCLUDE_TYPES = {"meta", "fold"}
 EXCLUDE_FILENAMES = {
-    "_index.md", "index.md", "log.md", "hot.md", "overview.md",
+    "_index.md", "concepts-idx.md", "log.md", "hot.md", "overview.md",
     "dashboard.md", "Wiki Map.md", "getting-started.md",
 }
 EXCLUDE_PATH_PREFIXES = ("wiki/folds/", "wiki/meta/")

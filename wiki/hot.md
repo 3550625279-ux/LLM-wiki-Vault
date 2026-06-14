@@ -31,6 +31,7 @@ LLM 时代的意图检测 — 不确定性路由混合系统 + OOS 检测改进
 
 ## ⏭️ 下次继续点
 
+- [x] v2.0 路径失联修复（7文件，零残留）
 - [ ] 重跑 lint 获取最新健康指标
 - [ ] 为意图检测论文生成 Flux 概念插画（intent-detection-tods, uncertainty-routing）
 - [ ] 创建 Agents 领域综述页
@@ -43,11 +44,11 @@ LLM 时代的意图检测 — 不确定性路由混合系统 + OOS 检测改进
 - 总节点数: 31 (concept:19, insight:3, source:4, comparison:1, question:2)
 - 领域覆盖: 7/8 (Foundations, Architecture, Training, **Agents**, **Engineering**, Inference, Multimodal)
 - 最近 ingest: 2026-06-14 (Intent Detection in the Age of LLMs, EMNLP 2024)
-- 最近修复: 2026-06-14 (系统健康全面修复)
+- 最近修复: 2026-06-14 (v2.0 路径失联修复，7文件零残留)
 - 最近 review: 无
 - 开放 gap 数: 待 lint 统计
 - 矛盾登记: 0
 
 ---
 
-*上次更新: 2026-06-14 | 系统健康修复完成*
+*上次更新: 2026-06-14 | v2.0 路径失联修复完成*
