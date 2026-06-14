@@ -10,8 +10,10 @@ domain: Engineering
 sources:
   - "[[sources/claude-code-config-and-mcp-flow]]"
 related:
+  - "belongs_to::[[domains/Engineering]]"
   - "applied_in::[[concepts/mcp-protocol]]"
   - "part_of::[[concepts/claude-code-configuration]]"
+  - "produced_by::[[sources/claude-code-config-and-mcp-flow]]"
 ---
 
 # Claude Code 配置文件层级

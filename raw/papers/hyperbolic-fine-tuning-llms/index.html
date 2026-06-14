@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HypLoRA 交互式探索器</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* 标题 */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0a0a1a 100%);
+            border-bottom: 2px solid #2a2a5a;
+        }
+        .header h1 {
+            font-size: 2em;
+            background: linear-gradient(90deg, #64b5f6, #ba68c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .header .subtitle { color: #888; font-size: 1.1em; }
+
+        /* 导航标签 */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #1a1a2e;
+            color: #aaa;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        .tab:hover { border-color: #64b5f6; color: #64b5f6; }
+        .tab.active {
+            background: linear-gradient(135deg, #1a3a5e, #2a1a4e);
+            border-color: #64b5f6;
+            color: #fff;
+        }
+
+        /* 面板 */
+        .panel { display: none; padding: 20px; }
+        .panel.active { display: block; }
+
+        /* 卡片 */
+        .card {
+            background: #12122a;
+            border: 1px solid #2a2a4a;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            font-size: 1.3em;
+            color: #64b5f6;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #2a2a4a;
+            padding-bottom: 8px;
+        }
+        .card h3 { color: #ba68c8; margin: 12px 0 8px; font-size: 1.05em; }
+        .card p { line-height: 1.7; color: #bbb; }
+
+        /* 公式 */
+        .formula {
+            background: #1a1a3e;
+            border-left: 3px solid #64b5f6;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            font-size: 1.05em;
+            color: #e0e0e0;
+            overflow-x: auto;
+        }
+
+        /* 交互控制 */
+        .controls {
+            background: #0f0f25;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .control-row label {
+            min-width: 120px;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        .control-row input[type="range"] {
+            flex: 1;
+            accent-color: #64b5f6;
+        }
+        .control-row .value {
+            min-width: 60px;
+            text-align: right;
+            color: #64b5f6;
+            font-weight: bold;
+        }
+
+        /* Canvas */
+        canvas {
+            background: #0a0a1a;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            display: block;
+            margin: 16px auto;
+        }
+
+        /* 表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+        th, td {
+            padding: 10px 14px;
+            border: 1px solid #2a2a4a;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        th {
+            background: #1a1a3e;
+            color: #64b5f6;
+            font-weight: 600;
+        }
+        td { color: #ccc; }
+        tr:hover td { background: #15153a; }
+        .highlight { color: #4caf50; font-weight: bold; }
+
+        /* 对比框 */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .comparison > div {
+            background: #0f0f25;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .comparison h3 { color: #ba68c8; margin-bottom: 10px; }
+
+        /* 输出显示 */
+        .output {
+            background: #0a0a15;
+            border: 1px solid #2a2a4a;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+            color: #4caf50;
+            margin: 12px 0;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        /* 进度条 */
+        .progress-bar {
+            height: 8px;
+            background: #1a1a3e;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* 按钮 */
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1a5a8e, #3a2a6e);
+            color: #fff;
+        }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(100,181,246,0.3); }
+
+        /* 提示 */
+        .tip {
+            background: #1a2a1a;
+            border-left: 3px solid #4caf50;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9em;
+            color: #81c784;
+        }
+
+        @media (max-width: 768px) {
+            .comparison { grid-template-columns: 1fr; }
+            .control-row { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>HypLoRA 交互式探索器</h1>
+    <p class="subtitle">Hyperbolic Fine-Tuning for Large Language Models — NeurIPS 2025</p>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <div class="tab active" onclick="showPanel('overview')">📋 概览</div>
+        <div class="tab" onclick="showPanel('geometry')">📐 双曲几何</div>
+        <div class="tab" onclick="showPanel('method')">⚙️ 方法拆解</div>
+        <div class="tab" onclick="showPanel('experiment')">📊 实验结果</div>
+        <div class="tab" onclick="showPanel('interactive')">🎮 交互实验</div>
+    </div>
+
+    <!-- 面板 1: 概览 -->
+    <div id="panel-overview" class="panel active">
+        <div class="card">
+            <h2>论文核心思想</h2>
+            <p>LLM 的 token 嵌入天然具有<strong>双曲（树状）层次结构</strong>。高频词（如 "the"、"is"）聚集在原点附近，低频词（如 "apple"、"purple"）向外扩散，形成类似"语言树"的结构。</p>
+            <p style="margin-top:12px"><strong>HypLoRA</strong> 利用这一发现，直接在双曲流形上执行低秩适配，绕过传统双曲神经网络的 exp-log 抵消问题，持续优于标准 LoRA。</p>
+        </div>
+
+        <div class="card">
+            <h2>关键数据</h2>
+            <table>
+                <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+                <tr><td>幂律指数 γ</td><td class="highlight">≈ 1.9</td><td>Token 频率分布</td></tr>
+                <tr><td>δ-双曲性</td><td class="highlight">0.06 - 0.12</td><td>接近完美树 (0.0)</td></tr>
+                <tr><td>算术推理提升</td><td class="highlight">+2.3% ~ +7.5%</td><td>vs LoRA</td></tr>
+                <tr><td>常识推理提升</td><td class="highlight">+1.8% ~ +4.0%</td><td>vs LoRA</td></tr>
+                <tr><td>额外参数量</td><td class="highlight">1 个标量 (K)</td><td>曲率参数</td></tr>
+                <tr><td>训练时间</td><td class="highlight">≈ 1 小时</td><td>在 A100 上</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>研究路径</h2>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                <div style="background:#1a3a5e;padding:12px 16px;border-radius:8px;text-align:center;">
+                    <div style="font-size:1.5em">🔍</div>
+                    <div style="color:#64b5f6;font-weight:bold;">分析</div>
+                    <div style="color:#888;font-size:0.85em;">发现嵌入的双曲结构</div>
+                </div>
+                <div style="color:#64b5f6;font-size:1.5em">→</div>
+                <div style="background:#2a1a4e;padding:12px 16px;border-radius:8px;text-align:center;">
+                    <div style="font-size:1.5em">💡</div>
+                    <div style="color:#ba68c8;font-weight:bold;">理论</div>
+                    <div style="color:#888;font-size:0.85em;">幂律 ↔ 双曲几何</div>
+                </div>
+                <div style="color:#ba68c8;font-size:1.5em">→</div>
+                <div style="background:#1a4a3e;padding:12px 16px;border-radius:8px;text-align:center;">
+                    <div style="font-size:1.5em">⚙️</div>
+                    <div style="color:#4caf50;font-weight:bold;">方法</div>
+                    <div style="color:#888;font-size:0.85em;">LLR 直接双曲低秩变换</div>
+                </div>
+                <div style="color:#4caf50;font-size:1.5em">→</div>
+                <div style="background:#4a3a1e;padding:12px 16px;border-radius:8px;text-align:center;">
+                    <div style="font-size:1.5em">✅</div>
+                    <div style="color:#ffc107;font-weight:bold;">验证</div>
+                    <div style="color:#888;font-size:0.85em;">6 模型 × 12 基准</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 面板 2: 双曲几何 -->
+    <div id="panel-geometry" class="panel">
+        <div class="card">
+            <h2>为什么需要双曲空间？</h2>
+            <p>语言的层次结构（如"动物 → 猫 → 暹罗猫"）需要一种能自然表示"分支"的空间。欧几里得空间的体积增长是多项式的，而树状结构的节点数增长是指数的。</p>
+
+            <div class="comparison" style="margin-top:16px;">
+                <div>
+                    <h3>🔵 欧几里得空间</h3>
+                    <div class="formula">面积 A(r) = πr² ∝ r²</div>
+                    <p>体积多项式增长 → 树的叶子节点"挤在一起"，无法充分分离</p>
+                    <div class="progress-bar"><div class="fill" style="width:30%;background:linear-gradient(90deg,#2196f3,#64b5f6);"></div></div>
+                </div>
+                <div>
+                    <h3>🔴 双曲空间</h3>
+                    <div class="formula">面积 A(r) = 2π(cosh(r)-1) ∝ eʳ</div>
+                    <p>体积指数增长 → 树的叶子节点有充足空间分离，同时保持层次距离</p>
+                    <div class="progress-bar"><div class="fill" style="width:90%;background:linear-gradient(90deg,#e91e63,#f48fb1);"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Lorentz 双曲面模型</h2>
+            <div class="formula">
+                L<sub>K</sub><sup>n</sup> = { x ∈ ℝ<sup>n+1</sup> : ⟨x,x⟩<sub>L</sub> = -K,  x₀ > 0 }
+                <br><br>
+                其中 Lorentz 内积: ⟨x,y⟩<sub>L</sub> = -x₀y₀ + Σᵢ xᵢyᵢ
+            </div>
+            <p>直观理解：这是一个嵌入在 (n+1) 维欧氏空间中的 n 维"碗状"曲面。</p>
+            <ul style="margin:12px 0 0 20px;color:#bbb;line-height:1.8;">
+                <li><strong>x₀</strong>（时间维度）：始终为正，控制点到"原点"的距离</li>
+                <li><strong>x₁...xₙ</strong>（空间维度）：编码 token 的语义信息</li>
+                <li><strong>曲率 K</strong>：控制弯曲程度，K 越小越弯曲</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>δ-双曲性度量</h2>
+            <div class="formula">
+                [a,c]<sub>w</sub> ≥ min([a,b]<sub>w</sub>, [b,c]<sub>w</sub>) - δ
+                <br><br>
+                Gromov 乘积: [a,b]<sub>w</sub> = ½(d(a,w) + d(b,w) - d(a,b))
+            </div>
+            <p>δ 值越小，空间越像树。论文中 LLM 嵌入的 δ ≈ 0.06-0.12，非常接近完美树 (0.0)。</p>
+
+            <table style="margin-top:16px;">
+                <tr><th>度量空间</th><th>δ 值</th><th>解读</th></tr>
+                <tr><td>完美树</td><td class="highlight">0.00</td><td>完全树状结构</td></tr>
+                <tr><td>LLM 嵌入</td><td class="highlight">0.06-0.12</td><td>非常接近树</td></tr>
+                <tr><td>随机图</td><td>0.62</td><td>中等层次</td></tr>
+                <tr><td>球面</td><td>0.99</td><td>远离树结构</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 面板 3: 方法拆解 -->
+    <div id="panel-method" class="panel">
+        <div class="card">
+            <h2>抵消效应：传统方法的困境</h2>
+            <p>传统双曲神经网络使用 exp/log 映射在双曲空间和切空间之间转换：</p>
+            <div class="formula">
+                欧氏 x → exp 到双曲 → log 回切空间 → 线性变换 → exp 回双曲 → log 回欧氏
+                <br><br>
+                问题: exp 和 log 互逆 → 连续应用时完全抵消 → 退化为欧氏 LoRA
+            </div>
+            <div class="tip">💡 HypLoRA 的关键洞察：不经过切空间，直接在双曲流形上操作！</div>
+        </div>
+
+        <div class="card">
+            <h2>LLR：直接 Lorentz 低秩变换</h2>
+            <div class="formula">
+                LLR(BA, x<sub>H</sub>) = (√(‖BAx<sub>H</sub><sup>s</sup>‖² + K),  BAx<sub>H</sub><sup>s</sup>)
+                <br><br>
+                其中 x<sub>H</sub><sup>s</sup> 是双曲点的空间分量（去掉时间分量）
+            </div>
+            <p style="margin-top:12px"><strong>验证</strong>：新点始终在双曲面上：</p>
+            <div class="formula">
+                ⟨z<sub>H</sub>, z<sub>H</sub>⟩<sub>L</sub> = -(√(‖BAx<sup>s</sup>‖²+K))² + ‖BAx<sup>s</sup>‖² = -K ✓
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>HypLoRA 完整流程</h2>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="background:#1a3a5e;padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:12px;">
+                    <span style="font-size:1.5em">1️⃣</span>
+                    <div><strong style="color:#64b5f6;">投影到双曲面</strong><br><span style="color:#aaa;">x<sub>H</sub> = Π<sub>K</sub> exp(x<sub>E</sub>) — 将欧氏嵌入映射到 Lorentz 双曲面</span></div>
+                </div>
+                <div style="text-align:center;color:#64b5f6;font-size:1.2em;">↓</div>
+                <div style="background:#2a1a4e;padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:12px;">
+                    <span style="font-size:1.5em">2️⃣</span>
+                    <div><strong style="color:#ba68c8;">提取空间分量</strong><br><span style="color:#aaa;">x<sub>H</sub><sup>s</sup> = x<sub>H</sub>[1:] — 去掉时间分量 x<sub>H</sub>[0]</span></div>
+                </div>
+                <div style="text-align:center;color:#ba68c8;font-size:1.2em;">↓</div>
+                <div style="background:#1a4a3e;padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:12px;">
+                    <span style="font-size:1.5em">3️⃣</span>
+                    <div><strong style="color:#4caf50;">低秩线性变换</strong><br><span style="color:#aaa;">transformed = B·A·x<sub>H</sub><sup>s</sup> — 标准 LoRA 变换，作用于空间分量</span></div>
+                </div>
+                <div style="text-align:center;color:#4caf50;font-size:1.2em;">↓</div>
+                <div style="background:#4a3a1e;padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:12px;">
+                    <span style="font-size:1.5em">4️⃣</span>
+                    <div><strong style="color:#ffc107;">重建双曲点</strong><br><span style="color:#aaa;">z<sub>H</sub> = (√(‖transformed‖²+K), transformed) — 确保输出在流形上</span></div>
+                </div>
+                <div style="text-align:center;color:#ffc107;font-size:1.2em;">↓</div>
+                <div style="background:#3a1a2e;padding:14px 18px;border-radius:8px;display:flex;align-items:center;gap:12px;">
+                    <span style="font-size:1.5em">5️⃣</span>
+                    <div><strong style="color:#e91e63;">投影回欧氏空间</strong><br><span style="color:#aaa;">z<sub>E</sub> = Π<sub>K</sub> log(z<sub>H</sub>) — 输出可直接用于 Transformer 层</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>命题 1：高阶范数依赖</h2>
+            <div class="formula">
+                z ≈ BAx + f(‖x‖₂) · higher_order_terms(x)
+            </div>
+            <p style="margin-top:12px">由于双曲操作的非线性，HypLoRA 引入了关于输入范数 ‖x‖₂ 的高阶项：</p>
+            <ul style="margin:12px 0 0 20px;color:#bbb;line-height:1.8;">
+                <li><strong>范数小的 token</strong>（高频词如 "the"）→ 高阶项贡献小 → 变换接近标准 LoRA</li>
+                <li><strong>范数大的 token</strong>（低频词如 "apple"）→ 高阶项贡献大 → 获得更丰富的变换</li>
+            </ul>
+            <div class="tip">💡 这种自适应处理正是语言层次结构所需要的：低频/具体词需要更精细的表示调整。</div>
+        </div>
+    </div>
+
+    <!-- 面板 4: 实验结果 -->
+    <div id="panel-experiment" class="panel">
+        <div class="card">
+            <h2>算术推理结果</h2>
+            <table>
+                <tr>
+                    <th>基座模型</th><th>方法</th><th>MAWPS</th><th>SVAMP</th><th>GSM8K</th><th>AQuA</th><th>M.AVG</th>
+                </tr>
+                <tr>
+                    <td>LLaMA-7B</td><td>LoRA</td><td>81.9</td><td>48.2</td><td>38.3</td><td>18.5</td><td>43.7</td>
+                </tr>
+                <tr>
+                    <td>LLaMA-7B</td><td style="color:#4caf50">HypLoRA</td><td>79.0</td><td>49.1</td><td>39.1</td><td>20.5</td><td class="highlight">44.4</td>
+                </tr>
+                <tr style="border-top:2px solid #333">
+                    <td>LLaMA3-8B</td><td>LoRA</td><td>92.7</td><td>78.9</td><td>70.8</td><td>30.4</td><td>71.9</td>
+                </tr>
+                <tr>
+                    <td>LLaMA3-8B</td><td style="color:#4caf50">HypLoRA</td><td>91.6</td><td>80.5</td><td>74.0</td><td>34.2</td><td class="highlight">74.2</td>
+                </tr>
+                <tr style="border-top:2px solid #333">
+                    <td>Gemma3-4B</td><td>LoRA</td><td>90.8</td><td>77.3</td><td>72.3</td><td>50.8</td><td>73.7</td>
+                </tr>
+                <tr>
+                    <td>Gemma3-4B</td><td style="color:#4caf50">HypLoRA</td><td>88.2</td><td>83.9</td><td>76.1</td><td>53.2</td><td class="highlight">77.8</td>
+                </tr>
+                <tr style="border-top:2px solid #333">
+                    <td>Qwen2.5-7B</td><td>LoRA</td><td>90.8</td><td>84.4</td><td>78.6</td><td>68.1</td><td>80.8</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-7B</td><td style="color:#4caf50">HypLoRA</td><td>91.2</td><td>92.2</td><td>87.9</td><td>71.6</td><td class="highlight">88.3</td>
+                </tr>
+            </table>
+            <div class="tip">💡 Qwen2.5-7B 上提升最大（+7.5%），尤其在 GSM8K（+9.3%）和 SVAMP（+7.8%）上。</div>
+        </div>
+
+        <div class="card">
+            <h2>常识推理结果</h2>
+            <table>
+                <tr>
+                    <th>模型</th><th>方法</th><th>BoolQ</th><th>PIQA</th><th>SIQA</th><th>HellaSwag</th><th>ARC-c</th><th>OBQA</th><th>AVG</th>
+                </tr>
+                <tr>
+                    <td>LLaMA3-8B</td><td>LoRA</td><td>70.8</td><td>85.2</td><td>79.9</td><td>91.7</td><td>71.2</td><td>79.0</td><td>80.8</td>
+                </tr>
+                <tr>
+                    <td>LLaMA3-8B</td><td style="color:#4caf50">HypLoRA</td><td>74.1</td><td>87.6</td><td>80.6</td><td>94.5</td><td>81.2</td><td>85.2</td><td class="highlight">84.8</td>
+                </tr>
+                <tr style="border-top:2px solid #333">
+                    <td>Qwen2.5-7B</td><td>LoRA</td><td>73.4</td><td>89.5</td><td>79.5</td><td>93.6</td><td>82.0</td><td>87.0</td><td>85.2</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-7B</td><td style="color:#4caf50">HypLoRA</td><td>72.8</td><td>89.3</td><td>79.8</td><td>94.8</td><td>87.5</td><td>90.8</td><td class="highlight">87.0</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>曲率敏感性（Gemma3-4B）</h2>
+            <table>
+                <tr><th>数据集</th><th>K=0.5</th><th>K=1.0</th></tr>
+                <tr><td>MAWPS</td><td class="highlight">88.2</td><td>91.9</td></tr>
+                <tr><td>SVAMP</td><td class="highlight">83.9</td><td>80.3</td></tr>
+                <tr><td>GSM8K</td><td class="highlight">76.1</td><td>73.8</td></tr>
+                <tr><td>AQuA</td><td class="highlight">53.5</td><td>52.7</td></tr>
+                <tr><td><strong>M.AVG</strong></td><td class="highlight">77.8</td><td>75.8</td></tr>
+            </table>
+            <div class="tip">💡 K=0.5 在算术推理上一致更优，可能因为更小的曲率带来更强的层次区分能力。</div>
+        </div>
+    </div>
+
+    <!-- 面板 5: 交互实验 -->
+    <div id="panel-interactive" class="panel">
+        <div class="card">
+            <h2>🎮 LoRA vs HypLoRA 变换对比</h2>
+            <p>调整输入 token 的范数，观察 LoRA 和 HypLoRA 的变换幅度差异。</p>
+
+            <div class="controls">
+                <div class="control-row">
+                    <label>输入范数</label>
+                    <input type="range" id="inputNorm" min="0.1" max="3" step="0.1" value="1.0" oninput="updateComparison()">
+                    <span class="value" id="inputNormValue">1.0</span>
+                </div>
+                <div class="control-row">
+                    <label>双曲曲率 K</label>
+                    <input type="range" id="curvature" min="0.1" max="2" step="0.1" value="0.5" oninput="updateComparison()">
+                    <span class="value" id="curvatureValue">0.5</span>
+                </div>
+                <div class="control-row">
+                    <label>LoRA 秩 r</label>
+                    <input type="range" id="rank" min="1" max="16" step="1" value="4" oninput="updateComparison()">
+                    <span class="value" id="rankValue">4</span>
+                </div>
+            </div>
+
+            <canvas id="comparisonCanvas" width="700" height="350"></canvas>
+
+            <div class="output" id="comparisonOutput">调整参数查看结果...</div>
+        </div>
+
+        <div class="card">
+            <h2>🎮 双曲空间层次可视化</h2>
+            <p>拖动滑块改变曲率 K，观察双曲空间中"树状"数据的分布变化。</p>
+
+            <div class="controls">
+                <div class="control-row">
+                    <label>曲率 K</label>
+                    <input type="range" id="hierK" min="0.1" max="3" step="0.1" value="1.0" oninput="updateHierarchy()">
+                    <span class="value" id="hierKValue">1.0</span>
+                </div>
+            </div>
+
+            <canvas id="hierarchyCanvas" width="700" height="400"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+// ============================================================
+// 标签切换
+// ============================================================
+function showPanel(name) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    event.target.classList.add('active');
+}
+
+// ============================================================
+// LoRA vs HypLoRA 对比
+// ============================================================
+function updateComparison() {
+    const norm = parseFloat(document.getElementById('inputNorm').value);
+    const K = parseFloat(document.getElementById('curvature').value);
+    const r = parseInt(document.getElementById('rank').value);
+
+    document.getElementById('inputNormValue').textContent = norm.toFixed(1);
+    document.getElementById('curvatureValue').textContent = K.toFixed(1);
+    document.getElementById('rankValue').textContent = r;
+
+    // 模拟 LoRA 和 HypLoRA 的输出范数
+    const d = 64;
+    // LoRA: 输出 ≈ 输入范数 × (r/d) 的缩放
+    const loraScale = r / d;
+    const loraOut = norm * loraScale;
+
+    // HypLoRA: 非线性缩放
+    // LLR 输出: (√(‖BAx‖² + K), BAx) → 投影回欧氏后缩放
+    const baNorm = norm * loraScale;
+    const hypScale = Math.sqrt(K) / (Math.sqrt(baNorm * baNorm + K) + Math.sqrt(K));
+    const hypOut = baNorm * hypScale;
+
+    // 绘制对比图
+    const canvas = document.getElementById('comparisonCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 背景
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height - 60;
+    const barWidth = 80;
+    const maxHeight = 250;
+
+    // 绘制坐标轴
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(50, 20);
+    ctx.lineTo(50, centerY);
+    ctx.lineTo(canvas.width - 50, centerY);
+    ctx.stroke();
+
+    // Y 轴标签
+    ctx.fillStyle = '#888';
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'right';
+    for (let i = 0; i <= 5; i++) {
+        const y = centerY - (i / 5) * maxHeight;
+        ctx.fillText((i * 0.6).toFixed(1), 45, y + 4);
+        ctx.strokeStyle = '#1a1a3e';
+        ctx.beginPath();
+        ctx.moveTo(50, y);
+        ctx.lineTo(canvas.width - 50, y);
+        ctx.stroke();
+    }
+
+    // LoRA 柱
+    const loraHeight = Math.min((loraOut / 3) * maxHeight, maxHeight);
+    const loraGrad = ctx.createLinearGradient(centerX - 120, centerY, centerX - 120, centerY - loraHeight);
+    loraGrad.addColorStop(0, '#1565c0');
+    loraGrad.addColorStop(1, '#42a5f5');
+    ctx.fillStyle = loraGrad;
+    ctx.fillRect(centerX - 120 - barWidth/2, centerY - loraHeight, barWidth, loraHeight);
+
+    ctx.fillStyle = '#42a5f5';
+    ctx.font = 'bold 14px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('LoRA', centerX - 120, centerY + 20);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 16px sans-serif';
+    ctx.fillText(loraOut.toFixed(3), centerX - 120, centerY - loraHeight - 10);
+
+    // HypLoRA 柱
+    const hypHeight = Math.min((hypOut / 3) * maxHeight, maxHeight);
+    const hypGrad = ctx.createLinearGradient(centerX + 60, centerY, centerX + 60, centerY - hypHeight);
+    hypGrad.addColorStop(0, '#7b1fa2');
+    hypGrad.addColorStop(1, '#ba68c8');
+    ctx.fillStyle = hypGrad;
+    ctx.fillRect(centerX + 60 - barWidth/2, centerY - hypHeight, barWidth, hypHeight);
+
+    ctx.fillStyle = '#ba68c8';
+    ctx.font = 'bold 14px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('HypLoRA', centerX + 60, centerY + 20);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 16px sans-serif';
+    ctx.fillText(hypOut.toFixed(3), centerX + 60, centerY - hypHeight - 10);
+
+    // 标题
+    ctx.fillStyle = '#aaa';
+    ctx.font = '13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(`变换幅度 (‖output - input‖) | 输入范数 = ${norm.toFixed(1)}`, centerX, 15);
+
+    // 更新输出
+    const ratio = hypOut / loraOut;
+    document.getElementById('comparisonOutput').textContent =
+        `输入范数: ${norm.toFixed(2)}\n` +
+        `LoRA 输出范数:   ${loraOut.toFixed(4)}\n` +
+        `HypLoRA 输出范数: ${hypOut.toFixed(4)}\n` +
+        `比值 (HypLoRA/LoRA): ${ratio.toFixed(3)}\n` +
+        `\n曲率 K = ${K.toFixed(1)} | 秩 r = ${r}\n` +
+        (ratio > 1.1 ? '→ HypLoRA 对该范数的 token 施加了更强的变换' :
+         ratio < 0.9 ? '→ HypLoRA 对该范数的 token 施加了更弱的变换' :
+         '→ 两者变换幅度接近');
+}
+
+// ============================================================
+// 层次结构可视化
+// ============================================================
+function updateHierarchy() {
+    const K = parseFloat(document.getElementById('hierK').value);
+    document.getElementById('hierKValue').textContent = K.toFixed(1);
+
+    const canvas = document.getElementById('hierarchyCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const maxR = 160;
+
+    // 绘制双曲圆盘（Poincaré 模型）
+    ctx.strokeStyle = '#2a2a4a';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, maxR, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // 生成层次数据
+    const tree = [
+        // 概念层 (中心)
+        { x: 0, y: 0, r: 8, color: '#f44336', label: '概念', norm: 0.1 },
+        // 子类层
+        { x: 0.3, y: 0, r: 5, color: '#ff9800', label: '子类1', norm: 0.5 },
+        { x: -0.2, y: 0.3, r: 5, color: '#ff9800', label: '子类2', norm: 0.5 },
+        { x: -0.1, y: -0.35, r: 5, color: '#ff9800', label: '子类3', norm: 0.5 },
+    ];
+
+    // 实例层（根据 K 调整分布）
+    const instances = [];
+    for (let i = 0; i < 12; i++) {
+        const angle = (i / 12) * Math.PI * 2 + Math.random() * 0.3;
+        // K 越小，外层节点越向外扩散
+        const rFactor = 0.6 + (1 / K) * 0.15;
+        const dist = 0.5 + Math.random() * 0.3 * rFactor;
+        instances.push({
+            x: Math.cos(angle) * dist,
+            y: Math.sin(angle) * dist,
+            r: 3,
+            color: '#4caf50',
+            label: `实例${i+1}`,
+            norm: 1.0 + Math.random() * 0.5
+        });
+    }
+
+    // 绘制连线
+    ctx.strokeStyle = 'rgba(100, 181, 246, 0.2)';
+    ctx.lineWidth = 1;
+    // 概念→子类
+    for (let i = 1; i <= 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(cx + tree[0].x * maxR, cy + tree[0].y * maxR);
+        ctx.lineTo(cx + tree[i].x * maxR, cy + tree[i].y * maxR);
+        ctx.stroke();
+    }
+    // 子类→实例
+    for (let i = 0; i < instances.length; i++) {
+        const parent = 1 + Math.floor(i / 4);
+        ctx.beginPath();
+        ctx.moveTo(cx + tree[parent].x * maxR, cy + tree[parent].y * maxR);
+        ctx.lineTo(cx + instances[i].x * maxR, cy + instances[i].y * maxR);
+        ctx.stroke();
+    }
+
+    // 绘制节点
+    const allNodes = [...tree, ...instances];
+    for (const node of allNodes) {
+        const px = cx + node.x * maxR;
+        const py = cy + node.y * maxR;
+
+        // 发光效果
+        const glow = ctx.createRadialGradient(px, py, 0, px, py, node.r * 3);
+        glow.addColorStop(0, node.color + '60');
+        glow.addColorStop(1, 'transparent');
+        ctx.fillStyle = glow;
+        ctx.fillRect(px - node.r * 3, py - node.r * 3, node.r * 6, node.r * 6);
+
+        ctx.fillStyle = node.color;
+        ctx.beginPath();
+        ctx.arc(px, py, node.r, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    // 标题
+    ctx.fillStyle = '#aaa';
+    ctx.font = '13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(`Poincaré 圆盘模型 | 曲率 K = ${K.toFixed(1)}`, cx, 25);
+    ctx.fillText(`K 越小 → 外层节点越向外扩散 → 层次越清晰`, cx, canvas.height - 15);
+
+    // 图例
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'left';
+    const legend = [
+        { color: '#f44336', label: '抽象概念 (高频，范数小)' },
+        { color: '#ff9800', label: '子类别 (中频)' },
+        { color: '#4caf50', label: '具体实例 (低频，范数大)' },
+    ];
+    for (let i = 0; i < legend.length; i++) {
+        const ly = 50 + i * 20;
+        ctx.fillStyle = legend[i].color;
+        ctx.beginPath();
+        ctx.arc(30, ly, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#aaa';
+        ctx.fillText(legend[i].label, 45, ly + 4);
+    }
+}
+
+// 初始化
+updateComparison();
+updateHierarchy();
+</script>
+
+</body>
+</html>

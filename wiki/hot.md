@@ -7,36 +7,47 @@
 
 ## 🎯 当前学习重心
 
-Claude Code 工具链与 MCP 协议 — 理解 AI 工具调用的工程实现
+LLM 时代的意图检测 — 不确定性路由混合系统 + OOS 检测改进
 
 ## 📍 最近活跃节点
 
-- [[concepts/mcp-protocol]] — MCP 协议架构 (seed)
-- [[concepts/claude-code-configuration]] — 配置文件层级 (seed)
-- [[concepts/mcp-tool-calling-flow]] — 工具调用流程 (seed)
-- [[sources/claude-code-config-and-mcp-flow]] — 原始资料摘要
+- [[sources/intent-detection-age-of-llms]] — EMNLP 2024 意图检测论文 (developing)
+- [[concepts/intent-detection-tods]] — 意图检测 TODS NLU 核心组件 (seed)
+- [[concepts/uncertainty-routing]] — 不确定性路由混合系统 (seed)
+- [[concepts/out-of-scope-detection]] — 域外检测 OOS 识别 (seed)
+- [[concepts/setfit]] — SetFit 对比微调句子转换器 (seed)
+- [[concepts/adaptive-in-context-learning]] — 自适应上下文学习 (seed)
+- [[insights/hybrid-beats-pure-llm]] — 混合系统胜过纯 LLM (seed)
+- [[concepts/monte-carlo-dropout]] — MC Dropout (seed)
+- [[concepts/negative-data-augmentation]] — 负面数据增强 (seed)
 
 ## 🧵 活跃线索 / 未解问题
 
-- MCP 与 Function Calling 的深层关系待探索
-- 多 MCP 服务器并发调度机制待了解
-- 与已有 [[skills/wiki/references/mcp-setup.md]] 的整合
+- 不确定性路由能否推广到其他 NLP 任务（NER、情感分析、翻译）？
+- LLM OOS 检测差的根本原因（RLHF 强化"总是回答"？）
+- 知识蒸馏（LLM 生成合成数据训练 SetFit）是否比混合路由更优？
+- 内部表示 OOS 检测能否推广到闭源 LLM？
+- 负面数据增强与真实 OOS 分布的差距如何缩小？
 
 ## ⏭️ 下次继续点
 
-- [ ] 完成首次 ingest（推荐从一篇综述论文开始）
-- [ ] 建立 wiki/domains/ 8个领域 idx 页
-- [ ] 首次 `align all` 生成基线覆盖度报告
+- [ ] 重跑 lint 获取最新健康指标
+- [ ] 为意图检测论文生成 Flux 概念插画（intent-detection-tods, uncertainty-routing）
+- [ ] 创建 Agents 领域综述页
+- [ ] 探索 SetFit + 知识蒸馏方案
+- [ ] 将不确定性路由思想应用到其他领域笔记
+- [ ] CAGC 与本文的方法论对比（混合策略 vs 端到端）
 
 ## 📊 库状态快照
 
-- 总节点数: 4
-- 领域覆盖: 1/8 (Engineering)
-- 最近 ingest: 2026-06-13 (Claude Code 配置与 MCP)
+- 总节点数: 31 (concept:19, insight:3, source:4, comparison:1, question:2)
+- 领域覆盖: 7/8 (Foundations, Architecture, Training, **Agents**, **Engineering**, Inference, Multimodal)
+- 最近 ingest: 2026-06-14 (Intent Detection in the Age of LLMs, EMNLP 2024)
+- 最近修复: 2026-06-14 (系统健康全面修复)
 - 最近 review: 无
-- 开放 gap 数: 78 (死链待填充)
+- 开放 gap 数: 待 lint 统计
 - 矛盾登记: 0
 
 ---
 
-*上次更新: 2026-06-13 | 首次 ingest 完成*
+*上次更新: 2026-06-14 | 系统健康修复完成*

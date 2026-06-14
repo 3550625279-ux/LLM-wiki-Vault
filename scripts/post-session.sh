@@ -8,7 +8,7 @@ set -euo pipefail
 VAULT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WIKI_DIR="$VAULT_ROOT/wiki"
 HOT_FILE="$WIKI_DIR/hot.md"
-LOG_FILE="$WIKI_DIR/log.md"
+LOG_FILE="$VAULT_ROOT/log.md"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M')
 
 echo "=== post-session: $TIMESTAMP ==="

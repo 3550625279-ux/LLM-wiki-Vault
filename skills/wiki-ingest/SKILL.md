@@ -56,12 +56,12 @@ if bash scripts/wiki-lock.sh acquire wiki/concepts/Foo.md; then
   bash scripts/wiki-lock.sh release wiki/concepts/Foo.md
 else
   # rc=75: another writer is in flight. Retry once after 2s; if still held,
-  # log to wiki/log.md and skip this page rather than overwrite.
+  # log to log.md and skip this page rather than overwrite.
   sleep 2
   bash scripts/wiki-lock.sh acquire wiki/concepts/Foo.md && {
     # write …
     bash scripts/wiki-lock.sh release wiki/concepts/Foo.md
-  } || echo "skipped wiki/concepts/Foo.md (locked); logged to wiki/log.md"
+  } || echo "skipped wiki/concepts/Foo.md (locked); logged to log.md"
 fi
 ```
 
@@ -94,7 +94,7 @@ Before ingesting any file, check `raw/.manifest.json` to avoid re-processing unc
       "hash": "abc123",
       "ingested_at": "2026-04-08",
       "pages_created": ["wiki/sources/article-slug.md", "wiki/entities/Person.md"],
-      "pages_updated": ["wiki/index.md"]
+      "pages_updated": ["wiki/concepts-idx.md"]
     }
   }
 }
@@ -173,9 +173,9 @@ Steps:
 5. **Create or update** concept pages for significant ideas and frameworks. Assign addresses to new concept pages.
 6. **Update** relevant domain page(s) and their `idx.md` sub-indexes.
 7. **Update** `wiki/overview.md` if the big picture changed.
-8. **Update** `wiki/index.md`. Add entries for all new pages.
+8. **Update** `wiki/concepts-idx.md`. Add entries for all new pages.
 9. **Update** `wiki/hot.md` with this ingest's context.
-10. **Append** to `wiki/log.md` (new entries at the TOP):
+10. **Append** to `log.md` (new entries at the TOP):
     ```markdown
     ## [YYYY-MM-DD] ingest | Source Title
     - Source: `raw/articles/filename.md`
@@ -214,7 +214,7 @@ Batch ingest is less interactive. For 30+ sources, expect significant processing
 Token budget matters. Follow these rules during ingest:
 
 - Read `wiki/hot.md` first. If it contains the relevant context, don't re-read full pages.
-- Read `wiki/index.md` to find existing pages before creating new ones.
+- Read `wiki/concepts-idx.md` to find existing pages before creating new ones.
 - Read only 3-5 existing pages per ingest. If you need 10+, you are reading too broadly.
 - Use PATCH for surgical edits. Never re-read an entire file just to update one field.
 - Keep wiki pages short. 100-300 lines max. If a page grows beyond 300 lines, split it.

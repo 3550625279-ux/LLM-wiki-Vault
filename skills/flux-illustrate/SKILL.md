@@ -116,7 +116,7 @@ Prompt:
    在标题下方（frontmatter 结束后第一行）插入:
    ![[{slug}.png]]
 
-3. 更新 wiki/log.md:
+3. 更新 log.md:
    追加记录:
    ## [YYYY-MM-DD HH:MM] flux-illustrate | {页面标题}
    - target: [[{页面路径}]]

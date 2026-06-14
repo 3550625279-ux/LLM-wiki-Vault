@@ -54,22 +54,23 @@ Alignment
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-### 对齐基础
-- [ ] [[concepts/alignment-definition]] — 对齐到底对齐什么？
-- [ ] [[concepts/goodharts-law]] — 指标优化导致指标失效
-- [ ] [[concepts/reward-hacking]] — 强化学习中的目标偏离
+*(暂无已创建节点)*
 
-### 可解释性
-- [ ] [[concepts/mechanistic-interpretability]] — 逆向工程神经网络
-- [ ] [[concepts/superposition-hypothesis]] — 模型如何压缩特征
-- [ ] [[concepts/attention-head-roles]] — 不同注意力头的功能分工
+**`contains::` 边：**
+*(暂无)*
 
-### 安全
-- [ ] [[concepts/red-teaming]] — 对抗测试方法
-- [ ] [[concepts/jailbreak-patterns]] — 越狱攻击类型
-- [ ] [[concepts/inner-outer-alignment]] — 内外对齐区别
+## 🔴 关键缺口
+
+- `alignment-definition` — 对齐到底对齐什么？
+- `goodharts-law` — 指标优化导致指标失效
+- `reward-hacking` — 强化学习中的目标偏离
+- `mechanistic-interpretability` — 逆向工程神经网络
+- `rlhf` — 从人类反馈中学习（跨 Training 域）
+- `dpo` — DPO 对齐（跨 Training 域）
+- `red-teaming` — 对抗测试方法
+- `inner-outer-alignment` — 内外对齐区别
 
 ---
 

@@ -5,7 +5,7 @@ status: seed
 domain: Engineering
 tags: [mlops, evaluation, data-engineering, monitoring, prompt-engineering]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-14
 confidence: high
 ---
 
@@ -57,31 +57,26 @@ Engineering
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-### 评估
-- [ ] [[concepts/llm-evaluation]] — 如何科学评估 LLM
-- [ ] [[concepts/llm-as-judge]] — 用 LLM 评估 LLM 的方法与偏差
-- [ ] [[concepts/benchmark-contamination]] — Benchmark 污染问题
+- [x] [[concepts/mcp-protocol]] — MCP 协议架构与 JSON-RPC 2.0 | status:seed
+- [x] [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系 | status:seed
+- [x] [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路 | status:seed
+- [x] [[concepts/uncertainty-routing]] — 不确定性路由：混合系统设计模式 | status:seed
 
-### 数据
-- [ ] [[concepts/data-deduplication]] — MinHash 去重
-- [ ] [[concepts/data-quality-filtering]] — 质量过滤策略
-- [ ] [[concepts/data-flywheel]] — 数据飞轮设计模式
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/mcp-protocol]]
+- `contains::` [[concepts/claude-code-configuration]]
+- `contains::` [[concepts/mcp-tool-calling-flow]]
+- `contains::` [[concepts/uncertainty-routing]]
 
-### Prompt
-- [ ] [[concepts/few-shot-prompting]] — In-context learning
-- [ ] [[concepts/system-prompt-design]] — 系统提示设计原则
-- [ ] [[concepts/prompt-injection]] — 提示注入攻击与防护
+## 🔴 关键缺口
 
-### 工具
-- [ ] [[entities/wandb]] — 实验追踪工具
-- [ ] [[entities/vllm]] — 部署框架（与 Inference 共享）
-
-### MCP & Claude Code
-- [x] [[concepts/mcp-protocol]] — MCP 协议架构与 JSON-RPC 2.0
-- [x] [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系
-- [x] [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路
+- `llm-evaluation` — 如何科学评估 LLM
+- `few-shot-prompting` — In-context learning
+- `system-prompt-design` — 系统提示设计原则
+- `prompt-injection` — 提示注入攻击与防护
+- `data-deduplication` — MinHash 去重
 
 ---
 
@@ -114,7 +109,7 @@ Engineering
 ## 📊 领域统计
 
 ```
-concept 节点: 3 (目标: 12+)
+concept 节点: 4 (目标: 12+)
 entity 节点:  0 (目标: 8+)
 maturity:    seed
 ```

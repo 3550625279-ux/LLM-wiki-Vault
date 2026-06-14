@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAGC - Interactive Paper Explorer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+h1{font-size:1.8rem;text-align:center;margin:20px 0 5px;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#94a3b8;margin-bottom:30px;font-size:0.9rem}
+.tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
+.tab{padding:8px 18px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#94a3b8;cursor:pointer;font-size:0.85rem;transition:all .2s}
+.tab:hover{border-color:#60a5fa;color:#e2e8f0}
+.tab.active{background:#1e3a5f;border-color:#60a5fa;color:#60a5fa}
+.panel{display:none;background:#1e293b;border-radius:12px;padding:24px;border:1px solid #334155}
+.panel.active{display:block}
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:768px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.card{background:#0f172a;border-radius:10px;padding:16px;border:1px solid #334155}
+.card h3{color:#60a5fa;margin-bottom:8px;font-size:0.95rem}
+.card p{color:#94a3b8;font-size:0.85rem}
+.metric{text-align:center;padding:12px}
+.metric .value{font-size:1.8rem;font-weight:700;color:#34d399}
+.metric .label{font-size:0.75rem;color:#64748b;margin-top:4px}
+.improvement{color:#fbbf24;font-size:0.8rem;font-weight:600}
+svg{width:100%;height:auto}
+.slider-group{margin:16px 0}
+.slider-group label{display:block;margin-bottom:6px;color:#94a3b8;font-size:0.85rem}
+.slider-group input[type=range]{width:100%;accent-color:#60a5fa}
+.slider-value{color:#60a5fa;font-weight:600;font-size:0.9rem}
+.arch-box{fill:#1e293b;stroke:#60a5fa;stroke-width:1.5;rx:6}
+.arch-text{fill:#e2e8f0;font-size:11px;text-anchor:middle;dominant-baseline:middle;font-family:'Segoe UI',sans-serif}
+.arch-arrow{stroke:#64748b;stroke-width:1.5;marker-end:url(#arrowhead)}
+.highlight-box{fill:#1e3a5f;stroke:#fbbf24;stroke-width:2;rx:6;stroke-dasharray:4 2}
+.flow-step{fill:#1e293b;stroke:#60a5fa;stroke-width:1.5;rx:8}
+.flow-text{fill:#e2e8f0;font-size:10px;text-anchor:middle;dominant-baseline:middle;font-family:'Segoe UI',sans-serif}
+.bank-node{cursor:pointer;transition:all .2s}
+.bank-node:hover .node-circle{r:14;fill-opacity:1}
+.node-circle{transition:all .3s}
+.legend{display:flex;gap:16px;justify-content:center;margin:12px 0;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#94a3b8}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.code-block{background:#0d1117;border-radius:8px;padding:14px;font-family:'Fira Code',monospace;font-size:0.8rem;color:#c9d1d9;overflow-x:auto;line-height:1.7;border:1px solid #21262d}
+.code-comment{color:#8b949e}
+.code-keyword{color:#ff7b72}
+.code-string{color:#a5d6ff}
+.code-number{color:#79c0ff}
+.tooltip{position:absolute;background:#1e293b;border:1px solid #60a5fa;border-radius:8px;padding:10px;font-size:0.8rem;color:#e2e8f0;pointer-events:none;opacity:0;transition:opacity .2s;max-width:250px;z-index:100}
+h2{color:#60a5fa;font-size:1.2rem;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #334155}
+.stage-indicator{display:flex;gap:8px;margin-bottom:16px}
+.stage-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all .2s}
+.stage-dot.inactive{background:#1e293b;border:2px solid #334155;color:#64748b}
+.stage-dot.active{background:#1e3a5f;border:2px solid #60a5fa;color:#60a5fa}
+.stage-connector{width:20px;height:2px;background:#334155;align-self:center}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+th{background:#0f172a;color:#60a5fa;padding:10px;text-align:left;border-bottom:2px solid #334155}
+td{padding:10px;border-bottom:1px solid #1e293b}
+tr:hover td{background:#0f172a}
+.best{color:#34d399;font-weight:700}
+.diff-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1e293b}
+.diff-label{color:#94a3b8}
+.diff-value{color:#e2e8f0;font-weight:600}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>CAGC: Contextual Augmented Global Contrast</h1>
+<p class="subtitle">CVPR 2024 | Multimodal Intent Recognition | Interactive Explorer</p>
+
+<div class="tabs">
+<div class="tab active" onclick="switchTab('overview')">Overview</div>
+<div class="tab" onclick="switchTab('architecture')">Architecture</div>
+<div class="tab" onclick="switchTab('bank')">Cross-video Bank</div>
+<div class="tab" onclick="switchTab('attention')">Progressive Attention</div>
+<div class="tab" onclick="switchTab('contrastive')">Contrastive Learning</div>
+<div class="tab" onclick="switchTab('results')">Results</div>
+</div>
+
+<!-- ===== Overview ===== -->
+<div class="panel active" id="panel-overview">
+<h2>Paper Overview</h2>
+<div class="grid grid-3" style="margin-bottom:20px">
+<div class="card metric"><div class="value">73.39%</div><div class="label">MIntRec 20-class ACC</div><div class="improvement">+1.10% vs MISA</div></div>
+<div class="card metric"><div class="value">90.11%</div><div class="label">MIntRec Binary ACC</div><div class="improvement">+0.92% vs MulT</div></div>
+<div class="card metric"><div class="value">85.70%</div><div class="label">CMU-MOSI ACC-2</div><div class="improvement">+0.18% vs ConFEDE</div></div>
+</div>
+<div class="grid grid-2">
+<div class="card">
+<h3>Core Problem</h3>
+<p>Existing MIR methods model each video independently, ignoring global contextual information across videos. This introduces <strong style="color:#fbbf24">perception biases</strong> and amplifies intent uncertainty.</p>
+<p style="margin-top:10px">Example: "I am dying right now" could be <strong style="color:#34d399">Joke (positive)</strong> in an excited context or <strong style="color:#f87171">Complain (negative)</strong> in an angry context. Without cross-video context, the model cannot distinguish.</p>
+</div>
+<div class="card">
+<h3>Key Innovation</h3>
+<p>CAGC captures rich global context features by mining both <strong style="color:#60a5fa">intra-</strong> and <strong style="color:#a78bfa">cross-video</strong> context interactions through:</p>
+<p style="margin-top:8px">1. <strong style="color:#60a5fa">CAT</strong> - Context-Augmented Transformer<br>2. <strong style="color:#a78bfa">Cross-video Bank</strong> - Quality video source retrieval<br>3. <strong style="color:#34d399">GCCL</strong> - Global Context-guided Contrastive Learning</p>
+</div>
+</div>
+</div>
+
+<!-- ===== Architecture ===== -->
+<div class="panel" id="panel-architecture">
+<h2>CAGC Architecture Pipeline</h2>
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#64748b"/></marker></defs>
+
+<!-- Stage 1: Multimodal Encoder -->
+<rect x="20" y="20" width="260" height="100" class="arch-box"/>
+<text x="150" y="38" class="arch-text" fill="#fbbf24" font-weight="bold" font-size="12">Multimodality Encoder</text>
+<rect x="30" y="50" width="70" height="55" rx="4" fill="#0f172a" stroke="#34d399"/>
+<text x="65" y="72" class="arch-text" fill="#34d399" font-size="9">BERT</text>
+<text x="65" y="86" class="arch-text" font-size="8">Text 768d</text>
+<rect x="115" y="50" width="70" height="55" rx="4" fill="#0f172a" stroke="#f87171"/>
+<text x="150" y="72" class="arch-text" fill="#f87171" font-size="9">ResNet</text>
+<text x="150" y="86" class="arch-text" font-size="8">Visual 256d</text>
+<rect x="200" y="50" width="70" height="55" rx="4" fill="#0f172a" stroke="#818cf8"/>
+<text x="235" y="72" class="arch-text" fill="#818cf8" font-size="9">wav2vec</text>
+<text x="235" y="86" class="arch-text" font-size="8">Audio 768d</text>
+
+<!-- Arrow down -->
+<line x1="150" y1="120" x2="150" y2="145" class="arch-arrow"/>
+<text x="175" y="138" fill="#64748b" font-size="9">CTC Align</text>
+
+<!-- Stage 2: Cross-video Learning -->
+<rect x="20" y="150" width="260" height="140" class="highlight-box"/>
+<text x="150" y="168" class="arch-text" fill="#fbbf24" font-weight="bold" font-size="12">Cross-video Context Learning</text>
+
+<rect x="30" y="180" width="115" height="45" rx="4" fill="#0f172a" stroke="#a78bfa"/>
+<text x="87" y="200" class="arch-text" fill="#a78bfa" font-size="9">Cross-video</text>
+<text x="87" y="214" class="arch-text" fill="#a78bfa" font-size="9">Bank</text>
+
+<rect x="155" y="180" width="115" height="45" rx="4" fill="#0f172a" stroke="#60a5fa"/>
+<text x="212" y="200" class="arch-text" fill="#60a5fa" font-size="9">Context-Augmented</text>
+<text x="212" y="214" class="arch-text" fill="#60a5fa" font-size="9">Transformer (CAT)</text>
+
+<line x1="145" y1="202" x2="155" y2="202" class="arch-arrow"/>
+
+<text x="150" y="260" class="arch-text" font-size="8" fill="#94a3b8">Progressive Attention: k* steps</text>
+<text x="150" y="274" class="arch-text" font-size="8" fill="#94a3b8">K/V expands 1→2→...→k* cross-videos</text>
+
+<!-- Arrow down -->
+<line x1="150" y1="290" x2="150" y2="315" class="arch-arrow"/>
+
+<!-- Stage 3: Multimodal Intent Decoder -->
+<rect x="20" y="320" width="260" height="90" class="arch-box"/>
+<text x="150" y="338" class="arch-text" fill="#fbbf24" font-weight="bold" font-size="12">Multimodal Intent Decoder</text>
+<rect x="30" y="350" width="110" height="45" rx="4" fill="#0f172a" stroke="#34d399"/>
+<text x="85" y="370" class="arch-text" fill="#34d399" font-size="9">Local Fusion</text>
+<text x="85" y="384" class="arch-text" font-size="8">h_t + h_v, h_a</text>
+<rect x="155" y="350" width="110" height="45" rx="4" fill="#0f172a" stroke="#fbbf24"/>
+<text x="210" y="370" class="arch-text" fill="#fbbf24" font-size="9">Global Fusion</text>
+<text x="210" y="384" class="arch-text" font-size="8">h_t + h_cv, h_ca</text>
+
+<line x1="150" y1="410" x2="150" y2="430" class="arch-arrow"/>
+
+<rect x="80" y="435" width="140" height="35" rx="4" fill="#1e3a5f" stroke="#60a5fa"/>
+<text x="150" y="457" class="arch-text" fill="#60a5fa" font-weight="bold">TRM Decoder → Intent</text>
+
+<!-- Right side: GCCL -->
+<rect x="520" y="150" width="360" height="320" class="arch-box" stroke="#34d399"/>
+<text x="700" y="170" class="arch-text" fill="#34d399" font-weight="bold" font-size="12">Global Context-guided Contrastive Learning</text>
+
+<!-- Local Contrast -->
+<rect x="540" y="190" width="155" height="110" rx="6" fill="#0f172a" stroke="#334155"/>
+<text x="617" y="210" class="arch-text" fill="#60a5fa" font-weight="bold" font-size="10">Local Contrast</text>
+<text x="617" y="230" class="arch-text" font-size="8">Anchor: h_t (text)</text>
+<text x="617" y="245" class="arch-text" font-size="8">Positive: h_a, h_v (same intent)</text>
+<text x="617" y="260" class="arch-text" font-size="8">Negative: h_a, h_v (diff intent)</text>
+<text x="617" y="280" class="arch-text" fill="#fbbf24" font-size="8">L_ta + L_tv (within batch)</text>
+
+<!-- Global Contrast -->
+<rect x="710" y="190" width="155" height="110" rx="6" fill="#0f172a" stroke="#334155"/>
+<text x="787" y="210" class="arch-text" fill="#34d399" font-weight="bold" font-size="10">Global Contrast</text>
+<text x="787" y="230" class="arch-text" font-size="8">Anchor: h_t (text)</text>
+<text x="787" y="245" class="arch-text" font-size="8">Positive: h_g (cross-video, same)</text>
+<text x="787" y="260" class="arch-text" font-size="8">Negative: h_g (cross-video, diff)</text>
+<text x="787" y="280" class="arch-text" fill="#fbbf24" font-size="8">L_g (entire dataset)</text>
+
+<!-- Arrow from decoder to GCCL -->
+<line x1="220" y1="375" x2="520" y2="250" class="arch-arrow" stroke="#34d399" stroke-dasharray="5 3"/>
+<text x="370" y="300" fill="#34d399" font-size="8" transform="rotate(-12,370,300)">Global features as supervision</text>
+
+<!-- Total Loss -->
+<rect x="580" y="330" width="240" height="50" rx="6" fill="#1e3a5f" stroke="#fbbf24"/>
+<text x="700" y="350" class="arch-text" fill="#fbbf24" font-size="10">L_total = L_task + α(L_ta+L_tv) + β·L_g</text>
+<text x="700" y="368" class="arch-text" font-size="8" fill="#94a3b8">α=0.02, β=0.02, τ=0.7</text>
+
+<!-- Data flow label -->
+<text x="450" y="140" fill="#64748b" font-size="9" text-anchor="middle">m = {Language, Visual, Acoustic}</text>
+</svg>
+</div>
+
+<!-- ===== Cross-video Bank Interactive ===== -->
+<div class="panel" id="panel-bank">
+<h2>Interactive Cross-video Bank Construction</h2>
+<div class="grid grid-2">
+<div>
+<div class="slider-group">
+<label>Top-k (number of cross-videos to retrieve): <span class="slider-value" id="k-val">5</span></label>
+<input type="range" id="k-slider" min="1" max="10" value="5" oninput="updateBank()">
+</div>
+<div class="slider-group">
+<label>Scene Similarity Threshold (L2 distance): <span class="slider-value" id="thresh-val">3.0</span></label>
+<input type="range" id="thresh-slider" min="1" max="8" value="3" step="0.5" oninput="updateBank()">
+</div>
+<div class="card" style="margin-top:16px">
+<h3>Stage 1 vs Stage 2</h3>
+<p style="margin:8px 0"><span style="color:#60a5fa">Stage 1:</span> Retrieves Top-k videos with lowest L2 scene distance</p>
+<p style="margin:8px 0"><span style="color:#fbbf24">Stage 2:</span> Filters to keep only videos with <strong>same intent</strong> (voting principle)</p>
+<p style="margin:8px 0;color:#94a3b8;font-size:0.8rem">Drag the sliders to see how k and similarity threshold affect bank quality.</p>
+</div>
+</div>
+<div>
+<svg id="bank-svg" viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
+<!-- Dynamic content rendered by JS -->
+</svg>
+</div>
+</div>
+</div>
+
+<!-- ===== Progressive Attention ===== -->
+<div class="panel" id="panel-attention">
+<h2>CAT Progressive Attention Visualization</h2>
+<div class="slider-group">
+<label>Cross-video step (j): <span class="slider-value" id="step-val">1</span> / <span id="step-max">7</span></label>
+<input type="range" id="step-slider" min="1" max="7" value="1" oninput="updateAttention()">
+</div>
+<div class="grid grid-2">
+<div>
+<svg id="attn-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+<!-- Dynamic attention bars -->
+</svg>
+</div>
+<div>
+<div class="card">
+<h3>How Progressive Attention Works</h3>
+<p>In each step j, the model computes attention over <strong style="color:#60a5fa">j cross-videos</strong> (not all at once).</p>
+<p style="margin-top:8px">Key insight: <span style="color:#fbbf24">most similar videos get attended first</span>, creating a curriculum-like learning effect.</p>
+<p style="margin-top:8px">Drag the slider to see how attention distribution changes as more cross-videos are added.</p>
+</div>
+<div class="card" style="margin-top:16px" id="attn-info">
+<!-- Updated by JS -->
+</div>
+</div>
+</div>
+</div>
+
+<!-- ===== Contrastive Learning ===== -->
+<div class="panel" id="panel-contrastive">
+<h2>Local vs Global Contrastive Learning</h2>
+<div class="grid grid-2">
+<div class="card">
+<h3 style="color:#60a5fa">Local Contrast (within mini-batch)</h3>
+<svg viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="10" width="330" height="180" rx="8" fill="#0f172a" stroke="#334155"/>
+<text x="175" y="30" class="arch-text" fill="#64748b" font-size="10">Mini-batch (N=16 samples)</text>
+<!-- Sample nodes -->
+<circle cx="80" cy="90" r="12" fill="#1e3a5f" stroke="#60a5fa" stroke-width="2"/>
+<text x="80" y="94" class="arch-text" font-size="8">h_t</text>
+<text x="80" y="120" class="arch-text" fill="#fbbf24" font-size="8">Anchor</text>
+<!-- Positive -->
+<circle cx="180" cy="70" r="10" fill="#064e3b" stroke="#34d399"/>
+<text x="180" y="74" class="arch-text" font-size="7">h_a+</text>
+<circle cx="220" cy="90" r="10" fill="#064e3b" stroke="#34d399"/>
+<text x="220" y="94" class="arch-text" font-size="7">h_v+</text>
+<!-- Negative -->
+<circle cx="180" cy="130" r="10" fill="#450a0a" stroke="#f87171"/>
+<text x="180" y="134" class="arch-text" font-size="7">h_a-</text>
+<circle cx="220" cy="150" r="10" fill="#450a0a" stroke="#f87171"/>
+<text x="220" y="154" class="arch-text" font-size="7">h_v-</text>
+<!-- Lines -->
+<line x1="92" y1="86" x2="170" y2="72" stroke="#34d399" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="88" x2="210" y2="90" stroke="#34d399" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="94" x2="170" y2="130" stroke="#f87171" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="96" x2="210" y2="150" stroke="#f87171" stroke-width="1" stroke-dasharray="3"/>
+<text x="290" y="75" fill="#34d399" font-size="9">Pull +</text>
+<text x="290" y="140" fill="#f87171" font-size="9">Push -</text>
+</svg>
+<p style="margin-top:8px">Limited to samples within current batch. Contrast signal is <strong style="color:#f87171">weaker</strong> due to small sample pool.</p>
+</div>
+<div class="card">
+<h3 style="color:#34d399">Global Contrast (entire dataset)</h3>
+<svg viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="10" width="330" height="180" rx="8" fill="#0f172a" stroke="#334155"/>
+<text x="175" y="30" class="arch-text" fill="#64748b" font-size="10">Cross-video Bank (entire dataset)</text>
+<!-- Anchor -->
+<circle cx="80" cy="90" r="12" fill="#1e3a5f" stroke="#60a5fa" stroke-width="2"/>
+<text x="80" y="94" class="arch-text" font-size="8">h_t</text>
+<text x="80" y="120" class="arch-text" fill="#fbbf24" font-size="8">Anchor</text>
+<!-- Global features (more, richer) -->
+<circle cx="170" cy="60" r="10" fill="#064e3b" stroke="#34d399"/>
+<text x="170" y="64" class="arch-text" font-size="7">h_g+</text>
+<circle cx="210" cy="80" r="10" fill="#064e3b" stroke="#34d399"/>
+<text x="210" y="84" class="arch-text" font-size="7">h_g+</text>
+<circle cx="250" cy="70" r="10" fill="#064e3b" stroke="#34d399"/>
+<text x="250" y="74" class="arch-text" font-size="7">h_g+</text>
+<circle cx="170" cy="130" r="10" fill="#450a0a" stroke="#f87171"/>
+<text x="170" y="134" class="arch-text" font-size="7">h_g-</text>
+<circle cx="210" cy="150" r="10" fill="#450a0a" stroke="#f87171"/>
+<text x="210" y="154" class="arch-text" font-size="7">h_g-</text>
+<circle cx="250" cy="140" r="10" fill="#450a0a" stroke="#f87171"/>
+<text x="250" y="144" class="arch-text" font-size="7">h_g-</text>
+<!-- Lines -->
+<line x1="92" y1="85" x2="160" y2="62" stroke="#34d399" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="87" x2="200" y2="80" stroke="#34d399" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="90" x2="240" y2="70" stroke="#34d399" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="95" x2="160" y2="130" stroke="#f87171" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="97" x2="200" y2="150" stroke="#f87171" stroke-width="1" stroke-dasharray="3"/>
+<line x1="92" y1="100" x2="240" y2="140" stroke="#f87171" stroke-width="1" stroke-dasharray="3"/>
+<text x="280" y="65" fill="#34d399" font-size="9">Pull +</text>
+<text x="280" y="140" fill="#f87171" font-size="9">Push -</text>
+<text x="280" y="100" fill="#a78bfa" font-size="8">Richer</text>
+<text x="280" y="112" fill="#a78bfa" font-size="8">signal!</text>
+</svg>
+<p style="margin-top:8px">Global features from cross-video bank provide <strong style="color:#34d399">richer</strong> supervision. Each h_g contains cross-video context info.</p>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<h3>Why Text as Anchor?</h3>
+<p>Research shows text modality carries the <strong>most reliable intent signal</strong>. Visual and acoustic modalities are treated as augmented versions of text. The global contrast uses text to align with cross-video global fusion features.</p>
+</div>
+</div>
+
+<!-- ===== Results ===== -->
+<div class="panel" id="panel-results">
+<h2>Experimental Results</h2>
+<div class="tabs" style="margin-bottom:16px">
+<div class="tab active" onclick="switchResult('mintrec')">MIntRec</div>
+<div class="tab" onclick="switchResult('mosi')">CMU-MOSI</div>
+<div class="tab" onclick="switchResult('ablation')">Ablation</div>
+</div>
+<div id="result-mintrec">
+<table>
+<tr><th>Method</th><th>ACC (20-class)</th><th>F1</th><th>ACC (Binary)</th><th>F1</th></tr>
+<tr><td>MAG-BERT</td><td>72.65</td><td>68.64</td><td>89.24</td><td>89.10</td></tr>
+<tr><td>MulT</td><td>72.52</td><td>69.25</td><td>89.19</td><td>89.07</td></tr>
+<tr><td>MISA</td><td>72.29</td><td>69.32</td><td>89.21</td><td>89.06</td></tr>
+<tr><td class="best">CAGC (Ours)</td><td class="best">73.39</td><td class="best">70.09</td><td class="best">90.11</td><td class="best">90.01</td></tr>
+</table>
+</div>
+<div id="result-mosi" style="display:none">
+<table>
+<tr><th>Method</th><th>MAE↓</th><th>Corr↑</th><th>ACC-2↑</th><th>F1↑</th><th>ACC-7↑</th></tr>
+<tr><td>MISA</td><td>0.817</td><td>0.748</td><td>82.10</td><td>82.0</td><td>41.4</td></tr>
+<tr><td>Self-MM</td><td>0.708</td><td>0.796</td><td>85.46</td><td>85.43</td><td>46.67</td></tr>
+<tr><td>ConFEDE</td><td>0.742</td><td>0.784</td><td>85.52</td><td>85.52</td><td>42.27</td></tr>
+<tr><td class="best">CAGC (Ours)</td><td>0.775</td><td>0.774</td><td class="best">85.70</td><td class="best">85.60</td><td>44.80</td></tr>
+</table>
+</div>
+<div id="result-ablation" style="display:none">
+<table>
+<tr><th>Variant</th><th>ACC (20-class)</th><th>F1</th><th>ΔACC</th></tr>
+<tr><td class="best">Full CAGC</td><td class="best">73.39</td><td class="best">70.09</td><td>-</td></tr>
+<tr><td>w/o CAT</td><td>71.31</td><td>67.08</td><td style="color:#f87171">-2.08</td></tr>
+<tr><td>w/o L_g</td><td>72.22</td><td>68.07</td><td style="color:#f87171">-1.17</td></tr>
+<tr><td>w/o L_l</td><td>72.31</td><td>68.33</td><td style="color:#f87171">-1.08</td></tr>
+<tr><td>w/o L_g & L_l</td><td>71.66</td><td>67.12</td><td style="color:#f87171">-1.73</td></tr>
+</table>
+<div class="card" style="margin-top:16px">
+<h3>Ablation Insights</h3>
+<p><strong style="color:#60a5fa">CAT is most critical</strong> (-2.08%) - cross-video context is the core innovation</p>
+<p style="margin-top:6px"><strong style="color:#34d399">Global > Local contrast</strong> - L_g removal causes more damage than L_l</p>
+<p style="margin-top:6px"><strong style="color:#fbbf24">Complementary</strong> - Both contrasts together yield best results</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+function switchTab(name){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+event.target.classList.add('active');
+document.getElementById('panel-'+name).classList.add('active');
+if(name==='bank')updateBank();
+if(name==='attention')updateAttention();
+}
+function switchResult(name){
+document.querySelectorAll('#panel-results .tab').forEach(t=>t.classList.remove('active'));
+event.target.classList.add('active');
+['mintrec','mosi','ablation'].forEach(n=>{
+document.getElementById('result-'+n).style.display=n===name?'block':'none';
+});
+}
+
+// === Bank visualization ===
+const videos=[];
+for(let i=0;i<20;i++){
+const intent=i%2;
+const cx=intent?3+Math.random()*1.5-0.75:-1+Math.random()*1.5-0.75;
+const cy=intent?2+Math.random()*1.5-0.75:-1+Math.random()*1.5-0.75;
+videos.push({id:i,intent,cx,cy});
+}
+const target=videos[0];
+
+function updateBank(){
+const k=+document.getElementById('k-slider').value;
+const thresh=+document.getElementById('thresh-slider').value;
+document.getElementById('k-val').textContent=k;
+document.getElementById('thresh-val').textContent=thresh.toFixed(1);
+
+// Compute distances
+const dists=videos.filter(v=>v.id!==target.id).map(v=>{
+const d=Math.sqrt((v.cx-target.cx)**2+(v.cy-target.cy)**2);
+return{...v,dist:d};
+}).sort((a,b)=>a.dist-b.dist);
+
+const stage1=dists.slice(0,k);
+const stage2=stage1.filter(v=>v.intent===target.intent);
+
+const svg=document.getElementById('bank-svg');
+const scaleX=v=>30+(v+3)*55;
+const scaleY=v=>300-(v+3)*55;
+
+let html='<defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+
+// Grid bg
+html+='<rect x="0" y="0" width="400" height="350" fill="#0f172a" rx="8"/>';
+
+// All videos
+videos.forEach(v=>{
+const x=scaleX(v.cx),y=scaleY(v.cy);
+const isTarget=v.id===target.id;
+const isS1=stage1.some(s=>s.id===v.id);
+const isS2=stage2.some(s=>s.id===v.id);
+let fill=v.intent?'#064e3b':'#450a0a';
+let stroke=v.intent?'#34d399':'#f87171';
+let r=8;
+if(isTarget){fill='#1e3a5f';stroke='#60a5fa';r=13;}
+else if(isS2){stroke='#fbbf24';r=10;}
+else if(isS1){r=9;}
+html+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${isTarget?2.5:1.5}" ${isTarget?'filter="url(#glow)"':''}/>`;
+if(isTarget)html+=`<text x="${x}" y="${y+4}" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold">T</text>`;
+});
+
+// Stage 1 lines
+stage1.forEach(v=>{
+const x1=scaleX(target.cx),y1=scaleY(target.cy);
+const x2=scaleX(v.cx),y2=scaleY(v.cy);
+const inS2=stage2.some(s=>s.id===v.id);
+html+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${inS2?'#fbbf24':'#f87171'}" stroke-width="${inS2?2:1}" stroke-dasharray="${inS2?'':'4 3'}" opacity="0.6"/>`;
+});
+
+// Legend
+html+=`<circle cx="30" cy="20" r="6" fill="#1e3a5f" stroke="#60a5fa" stroke-width="2"/>`;
+html+=`<text x="42" y="24" fill="#94a3b8" font-size="9">Target (positive intent)</text>`;
+html+=`<circle cx="170" cy="20" r="5" fill="#064e3b" stroke="#34d399"/>`;
+html+=`<text x="180" y="24" fill="#94a3b8" font-size="9">Positive intent</text>`;
+html+=`<circle cx="270" cy="20" r="5" fill="#450a0a" stroke="#f87171"/>`;
+html+=`<text x="280" y="24" fill="#94a3b8" font-size="9">Negative intent</text>`;
+
+// Stats
+html+=`<text x="200" y="340" text-anchor="middle" fill="#64748b" font-size="9">Stage 1: ${stage1.length} videos | Stage 2: ${stage2.length} videos (intent filtered) | Threshold: ${thresh.toFixed(1)}</text>`;
+
+svg.innerHTML=html;
+}
+
+// === Attention visualization ===
+function updateAttention(){
+const j=+document.getElementById('step-slider').value;
+document.getElementById('step-val').textContent=j;
+
+const svg=document.getElementById('attn-svg');
+const W=380,H=280;
+const barW=30,gap=12,startX=30,startY=50;
+
+// Simulate attention weights
+const weights=[];
+let total=0;
+for(let i=0;i<j;i++){
+const w=Math.random()*0.4+0.1;
+weights.push(w);
+total+=w;
+}
+for(let i=0;i<j;i++)weights[i]/=total;
+
+const maxW=Math.max(...weights,0.01);
+let html=`<rect x="0" y="0" width="${W}" height="${H}" fill="#0f172a" rx="8"/>`;
+html+=`<text x="${W/2}" y="25" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="bold">Attention Weights at Step ${j}</text>`;
+html+=`<text x="${W/2}" y="42" text-anchor="middle" fill="#94a3b8" font-size="9">K/V = ${j} cross-video(s) (gradually expanded)</text>`;
+
+weights.forEach((w,i)=>{
+const x=startX+i*(barW+gap);
+const barH=(w/maxW)*160;
+const y=startY+180-barH;
+const hue=i===0?'#60a5fa':`hsl(${200+i*25},70%,60%)`;
+html+=`<rect x="${x}" y="${y}" width="${barW}" height="${barH}" fill="${hue}" rx="3" opacity="0.85"/>`;
+html+=`<text x="${x+barW/2}" y="${y-5}" text-anchor="middle" fill="${hue}" font-size="9">${(w*100).toFixed(1)}%</text>`;
+html+=`<text x="${x+barW/2}" y="255" text-anchor="middle" fill="#94a3b8" font-size="9">CV${i+1}</text>`;
+});
+
+if(j===0)html+=`<text x="${W/2}" y="150" text-anchor="middle" fill="#64748b" font-size="11">No cross-videos yet</text>`;
+
+svg.innerHTML=html;
+
+// Info card
+const info=document.getElementById('attn-info');
+info.innerHTML=`<h3>Step ${j} Details</h3>
+<p style="margin-top:8px">Query: <span style="color:#60a5fa">h_v</span> (current video visual feature)</p>
+<p>Key/Value: <span style="color:#fbbf24">${j} cross-video(s)</span> from Bank</p>
+<p style="margin-top:8px">Formula: <span style="color:#34d399">M_j = softmax(Q·K^T/√d)·V</span></p>
+<p style="margin-top:4px">Then: <span style="color:#a78bfa">M_j = mean(M_j)</span> across cross-videos</p>
+<p style="margin-top:8px;color:#94a3b8;font-size:0.8rem">Key insight: at step ${j}, only the top-${j} most similar cross-videos are used as K/V. This progressive expansion prevents noise from less relevant videos.</p>`;
+}
+
+// Init
+updateBank();
+updateAttention();
+</script>
+</body>
+</html>

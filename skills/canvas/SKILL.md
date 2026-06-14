@@ -62,7 +62,7 @@ If it does not exist, create it:
 
 1. Slugify the name: lowercase, spaces → hyphens, strip special chars.
 2. Create `wiki/canvases/[slug].canvas` with the starter structure, title updated to `# [Name]`.
-3. Add entry to `wiki/overview.md` under a "## Canvases" subsection (append after the Current State section). Do not modify `wiki/index.md`. It uses a fixed section schema (Domains, Entities, Concepts, Sources, Questions, Comparisons).
+3. Add entry to `wiki/overview.md` under a "## Canvases" subsection (append after the Current State section). Do not modify `wiki/concepts-idx.md`. It uses a fixed section schema (Domains, Entities, Concepts, Sources, Questions, Comparisons).
 4. Report: "Created wiki/canvases/[slug].canvas"
 
 ---
@@ -269,7 +269,7 @@ When `/banana` finishes generating images, suggest:
 1. Read canvas-spec.md before editing any canvas JSON.
 2. Always read the canvas file before writing. Parse existing nodes to avoid ID collisions and calculate auto-positions.
 3. Create `_attachments/images/canvas/` for downloaded/copied images.
-4. Update `wiki/index.md` when creating new canvases.
+4. Update `wiki/concepts-idx.md` when creating new canvases.
 5. Report position and zone after every add operation.
 
 ## See Also

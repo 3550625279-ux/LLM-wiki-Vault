@@ -63,7 +63,7 @@ The Claude Code `WebFetch` tool has built-in defenses against many of these. App
 
 **3. Per-loop cost expectation.** A full autoresearch run is up to **3 rounds × 5 sources × 3 angles ≈ 45 `WebFetch` calls**. WebFetch is metered through the Anthropic plan. The `max_pages: 15` cap in `references/program.md` limits FILING cost but does NOT cap FETCH count. Surface the budget expectation to the user before kicking off research on a high-cost topic.
 
-**4. Failure mode.** If a fetch fails (timeout, 4xx/5xx, content too large, sanitization removed everything), log the URL + reason to `wiki/log.md` and continue the loop. Do NOT abort the whole run. Do NOT silently swallow — every skipped source is a fact the user needs in the synthesis page's "Open Questions" section.
+**4. Failure mode.** If a fetch fails (timeout, 4xx/5xx, content too large, sanitization removed everything), log the URL + reason to `log.md` and continue the loop. Do NOT abort the whole run. Do NOT silently swallow — every skipped source is a fact the user needs in the synthesis page's "Open Questions" section.
 
 The router (`python3 scripts/wiki-mode.py route`) already sanitizes the topic-derived FILENAME via `safe_name()`. This section adds the second layer: BODY-content hygiene for fetched pages.
 
@@ -79,7 +79,7 @@ bash scripts/wiki-lock.sh acquire wiki/sources/<slug>.md || sleep 2 && bash scri
 bash scripts/wiki-lock.sh release wiki/sources/<slug>.md
 ```
 
-If autoresearch is invoked in parallel (e.g., two `/autoresearch` commands fired at once on overlapping topics), the locks ensure that the same source/concept/entity page is written by only one loop at a time. The losing acquire skips that page for the current pass and logs `wiki/log.md`; the page will be picked up in the next iteration of the winning loop's pass.
+If autoresearch is invoked in parallel (e.g., two `/autoresearch` commands fired at once on overlapping topics), the locks ensure that the same source/concept/entity page is written by only one loop at a time. The losing acquire skips that page for the current pass and logs `log.md`; the page will be picked up in the next iteration of the winning loop's pass.
 
 See `skills/wiki-ingest/SKILL.md` §Concurrency for the full lock semantics.
 
@@ -229,8 +229,8 @@ sources:
 
 ## After Filing
 
-1. Update `wiki/index.md`. Add all new pages to the right sections
-2. Append to `wiki/log.md` (at the TOP):
+1. Update `wiki/concepts-idx.md`. Add all new pages to the right sections
+2. Append to `log.md` (at the TOP):
    ```
    ## [YYYY-MM-DD] autoresearch | [Topic]
    - Rounds: N

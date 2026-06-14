@@ -5,7 +5,7 @@ status: seed
 domain: Agents
 tags: [react, tool-use, memory, planning, multi-agent, function-calling]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-14
 confidence: medium
 ---
 
@@ -51,25 +51,25 @@ Agents
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-### 推理
-- [ ] [[concepts/chain-of-thought]] — 思维链提示
-- [ ] [[concepts/react-framework]] — 推理-行动-观察循环
-- [ ] [[concepts/tree-of-thoughts]] — 分支探索推理
+- [x] [[concepts/intent-detection-tods]] — 意图检测：TODS 中将用户查询映射到系统动作的 NLU 核心组件 | status:seed
+- [x] [[concepts/out-of-scope-detection]] — 域外检测：识别不属于任何已知意图的查询 | status:seed
+- [x] [[concepts/adaptive-in-context-learning]] — 自适应上下文学习：动态检索最相关示例构建 prompt | status:seed
 
-### 工具
-- [ ] [[concepts/function-calling]] — LLM 调用外部工具
-- [ ] [[concepts/tool-use-protocol]] — MCP 等工具协议设计
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/intent-detection-tods]]
+- `contains::` [[concepts/out-of-scope-detection]]
+- `contains::` [[concepts/adaptive-in-context-learning]]
 
-### 记忆
-- [ ] [[concepts/context-window-as-memory]] — 上下文窗口的记忆局限
-- [ ] [[concepts/vector-database-retrieval]] — RAG 与语义检索
-- [ ] [[concepts/rag]] — 检索增强生成
+## 🔴 关键缺口
 
-### 规划
-- [ ] [[concepts/reflexion]] — 自我反思与错误修正
-- [ ] [[concepts/task-decomposition]] — 复杂任务分解策略
+- `react-framework` — 推理-行动-观察循环 — **Agent 核心范式**
+- `function-calling` — LLM 调用外部工具
+- `chain-of-thought` — 思维链提示
+- `rag` — 检索增强生成
+- `reflexion` — 自我反思与错误修正
+- `task-decomposition` — 复杂任务分解策略
 
 ---
 
@@ -104,7 +104,7 @@ Agents
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 12+)
+concept 节点: 3 (目标: 12+)
 entity 节点:  0 (目标: 6+)
 maturity:    seed
 ```

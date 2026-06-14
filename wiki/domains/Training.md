@@ -5,7 +5,7 @@ status: seed
 domain: Training
 tags: [pretraining, finetuning, rlhf, dpo, lora, scaling-laws, data-engineering]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-14
 confidence: high
 ---
 
@@ -55,28 +55,29 @@ Training
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-### 预训练
-- [ ] [[concepts/causal-language-modeling]] — CLM 自回归目标
-- [ ] [[concepts/bpe-tokenization]] — BPE 分词原理
-- [ ] [[concepts/scaling-laws]] — Chinchilla vs OpenAI Scaling Laws
-- [ ] [[concepts/data-deduplication]] — 去重对训练质量的影响
+- [x] [[concepts/lora]] — LoRA 低秩适配 | status:seed
+- [x] [[concepts/hyplora]] — HypLoRA 双曲低秩适配（LLM 嵌入的几何感知 PEFT） | status:seed
+- [x] [[concepts/setfit]] — SetFit 少样本文本分类 | status:seed
+- [x] [[concepts/negative-data-augmentation]] — 负样本数据增强 | status:seed
+- [x] [[concepts/contrastive-learning]] — 对比学习表示学习范式 | status:seed
 
-### 对齐
-- [ ] [[concepts/rlhf]] — 从人类反馈中学习
-- [ ] [[concepts/reward-modeling]] — 奖励模型训练
-- [ ] [[concepts/dpo]] — DPO: 去掉强化学习的对齐
-- [ ] [[concepts/constitutional-ai]] — 规则驱动的自对齐
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/lora]]
+- `contains::` [[concepts/hyplora]]
+- `contains::` [[concepts/setfit]]
+- `contains::` [[concepts/negative-data-augmentation]]
+- `contains::` [[concepts/contrastive-learning]]
 
-### PEFT
-- [ ] [[concepts/lora]] — LoRA 低秩适配器原理
-- [ ] [[concepts/qlora]] — QLoRA 量化微调
-- [ ] [[concepts/peft-comparison]] — LoRA vs Prefix vs Adapter 对比
+## 🔴 关键缺口
 
-### 分布式
-- [ ] [[concepts/zero-redundancy-optimizer]] — ZeRO Stage 1/2/3
-- [ ] [[concepts/tensor-parallelism]] — 张量并行切分
+- `scaling-laws` — 影响所有训练决策 — **最高优先级**
+- `rlhf` — 从人类反馈中学习
+- `dpo` — DPO 去掉强化学习的对齐
+- `causal-language-modeling` — CLM 自回归目标
+- `qlora` — QLoRA 量化微调
+- `zero-redundancy-optimizer` — ZeRO Stage 1/2/3
 
 ---
 
@@ -110,7 +111,7 @@ Training
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 14+)
+concept 节点: 5 (目标: 14+)
 entity 节点:  0 (目标: 10+)
 maturity:    seed
 ```

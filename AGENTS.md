@@ -47,15 +47,15 @@ ALWAYS evaluate confidence: for all claims     # 明确可信度
 ```
 1. read wiki/hot.md          → 恢复当前学习上下文
 2. read wiki/meta/SYSTEM-STATUS.md → 检查系统健康
-3. if hot.md missing → read wiki/index.md → rebuild context
+3. if hot.md missing → read wiki/concepts-idx.md → rebuild context
 4. silently note: current domain focus, active threads, known gaps
 ```
 
 ### 结束仪式（Session End）
 ```
 1. update wiki/hot.md        → 记录本次学习重心 (~500词)
-2. append wiki/log.md        → ## [YYYY-MM-DD] {action} | {title}
-3. if new nodes → update wiki/index.md
+2. append log.md        → ## [YYYY-MM-DD] {action} | {title}
+3. if new nodes → update wiki/concepts-idx.md
 4. if contradictions found → update wiki/meta/contradiction-ledger.md
 5. if delta detected → update wiki/meta/delta-register.md
 ```
@@ -146,7 +146,7 @@ confidence: speculative  # 推测，待验证
 
 | 错误场景 | 处理方式 |
 |---------|---------|
-| hot.md 不存在 | 读 wiki/index.md 重建上下文，创建新 hot.md |
+| hot.md 不存在 | 读 wiki/concepts-idx.md 重建上下文，创建新 hot.md |
 | index.md 不存在 | 扫描 wiki/ 目录结构重建，记录 lint 警告 |
 | 死链检测 | 标记为 `stub` 状态，不删除引用 |
 | 无 MCP 环境 | 使用 grep 脚本替代，记录 SYSTEM-STATUS |

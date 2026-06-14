@@ -7,6 +7,18 @@
 
 ---
 
+## 🎨 用户偏好
+
+| 偏好 | 设置 | 生效范围 |
+|------|------|----------|
+| 论文输出路径 | `raw/papers/{paper-slug}/`（Vault 内） | 所有 claude-paper 技能 |
+| 生成语言 | **中文**（所有论文摘要、学习材料） | 所有 claude-paper 技能 |
+| 原始资料位置 | `raw/` 目录（不可变，只进不出） | ingest / ingest |
+
+> ⚠️ claude-paper 插件默认输出到 `~/claude-papers/`，本项目要求输出到 Vault 的 `raw/papers/`。执行时需手动覆盖路径。
+
+---
+
 ## 🧭 系统架构总览
 
 ```
@@ -48,7 +60,7 @@ scripts/                 ← 自动化脚本
 
 ```
 1. 读取 wiki/hot.md（恢复上下文，不输出给用户）
-2. 若 hot.md 不存在或内容 < 100词 → 读 wiki/index.md 重建上下文
+2. 若 hot.md 不存在或内容 < 100词 → 读 wiki/concepts-idx.md 重建上下文
 3. 就绪，等待用户指令
 ```
 
@@ -93,6 +105,33 @@ grep -rl "关键概念" wiki/ --include="*.md" | head -5
 - 相似度高（标题重合/内容重合>70%）→ **UPDATE** 已有页，不新建
 - 无相似页 → **CREATE** 新页面
 
+**⚠️ 强制域连接（concept 页面创建时必须执行）：**
+```
+1. frontmatter 中必须填写 domain: 字段（不可留空）
+2. related: 中必须加 belongs_to::[[domains/<Domain>]]（向心边）
+3. 创建完成后，立即更新对应域页面 wiki/domains/<Domain>.md：
+   - 在"已有节点"段追加 [x] [[concepts/xxx]] 条目
+   - 在"contains:: 边"段追加 contains::[[concepts/xxx]]
+   - 若该概念同时属于多个域（如 CAT 属于 Architecture + Multimodal），
+     每个域页面都要追加
+4. 不允许创建 concept 后"留到后面再连域"——必须当场完成
+```
+
+**⚠️ 强制 Source 归口（ingest 诞生的节点必须归口到 source）：**
+```
+知识图谱层级结构：
+  Layer 1: DOMAIN（中心枢纽）→ contains:: → concepts
+  Layer 2: SOURCE（ingest 诞生）→ spawns:: → concepts/entities/comparisons/insights/questions
+  Layer 3: CONCEPT → belongs_to:: → domain
+
+ingest 时的连接规则：
+1. source 页面的 related: 中，所有诞生的节点用 spawns:: 边（不是 implements/extends）
+2. 被诞生的节点（concept/comparison/insight/question）的 related: 中必须加
+   produced_by::[[sources/<slug>]] 边
+3. source 页面必须填写 domain: 字段 + belongs_to::[[domains/<Domain>]]
+4. source 诞生的所有节点必须当场建立 spawns:: / produced_by:: 双向边
+```
+
 **每个节点页面必须包含的 frontmatter：**
 ```yaml
 ---
@@ -113,6 +152,12 @@ related:
   - "contrasts::[[对比对象]]"
   - "applied_in::[[应用实体]]"
   - "part_of::[[上级组件]]"
+  - "belongs_to::[[domains/所属域]]"   # concept → domain（向心边，必填）
+  - "produced_by::[[sources/来源页]]"  # 被 source 诞生的节点 → source（必填）
+  - "spawns::[[concepts/诞生的概念]]" # source → 诞生的节点（source 页面用）
+thumbnail: ""
+---
+```
 thumbnail: ""
 ---
 ```
@@ -121,15 +166,64 @@ thumbnail: ""
 ```
 1. 更新所属 domain 页（在"关键概念"段添加 [[wikilink]]）
 2. 更新相关 concept/entity 页（related: 字段加语义边）
-3. 更新 wiki/index.md（添加新页到对应分类，附一行说明）
-4. 更新 wiki/domains/<domain>/domains-idx.md
+3. 更新 wiki/concepts-idx.md（添加新页到对应分类，附一行说明）
+4. 更新 wiki/domains/<Domain>.md（域页面本身 = 综述 + 节点索引，一体两面）
 5. 检查反向链接（被引用页的 related: 是否需要更新）
 ```
+
+### Phase 4.5 — INGEST 更新清单（每次必过，不允许跳过）
+
+> ⚠️ **这是防止遗漏的核心机制**。Phase 3-5 的描述是指导原则，本清单是强制执行的 checklist。
+> 每次 ingest 结束前，必须逐项勾选确认。**不可凭"感觉差不多了"结束**。
+
+```
+□ A. 节点页面（Phase 3 产出）—— 确认每张新页面：
+   □ frontmatter 完整（type/title/created/updated/tags/status/complexity/domain/sources/related）
+   □ related 边覆盖所有语义关系（depends_on/extends/contrasts/applied_in/part_of/implements/corrects）
+   □ 涉及多个领域时，每个领域都要建边（不只连一个 domain）
+
+□ B. 领域页（可能 >1 个）：
+   □ wiki/domains/<Domain1>.md — 领域地图 + 核心概念列表 + 领域关系
+   □ wiki/domains/<Domain2>.md — 同上（如 CAT 既属于 Architecture 又属于 Multimodal）
+   □ 每个 domain 页的 status/updated 日期已更新
+
+□ C. 五个索引文件（全部必须检查）：
+   □ wiki/concepts-idx.md — 新节点在对应分类下有条目 + 统计数字已更新
+   □ wiki/concepts/concepts-idx.md — 新 concept 在领域分组 + 状态分组都有条目 + 统计已更新
+   □ wiki/entities/entities-idx.md — 新 entity/论文/数据集有条目 + 待创建列表已更新
+   □ wiki/insights/insights-idx.md — 如有新 insight 则更新，无则跳过
+   □ wiki/operations/operations-idx.md — 如有新 operation 则更新，无则跳过
+
+□ D. 相关工作对比（论文 ingest 时必须）：
+   □ 创建 wiki/comparisons/<slug>.md — 横向对比页（论文中的 baseline 方法）
+   □ 相关 concept 页的 related 中有 contrasts:: 指向对比页
+   □ wiki/concepts-idx.md 的 comparison 分类下有条目
+
+□ E. 元数据页（全部必须检查）：
+   □ wiki/overview.md — 领域节点数 + 总节点数已更新
+   □ wiki/meta/dashboard.md — 系统状态 + 待办队列 + 月度目标已更新
+   □ wiki/meta/SYSTEM-STATUS.md — 知识库指标已更新
+
+□ F. 封印页（Phase 5 产出）：
+   □ wiki/sources/<slug>.md — 原始资料摘要页
+   □ log.md — 追加 ingest 条目（含 pages_created/pages_updated/key_concepts）
+   □ wiki/hot.md — 更新学习重心 + 活跃节点 + 统计快照
+   □ 矛盾 → wiki/meta/contradiction-register.md（无矛盾则跳过）
+
+□ G. 外部索引（如适用）：
+   □ ~/claude-papers/index.json — 追加论文条目（claude-paper 技能时）
+```
+
+**执行规则**：
+- **一次性连续执行** A→G，中间不停顿等待用户确认
+- **不允许**凭"感觉差不多了"结束——必须逐项过清单
+- **涉及多个领域**时（如 CAT 属于 Architecture + Multimodal），每个领域都要更新
+- **论文 ingest** 时 D 项（对比页）是强制的，不是可选的
 
 ### Phase 5 — SEAL（封印，保证幂等）
 ```
 1. 写入 wiki/sources/<slug>.md（原始资料摘要页）
-2. 追加 wiki/log.md：
+2. 追加 log.md：
    ## [YYYY-MM-DD HH:MM] ingest | 资料标题
    - type: source类型
    - domain: 所属领域
@@ -140,9 +234,11 @@ thumbnail: ""
 3. 更新 wiki/hot.md（最新学习重心 + 新增节点摘要）
 4. 若发现矛盾 → 追加 wiki/meta/contradiction-register.md
 5. 更新 wiki/meta/dashboard.md（系统状态 + 待办进度 + 月度目标计数）
+6. 更新 wiki/meta/SYSTEM-STATUS.md（知识库指标）
+7. 更新 wiki/overview.md（领域节点数 + 总节点数）
 ```
 
-**单次 ingest 预期触碰页面数**：6–15页
+**单次 ingest 预期触碰页面数**：8–20页（含所有索引和元数据页）
 **幂等性保证**：相同资料第二次 ingest → 仅更新 updated 时间戳，不重复创建
 
 ---
@@ -159,7 +255,7 @@ thumbnail: ""
 ### 快速流程摘要（4步）
 ```
 Step 1: 读 wiki/hot.md → 70%命中则快速输出
-Step 2: 读 wiki/index.md → 定位≤8个候选页
+Step 2: 读 wiki/concepts-idx.md → 定位≤8个候选页
 Step 3: 读候选页（≤5页）→ 提取语义边+矛盾+缺口
 Step 4: 输出对齐报告（已知/需更新/缺口/学习路径）
 ```
@@ -177,7 +273,7 @@ bash scripts/align-check.sh "查询关键词"
 
 ```
 1. 读 wiki/hot.md
-2. 读 wiki/index.md（定位相关页）
+2. 读 wiki/concepts-idx.md（定位相关页）
 3. 读目标页面（≤5页）
 4. 检查 corrects:: → 优先新认知，标注旧认知
 5. 合成答案，引用 [[wikilinks]]
@@ -232,6 +328,10 @@ bash scripts/align-check.sh "查询关键词"
 | `contrasts::` | 对比/替代关系 |
 | `applied_in::` | 概念在某实体中的应用 |
 | `part_of::` | 子组件关系 |
+| `belongs_to::` | **节点 → 域**（向心边，concept 创建时必填） |
+| `contains::` | **域 → 节点**（辐射边，域页面"已有节点"段自动维护） |
+| `spawns::` | **Source → 诞生的节点**（ingest 时 source 页面必填） |
+| `produced_by::` | **节点 → Source**（被 source 诞生的节点必填） |
 
 ### 矛盾处理原则
 `corrects::` 边**永远保留**。矛盾本身是知识，不是错误。
@@ -269,7 +369,7 @@ seed → developing → mature → evergreen
 每次会话结束（Stop hook 自动触发 或 手动 `bash scripts/post-session.sh`）：
 ```
 1. 更新 wiki/hot.md：当前学习重心、本次节点、活跃线索、下次继续点
-2. 追加 wiki/log.md 会话条目
+2. 追加 log.md 会话条目
 3. 若本次创建节点 > 5 → 更新 wiki/overview.md 统计数字
 ```
 

@@ -41,9 +41,9 @@ allowed-tools: Read Write Edit Glob Grep
 ```
 并行读取：
 - wiki/hot.md（最近学习重心）
-- wiki/log.md 最近5条（最近 ingest 内容）
+- log.md 最近5条（最近 ingest 内容）
 - wiki/meta/contradiction-register.md（矛盾节点）
-- wiki/index.md 中目标领域节点列表
+- wiki/concepts-idx.md 中目标领域节点列表
 ```
 
 ### Step 2 — 节点选择（间隔复习算法）
@@ -146,7 +146,7 @@ allowed-tools: Read Write Edit Glob Grep
 
 **自动写回 wiki**：
 ```
-1. 追加 wiki/log.md：
+1. 追加 log.md：
    ## [YYYY-MM-DD HH:MM] review | [主题]
    - nodes_tested: N
    - score: X/N

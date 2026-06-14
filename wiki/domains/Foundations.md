@@ -5,7 +5,7 @@ status: seed
 domain: Foundations
 tags: [math, probability, optimization, information-theory]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-14
 confidence: high
 ---
 
@@ -53,27 +53,24 @@ Foundations
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-### 线性代数
-- [ ] [[concepts/matrix-multiplication]] — 矩阵乘法与注意力的关系
-- [ ] [[concepts/svd]] — SVD 与低秩近似
-- [ ] [[concepts/eigendecomposition]] — 特征分解
+- [x] [[concepts/hyperbolic-geometry]] — 双曲几何基础（Lorentz/Poincaré 模型） | status:seed
+- [x] [[concepts/monte-carlo-dropout]] — Monte Carlo Dropout 不确定性估计 | status:seed
 
-### 概率论
-- [ ] [[concepts/bayes-theorem]] — 贝叶斯定理
-- [ ] [[concepts/maximum-likelihood-estimation]] — MLE
-- [ ] [[concepts/gaussian-distribution]] — 高斯分布在 AI 中的角色
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/hyperbolic-geometry]]
+- `contains::` [[concepts/monte-carlo-dropout]]
 
-### 信息论
-- [ ] [[concepts/entropy]] — 熵的定义与直觉
-- [ ] [[concepts/cross-entropy-loss]] — 为什么用交叉熵训练 LLM
-- [ ] [[concepts/kl-divergence]] — KL 散度与 RLHF
+## 🔴 关键缺口
 
-### 优化
-- [ ] [[concepts/gradient-descent]] — 梯度下降变体
-- [ ] [[concepts/adam-optimizer]] — Adam 为什么有效
-- [ ] [[concepts/learning-rate-schedule]] — 预热 + 余弦退火
+- `cross-entropy-loss` — 几乎所有训练都用到
+- `gradient-descent` — 优化基础
+- `kl-divergence` — RLHF/对齐中大量使用
+- `svd` — SVD 与低秩近似（理解 LoRA 需要）
+- `adam-optimizer` — Adam 优化器原理
+- `entropy` — 熵的定义与直觉
+- `bayes-theorem` — 贝叶斯定理
 
 ---
 
@@ -105,7 +102,7 @@ Foundations
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 15+)
+concept 节点: 2 (目标: 15+)
 entity 节点:  0
 maturity:    seed
 ```

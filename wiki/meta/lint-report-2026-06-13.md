@@ -137,7 +137,7 @@ status: developing
 |------|------|------|
 | `wiki/hot.md` | 系统缓存 | 可豁免——系统自动维护文件 |
 | `wiki/index.md` | 导航目录 | 可豁免——系统自动维护文件 |
-| `wiki/log.md` | 操作日志 | 可豁免——追加式日志文件 |
+| `log.md` | 操作日志 | 可豁免——追加式日志文件 |
 | `wiki/overview.md` | 全局知识地图 | 建议添加: type:meta |
 | `wiki/concepts/concepts-idx.md` | MoC 索引 | 建议添加: type:meta |
 | `wiki/entities/entities-idx.md` | MoC 索引 | 建议添加: type:meta |

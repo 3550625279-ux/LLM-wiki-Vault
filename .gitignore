@@ -145,3 +145,9 @@ wiki/hot.md
 *.key
 *_token*
 .mcp.json
+
+# Claude session artifacts (runtime, not vault content)
+
+# Claude session artifacts (runtime, not vault content)
+.omc/
+.claudian/

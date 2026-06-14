@@ -1,0 +1,12 @@
+{
+  "id": "hyperbolic-fine-tuning-llms",
+  "title": "Hyperbolic Fine-Tuning for Large Language Models",
+  "slug": "hyperbolic-fine-tuning-llms",
+  "authors": ["Menglin Yang", "Ram Samarth B B", "Aosong Feng", "Bo Xiong", "Jiahong Liu", "Irwin King", "Rex Ying"],
+  "abstract": "Large language models (LLMs) have demonstrated remarkable performance across various tasks. However, it remains an open question whether the default Euclidean space is the most suitable choice for LLMs. In this study, we investigate the geometric characteristics of LLMs, focusing specifically on tokens and their embeddings. Our findings reveal that token frequency follows a power-law distribution, where high-frequency tokens (e.g., 'the,' 'that') constitute the minority, while low-frequency tokens (e.g., 'apple,' 'dog') constitute the majority. Furthermore, high-frequency tokens cluster near the origin, whereas low-frequency tokens are positioned farther away in the embedding space. Additionally, token embeddings exhibit hyperbolic characteristics, indicating a latent tree-like structure within the embedding space. Motivated by these observations, we propose HypLoRA, an efficient fine-tuning approach that operates in hyperbolic space to exploit these underlying hierarchical structures better.",
+  "year": 2025,
+  "venue": "NeurIPS 2025",
+  "tags": ["参数高效微调", "双曲几何"],
+  "githubLinks": ["https://github.com/marlin-codes/HypLoRA"],
+  "codeLinks": []
+}

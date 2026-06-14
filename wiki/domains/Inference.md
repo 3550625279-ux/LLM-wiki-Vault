@@ -48,17 +48,21 @@ Inference
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-- [ ] [[concepts/post-training-quantization]] — PTQ 原理与精度损失
-- [ ] [[concepts/gptq]] — 基于 Hessian 的权重量化
-- [ ] [[concepts/awq]] — 激活感知量化
-- [ ] [[concepts/kv-cache]] — KV Cache 原理与内存瓶颈
-- [ ] [[concepts/paged-attention]] — PagedAttention 内存分页管理
-- [ ] [[concepts/speculative-decoding]] — 草稿模型 + 验证模型
-- [ ] [[concepts/continuous-batching]] — 动态批处理提高 GPU 利用率
-- [ ] [[entities/vllm]] — vLLM 框架
-- [ ] [[entities/ollama]] — 本地部署工具
+*(暂无已创建节点)*
+
+**`contains::` 边：**
+*(暂无)*
+
+## 🔴 关键缺口
+
+- `kv-cache` — KV Cache 原理与内存瓶颈 — **推理优化核心**
+- `paged-attention` — PagedAttention 内存分页管理
+- `post-training-quantization` — PTQ 原理与精度损失
+- `gptq` — 基于 Hessian 的权重量化
+- `speculative-decoding` — 草稿模型 + 验证模型
+- `continuous-batching` — 动态批处理提高 GPU 利用率
 
 ---
 

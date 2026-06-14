@@ -11,9 +11,11 @@ domain: Engineering
 sources:
   - "[[sources/claude-code-config-and-mcp-flow]]"
 related:
+  - "belongs_to::[[domains/Engineering]]"
   - "depends_on::[[concepts/mcp-protocol]]"
   - "depends_on::[[concepts/claude-code-configuration]]"
   - "extends::[[concepts/mcp-protocol]]"
+  - "produced_by::[[sources/claude-code-config-and-mcp-flow]]"
 ---
 
 # MCP 工具调用完整流程

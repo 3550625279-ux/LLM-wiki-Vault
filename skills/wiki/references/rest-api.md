@@ -15,7 +15,7 @@ KEY="your-api-key-here"
 ```bash
 curl -sk \
   -H "Authorization: Bearer $KEY" \
-  "$API/vault/wiki/index.md"
+  "$API/vault/wiki/concepts-idx.md"
 ```
 
 ---
@@ -50,7 +50,7 @@ curl -sk -X POST \
   -H "Authorization: Bearer $KEY" \
   -H "Content-Type: text/markdown" \
   --data "- New log entry" \
-  "$API/vault/wiki/log.md"
+  "$API/vault/log.md"
 ```
 
 ---

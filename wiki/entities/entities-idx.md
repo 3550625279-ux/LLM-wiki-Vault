@@ -8,7 +8,11 @@
 
 ## 论文 (Papers)
 
-> *待填充 — 首次 ingest 论文后追加*
+> 论文以 source 页面存在（见 `wiki/sources/`），此处仅记录参考索引，不作为独立 entity 节点。
+
+- [[sources/hyplora-neurips2025]] — HypLoRA: Hyperbolic Fine-Tuning for LLMs | NeurIPS 2025 | status:developing | ⚠️ 类型为 source
+- [[sources/cagc-cvpr2024]] — CAGC: Contextual Augmented Global Contrast for MIR | CVPR 2024 | status:developing | ⚠️ 类型为 source
+- [[sources/intent-detection-age-of-llms]] — Intent Detection in the Age of LLMs | EMNLP 2024 | status:developing | ⚠️ 类型为 source
 
 **高优先级待创建**:
 - `attention-is-all-you-need` — Vaswani 2017, Transformer 奠基论文
@@ -16,6 +20,9 @@
 - `lora` — Hu 2021, 参数高效微调
 - `instructgpt` — Ouyang 2022, RLHF
 - `dpo` — Rafailov 2023, DPO 对齐
+- `mag-bert` — Rahman 2020, 多模态适应门控 | EMNLP 2020
+- `mult` — Tsai 2019, 跨模态 Transformer | ACL 2019
+- `misa` — Hazarika 2020, 模态不变/特定表示 | ACMMM 2020
 
 ---
 
@@ -51,7 +58,8 @@
 
 ## 数据集 (Datasets)
 
-> *待填充*
+- `mintrec` — MIntRec: 多模态意图识别数据集 (2,224 样本, 20类意图) | [[sources/cagc-cvpr2024]]
+- `cmu-mosi` — CMU-MOSI: 多模态情感分析数据集 (2,199 样本, 情感分数 -3~3) | [[sources/cagc-cvpr2024]]
 
 **高优先级待创建**:
 - `fineweb` — HuggingFace 高质量预训练数据
@@ -74,11 +82,11 @@
 ## 统计
 
 ```
-总 entity 节点: 0
-  论文:    0 (目标: 20+)
+总 entity 节点: 0 (独立 entity 页面尚未创建)
+  论文:    0 (以 source 页面存在，索引 3 条)
   模型:    0 (目标: 12+)
   作者:    0 (目标: 8+)
-  数据集:  0 (目标: 6+)
+  数据集:  0 (索引 2 条，待创建页面)
   工具:    0 (目标: 6+)
-上次更新:  2026-06-13
+上次更新:  2026-06-14
 ```

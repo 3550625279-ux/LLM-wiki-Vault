@@ -57,7 +57,7 @@ Three depths. Choose based on the question complexity.
 Use when the answer is likely in the hot cache or index summary.
 
 1. Read `wiki/hot.md`. If it answers the question, respond immediately.
-2. If not, read `wiki/index.md`. Scan descriptions for the answer.
+2. If not, read `wiki/concepts-idx.md`. Scan descriptions for the answer.
 3. If found in index summary, respond and do not open any pages.
 4. If not found, say "Not in quick cache. Run as standard query?"
 
@@ -68,7 +68,7 @@ Do not open individual wiki pages in quick mode.
 ## Standard Query Workflow
 
 1. **Read** `wiki/hot.md` first. It may already have the answer or directly relevant context.
-2. **Read** `wiki/index.md` to find the most relevant pages (scan for titles and descriptions).
+2. **Read** `wiki/concepts-idx.md` to find the most relevant pages (scan for titles and descriptions).
 3. **Read** those pages. Follow wikilinks to depth-2 for key entities. No deeper.
 4. **Synthesize** the answer in chat. Cite sources with wikilinks: `(Source: [[Page Name]])`.
 5. **Offer to file** the answer: "This analysis seems worth keeping. Should I save it as `wiki/questions/answer-name.md`?"
@@ -80,7 +80,7 @@ Do not open individual wiki pages in quick mode.
 
 Use for synthesis questions, comparisons, or "tell me everything about X."
 
-1. Read `wiki/hot.md` and `wiki/index.md`.
+1. Read `wiki/hot.md` and `wiki/concepts-idx.md`.
 2. Identify all relevant sections (concepts, entities, sources, comparisons).
 3. Read every relevant page. No skipping.
 4. If wiki coverage is thin, offer to supplement with web search.
@@ -106,7 +106,7 @@ If hot.md has the answer, respond without reading further.
 
 ## Index Format Reference
 
-The master index (`wiki/index.md`) looks like:
+The master index (`wiki/concepts-idx.md`) looks like:
 
 ```markdown
 ## Domains
@@ -180,7 +180,7 @@ status: developing
 
 Then write the answer as the page body. Include citations. Link every mentioned concept or entity.
 
-After filing, add an entry to `wiki/index.md` under Questions and append to `wiki/log.md`.
+After filing, add an entry to `wiki/concepts-idx.md` under Questions and append to `log.md`.
 
 ---
 
@@ -201,7 +201,7 @@ When working on this skill, apply the 10-principle loop. See [`skills/think/SKIL
 
 | # | Principle | Application here |
 |---|-----------|-------------------|
-| 1 | OBSERVE (ext) | Read `wiki/hot.md` first, then `wiki/index.md`, then specific pages. Don't skip the cache. |
+| 1 | OBSERVE (ext) | Read `wiki/hot.md` first, then `wiki/concepts-idx.md`, then specific pages. Don't skip the cache. |
 | 2 | OBSERVE (int) | Am I synthesizing from training-data memory when I should be citing wiki pages? Check the source of each claim. |
 | 3 | LISTEN | What is the user's REAL question? The surface query is often a proxy for a deeper need. |
 | 4 | THINK | Quick / standard / deep mode? Match depth to question complexity, not eagerness. |

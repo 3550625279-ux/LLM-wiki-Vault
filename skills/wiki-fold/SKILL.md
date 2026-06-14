@@ -1,11 +1,11 @@
 ---
 name: wiki-fold
-description: "Rollup of wiki log entries into meta-pages. Reads the last 2^k entries from wiki/log.md, writes a structurally-idempotent fold page to wiki/folds/ that links back to children. Extractive summarization (no invention). Dry-run by default, stdout-only; commit mode writes and accepts that the PostToolUse hook auto-commits. Triggers on: fold the log, run a fold, run wiki-fold, log rollup, roll up log entries."
+description: "Rollup of wiki log entries into meta-pages. Reads the last 2^k entries from log.md, writes a structurally-idempotent fold page to wiki/folds/ that links back to children. Extractive summarization (no invention). Dry-run by default, stdout-only; commit mode writes and accepts that the PostToolUse hook auto-commits. Triggers on: fold the log, run a fold, run wiki-fold, log rollup, roll up log entries."
 ---
 
 # wiki-fold: Extractive Log Rollup
 
-Implements a bounded subset of Mechanism 1 from [[DragonScale Memory]]: flat fold over raw `wiki/log.md` entries. Fold-of-folds (hierarchical level-stacking) is **out of scope for this skill**; see "Scope boundary" below.
+Implements a bounded subset of Mechanism 1 from [[DragonScale Memory]]: flat fold over raw `log.md` entries. Fold-of-folds (hierarchical level-stacking) is **out of scope for this skill**; see "Scope boundary" below.
 
 A fold is **additive**: child log entries and their referenced pages are never modified, moved, or deleted. A fold is **extractive**: every outcome and theme in the output must be traceable to a specific child log entry. No invented facts, no synthesis beyond what the child entries support.
 
@@ -91,7 +91,7 @@ If fewer than `2^k` log entries exist, report the shortfall and stop. Do not sil
 ### 1. Parse log entries
 
 ```
-grep -n "^## \[" wiki/log.md | head -{2^k}
+grep -n "^## \[" log.md | head -{2^k}
 ```
 
 Record for each entry: line number, date, operation, title, and the following bullet lines until the next `## [` or end-of-section.
@@ -145,8 +145,8 @@ If any check fails, abort and report the specific failure.
 
 **Commit** (only after user says "commit the fold"):
 1. `Write` the fold page to `wiki/folds/{FOLD-ID}.md`. (PostToolUse hook will auto-commit this.)
-2. `Edit` `wiki/index.md` to add the fold link under a `## Folds` section (create section if missing). (Hook auto-commits.)
-3. `Edit` `wiki/log.md` to prepend one entry:
+2. `Edit` `wiki/concepts-idx.md` to add the fold link under a `## Folds` section (create section if missing). (Hook auto-commits.)
+3. `Edit` `log.md` to prepend one entry:
    ```
    ## [YYYY-MM-DD] fold | batch-exponent-k{K} rollup of N entries
    - Location: wiki/folds/{FOLD-ID}.md
@@ -202,7 +202,7 @@ Or: `git revert` the three auto-commits. Child pages are untouched in either pat
 
 User: "fold the log, dry-run k=3"
 
-1. Parse `wiki/log.md` top 8 entries.
+1. Parse `log.md` top 8 entries.
 2. Build structured children list (8 records).
 3. Read 0-10 referenced pages as needed.
 4. Produce fold ID: `fold-k3-from-2026-04-10-to-2026-04-23-n8`.

@@ -2,12 +2,17 @@
 type: source
 title: "Claude Code 配置文件和 MCP 工具调用流程"
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-14
 tags: [source, claude-code, mcp, configuration, engineering]
 status: seed
 domain: Engineering
 source_type: notes
 source_path: "raw/articles/claude-code-config-and-mcp-flow.md"
+related:
+  - "spawns::[[concepts/mcp-protocol]]"
+  - "spawns::[[concepts/claude-code-configuration]]"
+  - "spawns::[[concepts/mcp-tool-calling-flow]]"
+  - "belongs_to::[[domains/Engineering]]"
 thumbnail: ""
 ---
 

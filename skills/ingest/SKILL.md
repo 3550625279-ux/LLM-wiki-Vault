@@ -103,7 +103,7 @@ thumbnail: ""
 ```
 1. 更新所属 wiki/domains/<domain>.md（添加 [[wikilink]]）
 2. 更新相关 concept/entity 页的 related: 字段
-3. 更新 wiki/index.md（添加新页到对应分类）
+3. 更新 wiki/concepts-idx.md（添加新页到对应分类）
 4. 检查反向链接（被引用页是否需要更新 related:）
 ```
 
@@ -111,7 +111,7 @@ thumbnail: ""
 
 ```
 1. 写入 wiki/sources/<slug>.md（原始资料摘要页）
-2. 追加 wiki/log.md:
+2. 追加 log.md:
    ## [YYYY-MM-DD HH:MM] ingest | 资料标题
    - type: X
    - domain: Y

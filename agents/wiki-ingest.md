@@ -26,7 +26,7 @@ You will be given:
 ## Your Process
 
 1. Read the source file completely.
-2. Read `wiki/index.md` to understand existing wiki pages and avoid duplication.
+2. Read `wiki/concepts-idx.md` to understand existing wiki pages and avoid duplication.
 3. Read `wiki/hot.md` for recent context.
 4. Create a source summary page in `wiki/sources/`. Use proper frontmatter.
 5. For each significant person, org, product, or repo mentioned: check the index. Create or update the entity page in `wiki/entities/`.
@@ -61,7 +61,7 @@ Multi-writer page creation IS safe in v1.7 because every page write is gated by 
 
 ```bash
 bash scripts/wiki-lock.sh acquire wiki/sources/<slug>.md || {
-  # Another writer holds the same page — skip it this pass; log to wiki/log.md
+  # Another writer holds the same page — skip it this pass; log to log.md
   echo "skipped wiki/sources/<slug>.md (locked)"; continue
 }
 # … write the page via Write/Edit ($Transport-selected method) …
@@ -85,7 +85,7 @@ If the vault has NOT adopted DragonScale, sub-agents simply create pages without
 ## Do NOT
 
 - Modify anything in `raw/`
-- Update `wiki/index.md` or `wiki/log.md` (the orchestrator does this after all agents finish)
+- Update `wiki/concepts-idx.md` or `log.md` (the orchestrator does this after all agents finish)
 - Update `wiki/hot.md` (the orchestrator does this at the end)
 - Create duplicate pages
 - Call `scripts/allocate-address.sh` from inside a parallel sub-agent (DragonScale rule above)

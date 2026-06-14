@@ -11,9 +11,11 @@ domain: Engineering
 sources:
   - "[[sources/claude-code-config-and-mcp-flow]]"
 related:
+  - "belongs_to::[[domains/Engineering]]"
   - "implements::[[concepts/mcp-tool-calling-flow]]"
   - "applied_in::[[concepts/claude-code-configuration]]"
   - "contrasts::[[concepts/function-calling]]"
+  - "produced_by::[[sources/claude-code-config-and-mcp-flow]]"
 ---
 
 # MCP — Model Context Protocol

@@ -1,4 +1,25 @@
 {
+  "env": {
+    "VAULT_ROOT": ".",
+    "WIKI_DIR": "wiki",
+    "LOG_FILE": "log.md",
+    "HOT_FILE": "wiki/hot.md",
+    "INDEX_FILE": "wiki/concepts-idx.md"
+  },
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Write(wiki/**)",
+      "Write(scripts/**)",
+      "Edit(wiki/**)",
+      "Glob(wiki/**)",
+      "Grep(wiki/**)",
+      "Bash(bash scripts/*.sh*)"
+    ],
+    "deny": [
+      "Write(.raw/**)"
+    ]
+  },
   "hooks": {
     "Stop": [
       {
@@ -32,25 +53,7 @@
       }
     ]
   },
-  "permissions": {
-    "allow": [
-      "Read(**)",
-      "Write(wiki/**)",
-      "Write(scripts/**)",
-      "Edit(wiki/**)",
-      "Glob(wiki/**)",
-      "Grep(wiki/**)",
-      "Bash(bash scripts/*.sh*)"
-    ],
-    "deny": [
-      "Write(.raw/**)"
-    ]
-  },
-  "env": {
-    "VAULT_ROOT": ".",
-    "WIKI_DIR": "wiki",
-    "LOG_FILE": "wiki/log.md",
-    "HOT_FILE": "wiki/hot.md",
-    "INDEX_FILE": "wiki/index.md"
+  "enabledPlugins": {
+    "claude-paper@claude-paper": true
   }
 }

@@ -1,0 +1,16 @@
+{
+  "title": "Contextual Augmented Global Contrast for Multimodal Intent Recognition",
+  "authors": ["Kaili Sun", "Zhiwen Xie", "Mang Ye", "Huyin Zhang"],
+  "affiliations": ["Wuhan University", "Central China Normal University"],
+  "abstract": "Multimodal intent recognition (MIR) aims to perceive the human intent polarity via language, visual, and acoustic modalities. The inherent intent ambiguity makes it challenging to recognize in multimodal scenarios. Existing MIR methods tend to model the individual video independently, ignoring global contextual information across videos. This paper proposes CAGC (Context-augmented Global Contrast) method to capture rich global context features by mining both intra- and cross-video context interactions for MIR, including a context-augmented transformer module and a global context-guided contrastive learning scheme.",
+  "year": 2024,
+  "venue": "CVPR 2024",
+  "date": "2024",
+  "tags": ["multimodal intent recognition", "global contrastive learning"],
+  "githubLinks": [],
+  "codeLinks": [],
+  "pageCount": 11,
+  "difficulty": "Intermediate",
+  "nature": "Architecture-based",
+  "complexity": "Multi-stage training with novel components"
+}

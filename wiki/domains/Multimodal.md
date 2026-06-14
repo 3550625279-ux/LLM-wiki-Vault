@@ -1,11 +1,11 @@
 ---
 title: "Multimodal — 多模态"
 type: domain
-status: seed
+status: developing
 domain: Multimodal
-tags: [vision-language, diffusion, clip, image-generation, audio, video]
+tags: [vision-language, diffusion, clip, image-generation, audio, video, intent-recognition, contrastive-learning]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-14
 confidence: medium
 ---
 
@@ -27,6 +27,13 @@ Multimodal
 │   ├── Gemini — 原生多模态
 │   └── Qwen-VL / InternVL
 │
+├── 多模态意图/情感分析 ✅ NEW
+│   ├── [[concepts/multimodal-intent-recognition]] — 语言+视觉+听觉意图理解
+│   ├── [[concepts/cross-video-bank]] — 跨视频记忆库（场景相似+意图筛选）
+│   ├── [[concepts/context-augmented-transformer]] — CAT 渐进式注意力
+│   ├── [[concepts/global-context-guided-contrastive-learning]] — GCCL 全局对比
+│   └── [[sources/cagc-cvpr2024]] — CAGC (CVPR 2024)
+│
 ├── 图像生成
 │   ├── 扩散模型 (DDPM → Stable Diffusion → FLUX)
 │   ├── GAN (已逐渐被扩散取代)
@@ -47,23 +54,38 @@ Multimodal
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-- [ ] [[concepts/clip]] — 对比学习对齐图文表示
-- [ ] [[concepts/visual-instruction-tuning]] — LLaVA 方法
-- [ ] [[concepts/diffusion-model-basics]] — DDPM 前向/反向过程
-- [ ] [[concepts/latent-diffusion]] — 在潜空间中扩散
-- [ ] [[concepts/classifier-free-guidance]] — CFG 控制生成质量
-- [ ] [[entities/stable-diffusion]] — Stability AI
-- [ ] [[entities/whisper]] — OpenAI 语音识别
+- [x] [[concepts/multimodal-intent-recognition]] — 多模态意图识别 (MIR) | status:seed
+- [x] [[concepts/cross-video-bank]] — Cross-video Bank 跨视频记忆库 | status:seed
+- [x] [[concepts/context-augmented-transformer]] — CAT 上下文增强 Transformer | status:seed
+- [x] [[concepts/global-context-guided-contrastive-learning]] — GCCL 全局对比学习 | status:seed
+- [x] [[sources/cagc-cvpr2024]] — CAGC 论文 (CVPR 2024) | status:developing
+- [x] [[comparisons/cagc-vs-baselines]] — CAGC vs 基线方法对比 | status:seed
+
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/multimodal-intent-recognition]]
+- `contains::` [[concepts/cross-video-bank]]
+- `contains::` [[concepts/context-augmented-transformer]]
+- `contains::` [[concepts/global-context-guided-contrastive-learning]]
+- `contains::` [[sources/cagc-cvpr2024]]
+- `contains::` [[comparisons/cagc-vs-baselines]]
+
+## 🔴 关键缺口
+
+- `clip` — 对比学习对齐图文表示
+- `visual-instruction-tuning` — LLaVA 方法
+- `diffusion-model-basics` — DDPM 前向/反向过程
+- `latent-diffusion` — 在潜空间中扩散
 
 ---
 
 ## 🔗 领域间关系
 
-- `depends_on::` [[domains/architecture]] — ViT 基于 Transformer
-- `depends_on::` [[domains/training]] — 多模态对齐需要特殊训练
-- `applied_in::` [[domains/agents]] — 多模态感知是具身 Agent 基础
+- `depends_on::` [[domains/architecture]] — ViT 基于 Transformer；CAT 扩展自 Transformer 注意力
+- `depends_on::` [[domains/training]] — 多模态对齐需要特殊训练；对比学习是核心训练范式
+- `applied_in::` [[domains/agents]] — 多模态感知是具身 Agent 基础；MIR 可用于对话 Agent 意图理解
+- `extends::` [[concepts/contrastive-learning]] — GCCL 将对比学习从 mini-batch 扩展到全局
 
 ---
 
@@ -77,7 +99,8 @@ Multimodal
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 10+)
+concept 节点: 4 (目标: 10+)
+source 节点:  1 (CAGC CVPR 2024)
 entity 节点:  0 (目标: 8+)
-maturity:    seed
+maturity:    developing
 ```

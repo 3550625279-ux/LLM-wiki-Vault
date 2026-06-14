@@ -1,11 +1,11 @@
 ---
 title: "Architecture — 模型架构"
 type: domain
-status: seed
+status: developing
 domain: Architecture
-tags: [transformer, attention, positional-encoding, normalization, moe]
+tags: [transformer, attention, positional-encoding, normalization, moe, cross-video-attention]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-14
 confidence: high
 ---
 
@@ -26,6 +26,11 @@ Architecture
 │   ├── Feed-Forward Network
 │   ├── Residual Connections
 │   └── Layer Normalization
+│
+├── 注意力机制扩展 ✅ NEW
+│   ├── [[concepts/context-augmented-transformer]] — CAT 渐进式跨视频注意力
+│   ├── Cross-Attention (标准交叉注意力)
+│   └── Co-Attention (多模态协同注意力)
 │
 ├── 位置编码
 │   ├── Absolute Positional Encoding
@@ -53,30 +58,24 @@ Architecture
 
 ---
 
-## 🧮 核心概念节点
+## 🧮 已有节点
 
-### Attention 系列
-- [ ] [[concepts/attention-mechanism]] — QKV 机制，softmax，O(n²)
-- [ ] [[concepts/multi-head-attention]] — 多头并行，信息整合
-- [ ] [[concepts/self-attention-vs-cross-attention]] — 自注意力 vs 交叉注意力
-- [ ] [[concepts/flash-attention]] — IO-aware 算法，内存效率
+- [x] [[concepts/hyperbolic-geometry-llm]] — LLM 嵌入的双曲层次结构（幂律分布+δ-双曲性） | status:seed
+- [x] [[concepts/context-augmented-transformer]] — CAT 渐进式跨视频注意力（CAGC 核心架构） | status:seed
 
-### 位置编码
-- [ ] [[concepts/rotary-position-embedding]] — RoPE 原理与优势
-- [ ] [[concepts/positional-encoding-absolute]] — 原始 sin/cos 编码
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/hyperbolic-geometry-llm]]
+- `contains::` [[concepts/context-augmented-transformer]]
 
-### 规范化
-- [ ] [[concepts/layer-normalization]] — Pre-Norm vs Post-Norm
-- [ ] [[concepts/rmsnorm]] — RMSNorm 为什么更流行
+## 🔴 关键缺口
 
-### 架构创新
-- [ ] [[concepts/mixture-of-experts]] — MoE 稀疏激活
-- [ ] [[concepts/grouped-query-attention]] — GQA 减少 KV Cache
-
-### 经典论文
-- [ ] [[entities/attention-is-all-you-need]] — Vaswani 2017，奠基之作
-- [ ] [[entities/bert]] — 双向编码器
-- [ ] [[entities/gpt-series]] — 自回归语言模型系列
+- `attention-mechanism` — QKV 机制，softmax，O(n²) — **所有架构知识的基础**
+- `multi-head-attention` — 多头并行，信息整合
+- `flash-attention` — IO-aware 算法，内存效率
+- `rotary-position-embedding` — RoPE, 当前主流位置编码
+- `layer-normalization` — Pre-Norm vs Post-Norm
+- `mixture-of-experts` — MoE 稀疏激活
+- `grouped-query-attention` — GQA 减少 KV Cache
 
 ---
 
@@ -118,7 +117,7 @@ Architecture
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 12+)
+concept 节点: 2 (目标: 12+)
 entity 节点:  0 (目标: 8+)
-maturity:    seed
+maturity:    developing
 ```

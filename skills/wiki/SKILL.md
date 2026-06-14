@@ -121,7 +121,7 @@ Steps:
 2. Ask: "What is this vault for?" (one question, then proceed).
 3. Create full folder structure under `wiki/` based on the mode.
 4. Create domain pages + `idx.md` sub-indexes.
-5. Create `wiki/index.md`, `wiki/log.md`, `wiki/hot.md`, `wiki/overview.md`.
+5. Create `wiki/concepts-idx.md`, `log.md`, `wiki/hot.md`, `wiki/overview.md`.
 6. Create `_templates/` files for each note type.
 7. Apply visual customization. Read `references/css-snippets.md`. Create `.obsidian/snippets/vault-colors.css`.
 8. Create the vault CLAUDE.md using the template below.
@@ -149,8 +149,8 @@ Created: YYYY-MM-DD
 - All notes use YAML frontmatter: type, status, created, updated, tags (minimum)
 - Wikilinks use [[Note Name]] format: filenames are unique, no paths needed
 - raw/ contains source documents: never modify them
-- wiki/index.md is the master catalog: update on every ingest
-- wiki/log.md is append-only: never edit past entries
+- wiki/concepts-idx.md is the master catalog: update on every ingest
+- log.md is append-only: never edit past entries
 - New log entries go at the TOP of the file
 
 ## Operations
@@ -175,8 +175,8 @@ Path: ~/path/to/vault
 
 When you need context not already in this project:
 1. Read wiki/hot.md first (recent context, ~500 words)
-2. If not enough, read wiki/index.md (full catalog)
-3. If you need domain specifics, read wiki/<domain>/domains-idx.md
+2. If not enough, read wiki/concepts-idx.md (full catalog)
+3. If you need domain specifics, read wiki/domains/<Domain>.md（域页面 = 综述 + 节点索引）
 4. Only then read individual wiki pages
 
 Do NOT read the wiki for:

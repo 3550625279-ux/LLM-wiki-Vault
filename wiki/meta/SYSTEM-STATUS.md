@@ -9,15 +9,15 @@
 | 文件 | 状态 | 上次更新 |
 |------|------|----------|
 | CLAUDE.md | ✅ 就绪 | 2026-06-13 |
-| wiki/hot.md | ✅ 初始化 | 2026-06-13 |
-| wiki/index.md | ✅ 初始化 | 2026-06-13 |
-| wiki/log.md | ✅ 初始化 | 2026-06-13 |
+| wiki/hot.md | ✅ 活跃 | 2026-06-14 |
+| wiki/concepts-idx.md | ✅ 活跃 | 2026-06-14 |
+| log.md | ✅ 活跃 | 2026-06-14 |
 | skills/align/SKILL.md | ✅ 就绪 | 2026-06-13 |
 | skills/review/SKILL.md | ✅ 就绪 | 2026-06-13 |
 | scripts/align-check.sh | ✅ 就绪 | 2026-06-13 |
 | scripts/post-session.sh | ✅ 就绪 | 2026-06-13 |
 | scripts/log-write.sh | ✅ 就绪 | 2026-06-13 |
-| .claude/settings.json | ⚠️ 待配置 | — |
+| .claude/settings.json | ✅ 已配置 | 2026-06-14 |
 
 ---
 
@@ -25,13 +25,13 @@
 
 | 指标 | 目标 | 当前 | 状态 |
 |------|------|------|------|
-| 总节点数 | >50 | 0 | 🌱 初始化 |
-| seed 比例 | <30% | — | — |
-| mature 比例 | >50% | — | — |
-| 孤儿页（无 related） | <5% | — | — |
+| 总节点数 | >50 | 31 | 🟡 进行中 |
+| seed 比例 | <30% | 84% (26/31) | 🔴 需提升 |
+| mature 比例 | >50% | 0% (0/31) | 🔴 需提升 |
+| 孤儿页（无 related） | <5% | 待 lint | — |
 | 矛盾未解决 | 0 | 0 | ✅ |
-| 开放 gap | — | 0 | ✅ |
-| 领域覆盖 | 8/8 | 0/8 | 🌱 |
+| 开放 gap | — | 待重跑 lint | — |
+| 领域覆盖 | 8/8 | 7/8 | 🟡 进行中 |
 
 ---
 
@@ -48,10 +48,10 @@
 
 ## 🚦 下一步行动
 
-1. **首要**: 在 Claude Code 中运行 `/vault` 或 `ingest` 第一篇资料
-2. **配置**: 手动创建 `.claude/settings.json`（见下方模板）
-3. **验证**: 运行 `bash scripts/align-check.sh "Transformer"` 测试检索
-4. **建立**: 8个领域 `idx.md` 页面
+1. **首要**: 首次 `align all` 生成基线覆盖度报告
+2. **次要**: 为 contrastive-learning 和 transformer-attention 创建基础概念页
+3. **验证**: 运行 `bash scripts/align-check.sh "contrastive learning"` 测试检索
+4. **推进**: 继续 ingest 核心论文（Attention Is All You Need, LoRA）
 
 ### .claude/settings.json 手动配置模板
 
@@ -94,4 +94,4 @@
 
 ---
 
-*AI Vault v2.0 | 初始化: 2026-06-13*
+*AI Vault v2.0 | 最后更新: 2026-06-14 | 系统健康修复完成*

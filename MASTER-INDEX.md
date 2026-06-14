@@ -152,9 +152,9 @@ AI Vault/
 ### 🗺️ Wiki 核心文件 (5个)
 | 文件 | 更新频率 | 维护者 |
 |------|---------|--------|
-| `wiki/index.md` | 每次 ingest | Claude (自动) |
+| `wiki/concepts-idx.md` | 每次 ingest | Claude (自动) |
 | `wiki/hot.md` | 每次会话结束 | Claude (强制) |
-| `wiki/log.md` | 每次会话结束 | Claude (append) |
+| `log.md` | 每次会话结束 | Claude (append) |
 | `wiki/overview.md` | 每 10 次 ingest | Claude (align 触发) |
 | `wiki/meta/dashboard.md` | 每次 lint | Claude (自动) |
 

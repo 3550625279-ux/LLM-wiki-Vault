@@ -10,13 +10,13 @@
 ## 按主题分组
 
 ### 关于模型能力与局限
-> *待填充*
+- [[insights/llm-embedding-geometry]] — LLM 嵌入空间具有内在双曲结构 | status:seed
 
 ### 关于训练与数据
-> *待填充*
+- [[insights/hyplora-learning-insights]] — HypLoRA 学习心得：双曲适配的工程经验 | status:seed
 
 ### 关于工程实践
-> *待填充*
+- [[insights/hybrid-beats-pure-llm]] — 混合系统胜过纯 LLM：不确定性路由的工程启示 | status:seed
 
 ### 关于研究方法
 > *待填充*
@@ -65,8 +65,8 @@
 ## 统计
 
 ```
-总 insight 节点: 0
+总 insight 节点: 3
 目标总数:        20+
 矛盾待处理:      4 个
-上次更新:        2026-06-13
+上次更新:        2026-06-14
 ```

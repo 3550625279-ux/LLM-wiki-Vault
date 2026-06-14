@@ -46,7 +46,7 @@ allowed-tools: Read Write Edit Glob Grep Bash
 ### Step 2 — Index 导航（精准定位）
 
 ```
-读取 wiki/index.md
+读取 wiki/concepts-idx.md
 
 搜索策略：
   a) 查询主题精确标题匹配
@@ -167,7 +167,7 @@ related:
 触发：`align all` / `全库对齐` / `月度审计`
 
 ```
-1. 读取 wiki/domains/domains-idx.md（8个领域列表）
+1. 读取 wiki/domains/domains-idx.md（顶级导航）+ 各域 wiki/domains/<Domain>.md（域页面 = 综述 + 节点索引）
 2. 对每个领域执行 Step 2-3
 3. 计算全库覆盖度热力图
 4. 输出综合审计报告：wiki/meta/audit-YYYY-MM-DD.md
@@ -181,7 +181,7 @@ related:
 ```
 hot.md (< 3秒)
   ↓ 未命中
-wiki/index.md (< 5秒)
+wiki/concepts-idx.md (< 5秒)
   ↓ 未命中
 scripts/align-check.sh grep (< 10秒)
   ↓ 未命中

@@ -43,7 +43,7 @@ allowed-tools: Read Write Edit Glob Grep
   所属领域: Foundations | Architecture | Training | Alignment |
             Inference | Multimodal | Agents | Engineering
   
-  关联的已有节点: 读 wiki/index.md 查找
+  关联的已有节点: 读 wiki/concepts-idx.md 查找
 ```
 
 ### Step 2 — 确认归档目标
@@ -106,7 +106,7 @@ thumbnail: ""
 ### Step 4 — 更新语义网络
 
 ```
-1. 更新 wiki/index.md：添加新节点记录
+1. 更新 wiki/concepts-idx.md：添加新节点记录
 2. 更新关联节点的 related: 字段（添加反向链接）
 3. 更新 wiki/domains/<domain>.md（若有新洞察）
 ```
@@ -114,7 +114,7 @@ thumbnail: ""
 ### Step 5 — 封印
 
 ```
-追加 wiki/log.md:
+追加 log.md:
 ## [YYYY-MM-DD HH:MM] save | [节点标题]
 - type: [type]
 - domain: [domain]

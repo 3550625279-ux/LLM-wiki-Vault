@@ -27,8 +27,8 @@ skills/ingest/SKILL.md           ← 注入 Skill
 skills/lint/SKILL.md             ← 健康检查 Skill
 skills/save/SKILL.md             ← 归档 Skill
 wiki/hot.md                      ← 热缓存（会话恢复）
-wiki/index.md                    ← 全库目录
-wiki/log.md                      ← 操作日志
+wiki/concepts-idx.md                    ← 全库目录
+log.md                      ← 操作日志
 wiki/overview.md                 ← 全局知识地图
 wiki/domains/                    ← 8个领域综述页
 wiki/meta/                       ← 看板/lint/矛盾登记
@@ -55,7 +55,7 @@ bash scripts/align-check.sh "Transformer"
 ```
 === align-check: 'Transformer' ===
 ── [1] hot.md 热缓存 ── ❌ 未命中
-── [2] wiki/index.md 导航 ── ❌ 未命中
+── [2] wiki/concepts-idx.md 导航 ── ❌ 未命中
 ── [3] 全库 grep 兜底 ── ❌ 确认为知识缺口
 === align-check 完成 ===
 ```

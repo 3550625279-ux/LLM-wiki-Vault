@@ -3,7 +3,7 @@
 # 由 .claude/settings.json PostToolUse hook 自动触发
 
 VAULT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-LOG_FILE="$VAULT_ROOT/wiki/log.md"
+LOG_FILE="$VAULT_ROOT/log.md"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
 # 获取最近修改的文件（若有环境变量传入则用之）
