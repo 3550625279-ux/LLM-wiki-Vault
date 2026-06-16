@@ -14,6 +14,7 @@
 
 ### 关于训练与数据
 - [[insights/hyplora-learning-insights]] — HypLoRA 学习心得：双曲适配的工程经验 | status:seed
+- [[insights/rnn-hyperparameter-analysis]] — RNN 调参四要素：batch_size/num_steps/num_hiddens/优化器 | status:seed ✅ NEW
 
 ### 关于工程实践
 - [[insights/hybrid-beats-pure-llm]] — 混合系统胜过纯 LLM：不确定性路由的工程启示 | status:seed
@@ -69,7 +70,7 @@
 ## 统计
 
 ```
-总 insight 节点: 5
+总 insight 节点: 6
 目标总数:        20+
 矛盾待处理:      4 个
 上次更新:        2026-06-16

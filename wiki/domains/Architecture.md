@@ -5,7 +5,7 @@ status: developing
 domain: Architecture
 tags: [transformer, attention, positional-encoding, normalization, moe, cross-video-attention]
 created: 2026-06-13
-updated: 2026-06-14
+updated: 2026-06-16
 confidence: high
 ---
 
@@ -20,14 +20,25 @@ confidence: high
 
 ```
 Architecture
+├── 经典网络架构
+│   ├── [[concepts/convolutional-neural-network]] — CNN 卷积神经网络 ✅
+│   ├── [[concepts/lenet]] — LeNet-5 经典 CNN ✅
+│   ├── [[concepts/pooling-layer]] — 池化层 ✅
+│   ├── [[concepts/recurrent-neural-network]] — RNN 循环神经网络 ✅
+│   ├── [[concepts/gru]] — GRU 门控循环单元 ✅
+│   └── [[concepts/lstm]] — LSTM 长短期记忆 ✅
+│
 ├── Transformer 基础
-│   ├── Attention Mechanism (核心)
-│   ├── Multi-Head Attention
+│   ├── [[concepts/attention-mechanism]] — 注意力机制 (QKV) ✅
+│   ├── [[concepts/additive-attention]] — 加性注意力 ✅
+│   ├── [[concepts/scaled-dot-product-attention]] — 缩放点积注意力 ✅
+│   ├── [[concepts/multi-head-attention]] — 多头注意力 ✅
+│   ├── [[concepts/encoder-decoder-architecture]] — 编码器-解码器 ✅
 │   ├── Feed-Forward Network
 │   ├── Residual Connections
 │   └── Layer Normalization
 │
-├── 注意力机制扩展 ✅ NEW
+├── 注意力机制扩展
 │   ├── [[concepts/context-augmented-transformer]] — CAT 渐进式跨视频注意力
 │   ├── Cross-Attention (标准交叉注意力)
 │   └── Co-Attention (多模态协同注意力)
@@ -62,20 +73,43 @@ Architecture
 
 - [x] [[concepts/hyperbolic-geometry-llm]] — LLM 嵌入的双曲层次结构（幂律分布+δ-双曲性） | status:seed
 - [x] [[concepts/context-augmented-transformer]] — CAT 渐进式跨视频注意力（CAGC 核心架构） | status:seed
+- [x] [[concepts/convolutional-neural-network]] — CNN 卷积神经网络 | status:seed
+- [x] [[concepts/lenet]] — LeNet-5 经典 CNN 架构 | status:seed
+- [x] [[concepts/pooling-layer]] — 池化层 (AvgPool/MaxPool) | status:seed
+- [x] [[concepts/recurrent-neural-network]] — RNN 循环神经网络 | status:seed
+- [x] [[concepts/gru]] — GRU 门控循环单元 | status:seed
+- [x] [[concepts/lstm]] — LSTM 长短期记忆网络 | status:seed
+- [x] [[concepts/attention-mechanism]] — 注意力机制 (QKV) | status:seed
+- [x] [[concepts/additive-attention]] — 加性注意力 (Bahdanau) | status:seed
+- [x] [[concepts/scaled-dot-product-attention]] — 缩放点积注意力 | status:seed
+- [x] [[concepts/multi-head-attention]] — 多头注意力 | status:seed
+- [x] [[concepts/encoder-decoder-architecture]] — 编码器-解码器架构 | status:seed
 
 **`contains::` 边（域 → 节点）：**
 - `contains::` [[concepts/hyperbolic-geometry-llm]]
 - `contains::` [[concepts/context-augmented-transformer]]
+- `contains::` [[concepts/convolutional-neural-network]]
+- `contains::` [[concepts/lenet]]
+- `contains::` [[concepts/pooling-layer]]
+- `contains::` [[concepts/recurrent-neural-network]]
+- `contains::` [[concepts/gru]]
+- `contains::` [[concepts/lstm]]
+- `contains::` [[concepts/attention-mechanism]]
+- `contains::` [[concepts/additive-attention]]
+- `contains::` [[concepts/scaled-dot-product-attention]]
+- `contains::` [[concepts/multi-head-attention]]
+- `contains::` [[concepts/encoder-decoder-architecture]]
 
 ## 🔴 关键缺口
 
-- `attention-mechanism` — QKV 机制，softmax，O(n²) — **所有架构知识的基础**
-- `multi-head-attention` — 多头并行，信息整合
+- ~~`attention-mechanism`~~ — ✅ 已创建
+- ~~`multi-head-attention`~~ — ✅ 已创建
 - `flash-attention` — IO-aware 算法，内存效率
 - `rotary-position-embedding` — RoPE, 当前主流位置编码
 - `layer-normalization` — Pre-Norm vs Post-Norm
 - `mixture-of-experts` — MoE 稀疏激活
 - `grouped-query-attention` — GQA 减少 KV Cache
+- `transformer` — 原版 Transformer 完整架构页（可由已有子组件组装）
 
 ---
 
@@ -117,7 +151,7 @@ Architecture
 ## 📊 领域统计
 
 ```
-concept 节点: 2 (目标: 12+)
+concept 节点: 13 (目标: 12+) ✅ 已达标
 entity 节点:  0 (目标: 8+)
 maturity:    developing
 ```

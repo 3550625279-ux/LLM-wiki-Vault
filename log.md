@@ -651,3 +651,200 @@
 - hook: Stop
 - vault: /d/Workspace/AI_Learning/AI Vault
 - hot_file_exists: yes
+
+## [2026-06-16 16:10] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 16:19] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 17:00] ingest | 概率论基础概念批量创建
+- type: concept (概率论基础系列)
+- domain: Foundations
+- sources_ref: [[sources/random-variable-random-vector]], [[sources/sample-vector-geometric]]
+- pages_created: 6
+  - [[concepts/sample-space]] — 样本空间与事件
+  - [[concepts/random-variable]] — 随机变量
+  - [[concepts/pushforward-measure]] — 前推测度
+  - [[concepts/random-vector]] — 随机向量
+  - [[concepts/covariance]] — 协方差
+  - [[concepts/moment]] — 矩与高阶统计量
+- pages_updated: 4
+  - wiki/concepts-idx.md — Foundations 区域新增 6 条 + type:concept 区域新增 6 条 + 统计更新
+  - wiki/domains/foundations.md — 已有节点 + contains 边 + 统计更新
+  - wiki/overview.md — Foundations 节点数 2→8 + 总节点数 58→64
+  - wiki/hot.md — 活跃节点更新 + 统计快照更新
+- key_concepts: [样本空间, 随机变量, 前推测度, 随机向量, 协方差, 矩, 偏度, 峰度, 指示随机变量, One-Hot编码]
+- contradictions: 无
+- note: 概率论基础系列第一批，为后续学习奠定数学根基
+
+## [2026-06-16 18:00] ingest | 参数估计概念批量创建
+- type: concept (参数估计系列)
+- domain: Foundations
+- sources_ref: [[sources/parameter-estimation-notes]]
+- pages_created: 7
+  - [[concepts/point-estimation]] — 点估计
+  - [[concepts/moment-estimation]] — 矩估计
+  - [[concepts/mle]] — 极大似然估计（MLE）
+  - [[concepts/order-statistics]] — 顺序统计量
+  - [[concepts/estimator-quality]] — 估计量评价：无偏性、有效性、相合性
+  - [[concepts/interval-estimation]] — 区间估计与枢轴量
+  - [[sources/parameter-estimation-notes]] — 参数估计学习笔记
+- pages_updated: 6
+  - wiki/concepts-idx.md — Foundations 区域新增 6 条 + type:concept 区域新增 6 条 + type:source 区域新增 1 条 + 统计更新
+  - wiki/domains/Foundations.md — 已有节点 + contains 边
+  - wiki/overview.md — Foundations 节点数 12→18 + 总节点数 68→75
+  - wiki/hot.md — 活跃节点更新 + 统计快照更新
+  - wiki/meta/dashboard.md — 系统状态 + 待办队列更新
+  - wiki/meta/SYSTEM-STATUS.md — 健康指标更新
+- key_concepts: [点估计, 矩估计, 极大似然估计, 顺序统计量, 无偏性, 有效性, 相合性, 枢轴量, 区间估计, Cramér-Rao下界]
+- contradictions: 无
+- note: 参数估计完整体系，从点估计到区间估计，覆盖矩估计/MLE/顺序统计量/估计量评价/枢轴量法
+
+## [2026-06-16 19:00] ingest | 样本向量几何视角批量创建
+- type: concept (样本向量几何系列)
+- domain: Foundations
+- sources_ref: [[sources/sample-vector-geometric]]
+- pages_created: 5
+  - [[concepts/sample-vector]] — 样本向量：N次实验数据打包成高维空间中的点
+  - [[concepts/mean-as-projection]] — 均值的几何本质：正交投影
+  - [[concepts/centering-decoupling]] — 中心化：正交分解与信息解耦
+  - [[concepts/variance-geometric]] — 方差的几何意义
+  - [[concepts/degrees-of-freedom]] — 自由度与贝塞尔校正
+- pages_updated: 5
+  - wiki/concepts-idx.md — Foundations 区域新增 5 条 + type:concept 区域新增 5 条 + 统计更新
+  - wiki/domains/Foundations.md — 已有节点 + contains 边
+  - wiki/overview.md — Foundations 节点数 18→23 + 总节点数 75→80
+  - wiki/hot.md — 学习重心切换 + 活跃节点更新 + 统计快照更新
+- key_concepts: [样本向量, 均值投影, 中心化, 方差几何, 自由度, 贝塞尔校正, 正交分解, 全1向量, 平庸对角线, 勾股定理]
+- contradictions: 无
+- note: 样本向量几何视角五件套，从高维几何重新理解统计量的本质
+
+## [2026-06-16 20:00] ingest | 概率论·统计推断·信息论大规模ingest
+- type: concept + source (概率论基础完整知识链)
+- domain: Foundations
+- sources_ref: 5个markdown文件 + 1段用户思考笔记
+  - [[sources/random-variable-random-vector]] — 随机变量与随机向量
+  - [[sources/sample-vector-geometric]] — 样本向量的几何视角
+  - [[sources/central-limit-theorem]] — 中心极限定理与归一化
+  - [[sources/information-theory-loss]] — 信息论与深度学习损失函数
+  - [[sources/parameter-estimation-notes]] — 参数估计学习笔记
+- pages_created: 32
+  - **概率论基础（6个）**：
+    - [[concepts/sample-space]] — 样本空间与事件
+    - [[concepts/random-variable]] — 随机变量
+    - [[concepts/pushforward-measure]] — 前推测度
+    - [[concepts/random-vector]] — 随机向量
+    - [[concepts/covariance]] — 协方差
+    - [[concepts/moment]] — 矩与高阶统计量
+  - **样本向量几何（5个）**：
+    - [[concepts/sample-vector]] — 样本向量
+    - [[concepts/mean-as-projection]] — 均值的几何本质
+    - [[concepts/centering-decoupling]] — 中心化与信息解耦
+    - [[concepts/variance-geometric]] — 方差的几何意义
+    - [[concepts/degrees-of-freedom]] — 自由度与贝塞尔校正
+  - **CLT与归一化（6个）**：
+    - [[concepts/central-limit-theorem]] — 中心极限定理
+    - [[concepts/sqrt-n-origin]] — √n的来源
+    - [[concepts/standard-deviation-l2]] — 标准差与L2范数
+    - [[concepts/batch-normalization]] — BatchNorm
+    - [[concepts/layer-normalization]] — LayerNorm
+    - [[concepts/transformer-sqrt-d]] — Transformer的√d缩放
+  - **信息论（4个）**：
+    - [[concepts/information-entropy]] — 信息熵
+    - [[concepts/cross-entropy-loss]] — 交叉熵与损失函数
+    - [[concepts/kl-divergence]] — KL散度
+    - [[concepts/sgd-noise-generalization]] — SGD噪声与泛化
+  - **参数估计（6个）**：
+    - [[concepts/point-estimation]] — 点估计
+    - [[concepts/moment-estimation]] — 矩估计
+    - [[concepts/mle]] — 极大似然估计
+    - [[concepts/order-statistics]] — 顺序统计量
+    - [[concepts/estimator-quality]] — 估计量评价
+    - [[concepts/interval-estimation]] — 区间估计
+  - **Source页面（5个）**：
+    - [[sources/random-variable-random-vector]]
+    - [[sources/sample-vector-geometric]]
+    - [[sources/central-limit-theorem]]
+    - [[sources/information-theory-loss]]
+    - [[sources/parameter-estimation-notes]]
+- pages_updated: 8
+  - wiki/concepts-idx.md — Foundations区域新增27条 + type:concept区域新增27条 + type:source区域新增5条 + 统计更新(70→82)
+  - wiki/domains/Foundations.md — 已有节点(2→29) + contains边(2→29) + 统计更新
+  - wiki/overview.md — Foundations节点数(2→29) + 总节点数(58→82)
+  - wiki/hot.md — 学习重心切换到"概率论·统计推断·信息论" + 活跃节点更新
+  - wiki/meta/dashboard.md — 系统状态 + 待办队列
+  - wiki/meta/SYSTEM-STATUS.md — 健康指标
+  - log.md — 追加ingest条目
+  - sqrt-n-origin.md — 修复belongs_on→belongs_to笔误
+- key_concepts: [样本空间, 随机变量, 前推测度, 随机向量, 协方差, 矩, 样本向量, 均值投影, 中心化, 方差几何, 自由度, CLT, √n来源, 标准差L2, BatchNorm, LayerNorm, √d缩放, 信息熵, 交叉熵, KL散度, SGD噪声, 点估计, 矩估计, MLE, 顺序统计量, 估计量评价, 区间估计, 枢轴量]
+- contradictions: 无
+- note: |
+  这是Foundations领域最大规模的一次ingest，一次性建立了概率论→统计推断→信息论的完整知识体系。
+  
+  核心知识链：
+  1. 概率论基础：样本空间→随机变量→前推测度→随机向量→协方差→矩
+  2. 样本向量几何：样本向量→均值投影→中心化→方差几何→自由度
+  3. CLT与归一化：CLT→√n来源→标准差L2→BatchNorm/LayerNorm→√d缩放
+  4. 信息论：信息熵→交叉熵→KL散度→SGD噪声泛化
+  5. 参数估计：点估计→矩估计/MLE→顺序统计量→估计量评价→区间估计
+  
+  关键洞察：
+  - 随机变量是确定性映射函数，随机性来自输入ω的不可预知性
+  - 均值不是算术平均，而是正交投影的最小二乘最优解
+  - 独立方差可加=勾股定理
+  - √n来自方差可加性，没有更深的原因
+  - H(P,Q) = H(P) + D_KL(P||Q) — 交叉熵=熵+KL散度
+  - SGD噪声是免费正则化，flat minimum=高熵解
+  - 估计量也是随机变量，具有无偏性/有效性/相合性
+  
+  Foundations领域节点数从2暴增到29，成为知识库第二大领域（仅次于Training的16个）。
+
+## [2026-06-16 23:35] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 22:30] ingest | CNN-RNN-Transformer三大架构（早期学习代码）
+- type: operation (3个 Jupyter notebook)
+- domain: Architecture + Training
+- raw_path: raw/code/pytorch-cnn-lenet-mnist.ipynb, raw/code/transformer-attention-seq2seq.ipynb, raw/code/pytorch-rnn-gru-lstm.ipynb
+- pages_created: 17 (13 concept + 1 insight + 3 source)
+- pages_updated: 9 (Architecture.md, Training.md, concepts-idx.md, overview.md, dashboard.md, SYSTEM-STATUS.md, hot.md, transformer-sqrt-d.md, cross-entropy-loss.md)
+- key_concepts: [CNN, LeNet-5, pooling-layer, RNN, BPTT, GRU, LSTM, attention-mechanism, additive-attention, scaled-dot-product-attention, multi-head-attention, encoder-decoder-architecture, gradient-clipping, teacher-forcing, one-hot-encoding, perplexity, rnn-hyperparameter-analysis]
+- contradictions: none
+- notes: 4月份的早期学习代码，包含CNN/RNN/Transformer从零实现。Architecture域从2节点增长到13节点。
+
+## [2026-06-17 00:07] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 23:00] lint | Wiki 健康检查 + 死链修复
+- action: lint + fix
+- orphan_pages: 0
+- dead_links_found: 17 concept dead links
+- dead_links_fixed: 15 (2处重定向 + 13个新页面)
+- domain_mismatches_fixed: 10 files (belongs_to大小写)
+- pages_created: 15 (transformer, llm-training, qlora, resnet, vae, function-calling, covariance-matrix, variance, cosine-similarity, svd, multimodal-fusion, multimodal-sentiment-analysis, maximum-likelihood, mini-batch-contrastive-learning, gan-moment-matching)
+- remaining_dead_links: 0 (全部修复)
+- total_nodes: 99 to 114
+
+## [2026-06-17 00:09] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-17 00:29] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-17 00:31] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes

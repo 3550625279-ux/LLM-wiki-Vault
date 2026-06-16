@@ -9,7 +9,7 @@ complexity: advanced
 domain: Training
 sources: ["[[sources/llm-reasoning-ability]]"]
 related:
-  - "belongs_to::[[domains/training]]"
+  - "belongs_to::[[domains/Training]]"
   - "depends_on::[[concepts/grpo]]"
   - "produced_by::[[sources/llm-reasoning-ability]]"
   - "applied_in::[[entities/deepseek-r1-zero]]"
@@ -19,7 +19,7 @@ related:
 
 ## 🔗 关系链接
 
-- belongs_to: [[domains/training]]
+- belongs_to: [[domains/Training]]
 - depends_on: [[concepts/grpo]]
 - produced_by: [[sources/llm-reasoning-ability]]
 - applied_in: [[entities/deepseek-r1-zero]]

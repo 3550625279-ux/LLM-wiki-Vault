@@ -9,7 +9,7 @@ complexity: intermediate
 domain: Training
 sources: ["[[sources/llm-reasoning-ability]]"]
 related:
-  - "belongs_to::[[domains/training]]"
+  - "belongs_to::[[domains/Training]]"
   - "produced_by::[[sources/llm-reasoning-ability]]"
   - "applied_in::[[concepts/sft]]"
   - "applied_in::[[concepts/process-reward-model]]"
@@ -20,7 +20,7 @@ related:
 
 ## 🔗 关系链接
 
-- belongs_to: [[domains/training]]
+- belongs_to: [[domains/Training]]
 - produced_by: [[sources/llm-reasoning-ability]]
 - applied_in: [[concepts/sft]]
 - applied_in: [[concepts/process-reward-model]]

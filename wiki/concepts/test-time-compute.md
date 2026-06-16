@@ -9,7 +9,7 @@ complexity: advanced
 domain: Inference
 sources: ["[[sources/llm-reasoning-ability]]"]
 related:
-  - "belongs_to::[[domains/inference]]"
+  - "belongs_to::[[domains/Inference]]"
   - "depends_on::[[concepts/chain-of-thought]]"
   - "produced_by::[[sources/llm-reasoning-ability]]"
 ---
@@ -18,7 +18,7 @@ related:
 
 ## 🔗 关系链接
 
-- belongs_to: [[domains/inference]]
+- belongs_to: [[domains/Inference]]
 - depends_on: [[concepts/chain-of-thought]]
 - produced_by: [[sources/llm-reasoning-ability]]
 

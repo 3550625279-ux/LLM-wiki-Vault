@@ -9,7 +9,7 @@ complexity: advanced
 domain: Alignment
 sources: ["[[sources/llm-reasoning-ability]]"]
 related:
-  - "belongs_to::[[domains/alignment]]"
+  - "belongs_to::[[domains/Alignment]]"
   - "extends::[[concepts/post-training]]"
   - "depends_on::[[concepts/sft]]"
   - "produced_by::[[sources/llm-reasoning-ability]]"
@@ -20,7 +20,7 @@ related:
 
 ## 🔗 关系链接
 
-- belongs_to: [[domains/alignment]]
+- belongs_to: [[domains/Alignment]]
 - extends: [[concepts/post-training]]
 - depends_on: [[concepts/sft]]
 - produced_by: [[sources/llm-reasoning-ability]]

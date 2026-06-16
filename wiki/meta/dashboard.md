@@ -9,9 +9,9 @@
 ```
 系统版本:   AI Vault v2.0
 初始化:     2026-06-13
-最近会话:   2026-06-16 (LLM推理能力后训练技术栈 ingest)
-健康状态:   🟢 活跃，6 次 ingest + 1 次修复完成
-总节点数:   58 (concept: 38, source: 7, insight: 5, comparison: 2, question: 2, entity: 2, operation: 1)
+最近会话:   2026-06-16 (CNN·RNN·Transformer三大架构ingest)
+健康状态:   🟢 活跃，10 次 ingest + 1 次修复完成
+总节点数:   99 (concept: 68, source: 15, insight: 6, comparison: 2, question: 2, entity: 2, operation: 1)
 领域覆盖:   8/8 (Foundations, Architecture, Training, Alignment, Multimodal, Agents, Engineering, Inference) ✅ 全覆盖
 死链数:     待重跑 lint 确认
 孤儿页:     待重跑 lint 确认
@@ -32,6 +32,13 @@ Frontmatter 缺失: 待重跑 lint 确认
 | 🔴 高 | 系统健康修复 — 全层一致性校验 | lint | ✅ 已完成 |
 | 🟡 中 | MinerU MCP 调试 ingest | ingest | ✅ 已完成 |
 | 🟡 中 | 终端/PATH/Conda 基础 ingest | ingest | ✅ 已完成 |
+| 🟡 中 | 概率论基础概念批量创建 (6页) | ingest | ✅ 已完成 |
+| 🟡 中 | 参数估计概念批量创建 (6页) | ingest | ✅ 已完成 |
+| 🟡 中 | 样本向量几何五件套批量创建 (5页) | ingest | ✅ 已完成 |
+| 🟡 中 | CLT归一化六件套批量创建 (6页) | ingest | ✅ 已完成 |
+| 🟡 中 | 信息论四件套批量创建 (4页) | ingest | ✅ 已完成 |
+| 🟡 中 | 概率论·统计·信息论大规模ingest (27页concept + 5页source) | ingest | ✅ 已完成 |
+| 🟡 中 | CNN·RNN·Transformer三大架构ingest (13页concept + 1页insight + 3页source) | ingest | ✅ 已完成 |
 | 🟡 中 | 首次 `align all` 生成基线报告 | align  | ⬜ 待执行 |
 | 🟡 中 | 首次 `review` 测试记忆效果    | review | ⬜ 待执行 |
 | 🟢 低 | 激活 mcpvault（BM25检索升级） | 配置     | ⬜ 待执行 |
@@ -78,7 +85,7 @@ Frontmatter 缺失: 待重跑 lint 确认
 
 ```
 6月目标:
-  ✅ 总节点数 > 20 (当前: 43)
+  ✅ 总节点数 > 20 (当前: 82) ✅ 远超目标
   □ Architecture 领域 mature 节点 ≥ 5 (当前: 0 mature, 2 seed)
   □ 完成 1次 align all
   □ 完成 3次 review
@@ -88,4 +95,4 @@ Frontmatter 缺失: 待重跑 lint 确认
 
 ---
 
-*AI Vault v2.0 | dashboard | 2026-06-16 | 自动更新 by ingest*
+*AI Vault v2.0 | dashboard | 2026-06-16 | 自动更新 by 样本向量几何五件套批量创建*

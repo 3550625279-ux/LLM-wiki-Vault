@@ -9,7 +9,7 @@ complexity: intermediate
 domain: Alignment
 sources: ["[[sources/llm-reasoning-ability]]"]
 related:
-  - "belongs_to::[[domains/alignment]]"
+  - "belongs_to::[[domains/Alignment]]"
   - "depends_on::[[concepts/grpo]]"
   - "produced_by::[[sources/llm-reasoning-ability]]"
   - "applied_in::[[concepts/rlhf]]"
@@ -19,7 +19,7 @@ related:
 
 ## 🔗 关系链接
 
-- belongs_to: [[domains/alignment]]
+- belongs_to: [[domains/Alignment]]
 - depends_on: [[concepts/grpo]]
 - produced_by: [[sources/llm-reasoning-ability]]
 - applied_in: [[concepts/rlhf]]

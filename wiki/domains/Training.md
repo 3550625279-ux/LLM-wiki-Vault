@@ -3,7 +3,7 @@ title: "Training — 训练方法论"
 type: domain
 status: seed
 domain: Training
-tags: [pretraining, finetuning, rlhf, dpo, lora, scaling-laws, data-engineering]
+tags: [pretraining, finetuning, rlhf, dpo, lora, scaling-laws, data-engineering, rnn, bptt, gradient-clipping]
 created: 2026-06-13
 updated: 2026-06-16
 confidence: high
@@ -70,6 +70,11 @@ Training
 - [x] [[concepts/data-flywheel]] — 数据飞轮：RL反哺SFT的迭代循环 | status:seed
 - [x] [[concepts/aha-moment]] — Aha Moment：纯RL中推理能力涌现 | status:seed
 - [x] [[operations/sft-cot-data-pipeline]] — CoT SFT数据四条生产线 | status:seed
+- [x] [[concepts/backpropagation-through-time]] — BPTT 时间反向传播 | status:seed ✅ NEW
+- [x] [[concepts/gradient-clipping]] — 梯度裁剪 | status:seed ✅ NEW
+- [x] [[concepts/teacher-forcing]] — Teacher Forcing 训练技巧 | status:seed ✅ NEW
+- [x] [[concepts/perplexity]] — 困惑度评估指标 | status:seed ✅ NEW
+- [x] [[insights/rnn-hyperparameter-analysis]] — RNN 调参四要素 | status:seed ✅ NEW
 
 **`contains::` 边（域 → 节点）：**
 - `contains::` [[concepts/lora]]
@@ -84,6 +89,10 @@ Training
 - `contains::` [[concepts/grpo]]
 - `contains::` [[concepts/data-flywheel]]
 - `contains::` [[concepts/aha-moment]]
+- `contains::` [[concepts/backpropagation-through-time]]
+- `contains::` [[concepts/gradient-clipping]]
+- `contains::` [[concepts/teacher-forcing]]
+- `contains::` [[concepts/perplexity]]
 
 ## 🔴 关键缺口
 
@@ -126,8 +135,9 @@ Training
 ## 📊 领域统计
 
 ```
-concept 节点: 11 (目标: 14+)
+concept 节点: 15 (目标: 14+) ✅ 已达标
 operation 节点: 1
+insight 节点:  1
 entity 节点:  0 (目标: 10+)
 maturity:    developing
 ```

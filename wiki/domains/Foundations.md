@@ -5,7 +5,7 @@ status: seed
 domain: Foundations
 tags: [math, probability, optimization, information-theory]
 created: 2026-06-13
-updated: 2026-06-14
+updated: 2026-06-16
 confidence: high
 ---
 
@@ -57,19 +57,70 @@ Foundations
 
 - [x] [[concepts/hyperbolic-geometry]] — 双曲几何基础（Lorentz/Poincaré 模型） | status:seed
 - [x] [[concepts/monte-carlo-dropout]] — Monte Carlo Dropout 不确定性估计 | status:seed
+- [x] [[concepts/sample-space]] — 样本空间与事件 | status:seed
+- [x] [[concepts/random-variable]] — 随机变量 | status:seed
+- [x] [[concepts/pushforward-measure]] — 前推测度 | status:seed
+- [x] [[concepts/random-vector]] — 随机向量 | status:seed
+- [x] [[concepts/covariance]] — 协方差 | status:seed
+- [x] [[concepts/moment]] — 矩与高阶统计量 | status:seed
+- [x] [[concepts/information-entropy]] — 信息熵（香农熵与自信息） | status:seed
+- [x] [[concepts/cross-entropy-loss]] — 交叉熵与深度学习损失函数 | status:seed
+- [x] [[concepts/kl-divergence]] — KL散度（相对熵） | status:seed
+- [x] [[concepts/sgd-noise-generalization]] — SGD噪声与泛化 | status:seed
+- [x] [[concepts/point-estimation]] — 点估计：用一个数值估计未知参数 | status:seed
+- [x] [[concepts/moment-estimation]] — 矩估计：样本矩估计总体矩 | status:seed
+- [x] [[concepts/mle]] — 极大似然估计（MLE） | status:seed
+- [x] [[concepts/order-statistics]] — 顺序统计量 | status:seed
+- [x] [[concepts/estimator-quality]] — 估计量评价：无偏性、有效性、相合性 | status:seed
+- [x] [[concepts/interval-estimation]] — 区间估计与枢轴量 | status:seed
+- [x] [[concepts/sample-vector]] — 样本向量：N次实验数据打包成高维空间中的点 | status:seed
+- [x] [[concepts/mean-as-projection]] — 均值的几何本质：正交投影 | status:seed
+- [x] [[concepts/centering-decoupling]] — 中心化：正交分解与信息解耦 | status:seed
+- [x] [[concepts/variance-geometric]] — 方差的几何意义 | status:seed
+- [x] [[concepts/degrees-of-freedom]] — 自由度与贝塞尔校正 | status:seed
+- [x] [[concepts/central-limit-theorem]] — 中心极限定理（CLT） | status:seed
+- [x] [[concepts/sqrt-n-origin]] — √n的来源：方差可加性 | status:seed
+- [x] [[concepts/standard-deviation-l2]] — 标准差与L2范数 | status:seed
+- [x] [[concepts/batch-normalization]] — BatchNorm：批量归一化 | status:seed
+- [x] [[concepts/layer-normalization]] — LayerNorm：层归一化 | status:seed
+- [x] [[concepts/transformer-sqrt-d]] — Transformer的√d缩放 | status:seed
 
 **`contains::` 边（域 → 节点）：**
 - `contains::` [[concepts/hyperbolic-geometry]]
 - `contains::` [[concepts/monte-carlo-dropout]]
+- `contains::` [[concepts/sample-space]]
+- `contains::` [[concepts/random-variable]]
+- `contains::` [[concepts/pushforward-measure]]
+- `contains::` [[concepts/random-vector]]
+- `contains::` [[concepts/covariance]]
+- `contains::` [[concepts/moment]]
+- `contains::` [[concepts/point-estimation]]
+- `contains::` [[concepts/moment-estimation]]
+- `contains::` [[concepts/mle]]
+- `contains::` [[concepts/order-statistics]]
+- `contains::` [[concepts/estimator-quality]]
+- `contains::` [[concepts/interval-estimation]]
+- `contains::` [[concepts/information-entropy]]
+- `contains::` [[concepts/cross-entropy-loss]]
+- `contains::` [[concepts/kl-divergence]]
+- `contains::` [[concepts/sgd-noise-generalization]]
+- `contains::` [[concepts/sample-vector]]
+- `contains::` [[concepts/mean-as-projection]]
+- `contains::` [[concepts/centering-decoupling]]
+- `contains::` [[concepts/variance-geometric]]
+- `contains::` [[concepts/degrees-of-freedom]]
+- `contains::` [[concepts/central-limit-theorem]]
+- `contains::` [[concepts/sqrt-n-origin]]
+- `contains::` [[concepts/standard-deviation-l2]]
+- `contains::` [[concepts/batch-normalization]]
+- `contains::` [[concepts/layer-normalization]]
+- `contains::` [[concepts/transformer-sqrt-d]]
 
 ## 🔴 关键缺口
 
-- `cross-entropy-loss` — 几乎所有训练都用到
 - `gradient-descent` — 优化基础
-- `kl-divergence` — RLHF/对齐中大量使用
 - `svd` — SVD 与低秩近似（理解 LoRA 需要）
 - `adam-optimizer` — Adam 优化器原理
-- `entropy` — 熵的定义与直觉
 - `bayes-theorem` — 贝叶斯定理
 
 ---
@@ -102,7 +153,8 @@ Foundations
 ## 📊 领域统计
 
 ```
-concept 节点: 2 (目标: 15+)
+concept 节点: 29 (目标: 15+) ✅ 超额完成
 entity 节点:  0
+source 节点:  5 (概率论系列)
 maturity:    seed
 ```

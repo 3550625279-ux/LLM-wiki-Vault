@@ -9,7 +9,7 @@ complexity: intermediate
 domain: Training
 sources: ["[[sources/llm-reasoning-ability]]"]
 related:
-  - "belongs_to::[[domains/training]]"
+  - "belongs_to::[[domains/Training]]"
   - "extends::[[concepts/lora]]"
   - "produced_by::[[sources/llm-reasoning-ability]]"
 ---
@@ -18,7 +18,7 @@ related:
 
 ## 🔗 关系链接
 
-- belongs_to: [[domains/training]]
+- belongs_to: [[domains/Training]]
 - extends: [[concepts/lora]]
 - produced_by: [[sources/llm-reasoning-ability]]
 

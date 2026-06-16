@@ -12,7 +12,7 @@ related:
   - "belongs_to::[[domains/Multimodal]]"
   - "belongs_to::[[domains/Architecture]]"
   - "depends_on::[[concepts/cross-video-bank]]"
-  - "extends::[[concepts/transformer-attention]]"
+  - "extends::[[concepts/attention-mechanism]]"
   - "part_of::[[concepts/multimodal-intent-recognition]]"
   - "contrasts::[[comparisons/cagc-vs-baselines]]"
   - "produced_by::[[sources/cagc-cvpr2024]]"
@@ -24,7 +24,7 @@ thumbnail: ""
 ## 🔗 关系链接
 
 - belongs_to: [[domains/Multimodal]] | [[domains/Architecture]]
-- depends_on: [[concepts/transformer-attention]]
+- depends_on: [[concepts/attention-mechanism]]
 - contrasts: [[comparisons/cagc-vs-baselines]]
 - produced_by: [[sources/cagc-cvpr2024]]
 
