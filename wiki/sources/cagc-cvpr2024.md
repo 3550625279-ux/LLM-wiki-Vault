@@ -21,6 +21,14 @@ thumbnail: ""
 
 # CAGC: Contextual Augmented Global Contrast for Multimodal Intent Recognition
 
+## 🔗 关系链接
+
+- spawns: [[concepts/context-augmented-transformer]] | [[concepts/global-context-guided-contrastive-learning]] | [[concepts/cross-video-bank]] | [[concepts/multimodal-intent-recognition]] | [[comparisons/cagc-vs-baselines]]
+- extends: [[concepts/contrastive-learning]]
+- belongs_to: [[domains/Multimodal]]
+
+---
+
 > CVPR 2024 | Kaili Sun, Zhiwen Xie, Mang Ye, Huyin Zhang
 > Wuhan University & Central China Normal University
 

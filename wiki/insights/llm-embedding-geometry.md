@@ -17,6 +17,13 @@ related:
 
 # 洞察：LLM 嵌入空间具有内在双曲结构
 
+## 🔗 关系链接
+
+- analyzes: [[concepts/hyperbolic-geometry-llm]]
+- motivates: [[concepts/hyplora]]
+- contrasts: [[concepts/lora]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
 ---
 
 ## 核心观察

@@ -18,6 +18,14 @@ related:
 
 # Claude Code 配置文件层级
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Engineering]]
+- applied_in: [[concepts/mcp-protocol]]
+- produced_by: [[sources/claude-code-config-and-mcp-flow]]
+
+---
+
 > Claude Code 使用 7 层配置文件体系，优先级从高到低覆盖。
 
 ---

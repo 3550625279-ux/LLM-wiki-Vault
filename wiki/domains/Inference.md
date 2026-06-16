@@ -5,7 +5,7 @@ status: seed
 domain: Inference
 tags: [quantization, distillation, kv-cache, speculative-decoding, vllm]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-16
 confidence: high
 ---
 
@@ -50,10 +50,10 @@ Inference
 
 ## 🧮 已有节点
 
-*(暂无已创建节点)*
+- [x] [[concepts/test-time-compute]] — 推理时计算扩展：Self-Consistency / Best-of-N / MCTS | status:seed
 
-**`contains::` 边：**
-*(暂无)*
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/test-time-compute]]
 
 ## 🔴 关键缺口
 
@@ -92,7 +92,7 @@ Inference
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 10+)
+concept 节点: 1 (目标: 10+)
 entity 节点:  0 (目标: 6+)
 maturity:    seed
 ```

@@ -9,7 +9,8 @@
 ## 按领域分组
 
 ### [[domains/Training|Training]] & Fine-tuning
-> *待填充*
+
+- [[operations/sft-cot-data-pipeline]] — CoT SFT数据四条生产线（人工标注/教师蒸馏/程序合成/Rejection Sampling） | status:seed
 
 **高优先级待创建**:
 - `finetune-llama-lora` — 用 LoRA 微调 LLaMA 的完整 SOP
@@ -46,7 +47,7 @@
 ## 按状态分组
 
 ### 🌱 seed
-> *无*
+- [[operations/sft-cot-data-pipeline]] — CoT SFT数据四条生产线
 
 ### ✅ mature (可直接使用)
 > *无*
@@ -67,7 +68,7 @@
 ## 统计
 
 ```
-总 operation 节点: 0
+总 operation 节点: 1
 目标总数:          30+
-上次更新:          2026-06-13
+上次更新:          2026-06-16
 ```

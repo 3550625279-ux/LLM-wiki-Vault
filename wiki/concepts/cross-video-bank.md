@@ -21,6 +21,15 @@ thumbnail: ""
 
 # Cross-video Bank 跨视频记忆库
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Multimodal]]
+- depends_on: [[concepts/mini-batch-contrastive-learning]]
+- contrasts: [[comparisons/cagc-vs-baselines]]
+- produced_by: [[sources/cagc-cvpr2024]]
+
+---
+
 ## 定义
 
 Cross-video Bank 是 CAGC 方法中的核心组件，用于存储每个视频对应的**高质量跨视频集合**。通过两阶段构建（场景相似度筛选 + 意图一致性去噪），确保跨视频源的质量，为后续的上下文增强和全局对比学习提供可靠的数据基础。

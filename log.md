@@ -18,6 +18,25 @@
 - vault: /d/Workspace/AI_Learning/AI Vault
 - hot_file_exists: yes
 
+## [2026-06-15 23:15] ingest | MinerU MCP 调试会话
+- type: conversation transcript (debugging session)
+- domain: Engineering
+- pages_created: 4
+  - wiki/concepts/inference-engine.md
+  - wiki/concepts/cuda-and-dll.md
+  - wiki/insights/when-import-succeeds-but-runtime-fails.md
+  - wiki/sources/mineru-mcp-debugging-session.md
+- pages_updated: 7
+  - wiki/domains/Engineering.md
+  - wiki/concepts-idx.md
+  - wiki/insights/insights-idx.md
+  - wiki/concepts/mcp-protocol.md
+  - wiki/overview.md
+  - wiki/hot.md
+  - wiki/meta/SYSTEM-STATUS.md
+- key_concepts: [推理引擎, CUDA/DLL, import≠能运行, MCP stdio 脆弱性, 僵尸进程]
+- contradictions: 无
+
 ## [2026-06-13 18:50] lint | Wiki 首次健康检查
 - action: lint
 - pages_scanned: 22
@@ -498,6 +517,137 @@
 - pages_updated: 7 (脚本+配置文件)
 
 ## [2026-06-14 14:30] session-end | 会话封印
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-15 23:42] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 00:00] ingest | 终端、PATH 与 Conda 环境基础
+- type: source (学习对话)
+- domain: Common Computer（通用计算机基础，独立于 AI 领域）
+- pages_created: 8
+  - wiki/concepts/terminal-and-shell.md — 终端与 Shell 基础
+  - wiki/concepts/npm-and-npx.md — npm 与 npx 包管理
+  - wiki/concepts/path-environment-variable.md — PATH 环境变量
+  - wiki/concepts/process-environment-inheritance.md — 进程环境变量继承链
+  - wiki/concepts/windows-registry-env.md — Windows 注册表与环境变量存储
+  - wiki/concepts/conda-environments.md — Conda 环境管理与激活机制
+  - wiki/insights/path-search-priority-is-isolation.md — PATH 抢占 = 环境隔离
+  - wiki/sources/terminal-and-environment-basics.md — 来源摘要页
+- pages_updated: 6
+  - wiki/concepts-idx.md — 新增"通用计算基础"分区 + 统计更新 (35→43)
+  - wiki/insights/insights-idx.md — 新增洞察条目 (4→5)
+  - wiki/overview.md — 总节点数更新 (35→43)
+  - wiki/meta/dashboard.md — 系统状态 + 待办更新
+  - wiki/meta/SYSTEM-STATUS.md — 节点数更新
+  - wiki/hot.md — 学习重心 + 活跃节点 + 统计快照更新
+- key_concepts: [终端, Shell, npm, npx, PATH, 进程继承, 注册表, conda环境, PowerShell Profile, REG_EXPAND_SZ]
+- contradictions: 无
+- raw_file: raw/conversations/terminal-and-environment-basics.md
+- note: 新建 domain "Common Computer"，归属通用计算机基础
+
+## [2026-06-16 14:16] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 14:23] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 14:26] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 14:48] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:03] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:11] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:15] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:17] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:21] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:40] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:41] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:30] ingest | LLM是如何获得推理能力的？
+- type: 技术科普文章（小红书番茄算法日记，16张图文）
+- domain: Training（主）+ Alignment + Inference
+- source: [[sources/llm-reasoning-ability]]
+- raw_path: raw/articles/llm-reasoning-ability/
+- pages_created: 15
+  - source: 1 (llm-reasoning-ability)
+  - concept: 10 (post-training, sft, chain-of-thought, rlhf, process-reward-model, grpo, reward-hacking, test-time-compute, data-flywheel, aha-moment)
+  - entity: 2 (deepseek-r1, deepseek-r1-zero)
+  - comparison: 1 (orm-vs-prm)
+  - operation: 1 (sft-cot-data-pipeline)
+- pages_updated: 10
+  - domains/Training.md — 新增 10 个 contains 边
+  - domains/Alignment.md — 新增 2 个 contains 边
+  - domains/Inference.md — 新增 1 个 contains 边
+  - domains/domains-idx.md — 新增 Common Computer + 节点数更新
+  - concepts-idx.md — 新增 13 个节点索引 + 统计更新
+  - entities/entities-idx.md — 新增 2 个实体
+  - operations/operations-idx.md — 新增 1 个操作
+  - overview.md — 领域节点数 + 总节点数更新
+  - meta/dashboard.md — 系统状态更新
+  - meta/SYSTEM-STATUS.md — 知识库指标更新
+  - hot.md — 学习重心切换
+- key_concepts: [后训练, SFT, CoT, RLHF, PRM, GRPO, Reward Hacking, Aha Moment, Test-Time Compute, 数据飞轮]
+- contradictions: 无
+- note: 首次覆盖 Alignment 和 Inference 领域，领域覆盖达 9/9 全覆盖
+
+## [2026-06-16 15:43] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:45] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 15:50] session-end | Seal
+- hook: Stop
+- vault: /d/Workspace/AI_Learning/AI Vault
+- hot_file_exists: yes
+
+## [2026-06-16 16:05] session-end | Seal
 - hook: Stop
 - vault: /d/Workspace/AI_Learning/AI Vault
 - hot_file_exists: yes

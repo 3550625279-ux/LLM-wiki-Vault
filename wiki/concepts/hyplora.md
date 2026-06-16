@@ -20,6 +20,14 @@ thumbnail: ""
 
 # HypLoRA — 双曲低秩适配
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Training]]
+- extends: [[concepts/lora]] | [[concepts/hyperbolic-geometry]] | [[concepts/hyperbolic-geometry-llm]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
+---
+
 > **一句话**：直接在 Lorentz 双曲流形上执行低秩适配，绕过切空间的 exp-log 抵消问题，利用 LLM 嵌入的天然层次结构。
 
 ---

@@ -18,6 +18,14 @@ thumbnail: ""
 
 # 混合系统胜过纯 LLM
 
+## 🔗 关系链接
+
+- extends: [[concepts/uncertainty-routing]] | [[concepts/setfit]]
+- corrects: [[insights/llm-embedding-geometry]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 核心洞察
 
 **不要追求单一"最好"的模型，而是设计一个"最聪明"的系统。**

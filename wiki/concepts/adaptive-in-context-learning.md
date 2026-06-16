@@ -19,6 +19,16 @@ thumbnail: ""
 
 # 自适应上下文学习（Adaptive In-Context Learning）
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Agents]]
+- extends: [[concepts/intent-detection-tods]]
+- part_of: [[concepts/uncertainty-routing]]
+- contrasts: [[concepts/setfit]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 定义
 
 自适应上下文学习是一种 LLM 推理策略：根据当前查询，从训练数据中动态检索最相关的示例作为 ICL 示例嵌入 prompt 中，引导 LLM 完成任务。相比固定 ICL 示例，"自适应"体现在**每个查询的 ICL 示例不同**。

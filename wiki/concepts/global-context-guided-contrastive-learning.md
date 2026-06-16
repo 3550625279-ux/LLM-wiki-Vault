@@ -21,6 +21,15 @@ thumbnail: ""
 
 # GCCL: Global Context-guided Contrastive Learning
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Multimodal]]
+- depends_on: [[concepts/multimodal-intent-recognition]] | [[concepts/mini-batch-contrastive-learning]]
+- contrasts: [[comparisons/cagc-vs-baselines]]
+- produced_by: [[sources/cagc-cvpr2024]]
+
+---
+
 ## 定义
 
 GCCL 是 CAGC 方法中的全局上下文引导对比学习方案。与传统 mini-batch 内的局部对比不同，GCCL 利用整个训练数据集的**全局上下文特征**作为监督信号，增强跨模态对齐，减少模态差异。

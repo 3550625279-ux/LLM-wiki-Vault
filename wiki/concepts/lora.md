@@ -19,6 +19,16 @@ thumbnail: ""
 
 # LoRA — 低秩适配
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Training]]
+- extended_by: [[concepts/hyplora]]
+- depends_on: [[concepts/svd]]
+- applied_in: [[concepts/qlora]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
+---
+
 > **一句话**：通过注入可训练的低秩矩阵 ΔW = BA 来微调大模型，仅训练极少量参数即可达到全量微调的效果。
 
 ---

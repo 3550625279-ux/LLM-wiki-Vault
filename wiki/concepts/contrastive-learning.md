@@ -18,6 +18,14 @@ thumbnail: ""
 
 # 对比学习 (Contrastive Learning)
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Training]]
+- applied_in: [[concepts/global-context-guided-contrastive-learning]] | [[concepts/cross-video-bank]]
+- extended_by: [[concepts/global-context-guided-contrastive-learning]]
+
+---
+
 > **一句话**：通过拉近正样本对、推远负样本对来学习表示空间，是自监督和多模态对齐的核心训练范式。
 
 ---

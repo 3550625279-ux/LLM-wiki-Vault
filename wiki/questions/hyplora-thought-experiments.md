@@ -17,6 +17,13 @@ related:
 
 # HypLoRA 思想实验与反事实推演
 
+## 🔗 关系链接
+
+- extends: [[concepts/hyplora]] | [[insights/hyplora-learning-insights]] | [[questions/hyplora-research-directions]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
+---
+
 > 通过反事实推演检验论文的核心假设，识别可能的理论和实践漏洞。
 
 ---

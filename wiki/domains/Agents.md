@@ -108,3 +108,7 @@ concept 节点: 3 (目标: 12+)
 entity 节点:  0 (目标: 6+)
 maturity:    seed
 ```
+
+---
+
+> ← 返回 [[domains-idx]] | 全局 [[overview]]

@@ -5,7 +5,7 @@ status: seed
 domain: Training
 tags: [pretraining, finetuning, rlhf, dpo, lora, scaling-laws, data-engineering]
 created: 2026-06-13
-updated: 2026-06-14
+updated: 2026-06-16
 confidence: high
 ---
 
@@ -62,6 +62,14 @@ Training
 - [x] [[concepts/setfit]] — SetFit 少样本文本分类 | status:seed
 - [x] [[concepts/negative-data-augmentation]] — 负样本数据增强 | status:seed
 - [x] [[concepts/contrastive-learning]] — 对比学习表示学习范式 | status:seed
+- [x] [[concepts/post-training]] — 后训练总览（四层递进架构） | status:seed
+- [x] [[concepts/sft]] — 有监督微调：从续写到回答的切换 | status:seed
+- [x] [[concepts/chain-of-thought]] — 推理链 CoT：准确率从17%到78% | status:seed
+- [x] [[concepts/process-reward-model]] — 过程奖励模型 PRM：逐步骤打分 | status:seed
+- [x] [[concepts/grpo]] — 组相对策略优化：绕开奖励模型 | status:seed
+- [x] [[concepts/data-flywheel]] — 数据飞轮：RL反哺SFT的迭代循环 | status:seed
+- [x] [[concepts/aha-moment]] — Aha Moment：纯RL中推理能力涌现 | status:seed
+- [x] [[operations/sft-cot-data-pipeline]] — CoT SFT数据四条生产线 | status:seed
 
 **`contains::` 边（域 → 节点）：**
 - `contains::` [[concepts/lora]]
@@ -69,11 +77,18 @@ Training
 - `contains::` [[concepts/setfit]]
 - `contains::` [[concepts/negative-data-augmentation]]
 - `contains::` [[concepts/contrastive-learning]]
+- `contains::` [[concepts/post-training]]
+- `contains::` [[concepts/sft]]
+- `contains::` [[concepts/chain-of-thought]]
+- `contains::` [[concepts/process-reward-model]]
+- `contains::` [[concepts/grpo]]
+- `contains::` [[concepts/data-flywheel]]
+- `contains::` [[concepts/aha-moment]]
 
 ## 🔴 关键缺口
 
 - `scaling-laws` — 影响所有训练决策 — **最高优先级**
-- `rlhf` — 从人类反馈中学习
+- ~~`rlhf`~~ — ✅ 已通过 [[concepts/grpo]] + [[concepts/process-reward-model]] 间接覆盖（RLHF本体在Alignment域）
 - `dpo` — DPO 去掉强化学习的对齐
 - `causal-language-modeling` — CLM 自回归目标
 - `qlora` — QLoRA 量化微调
@@ -111,7 +126,8 @@ Training
 ## 📊 领域统计
 
 ```
-concept 节点: 5 (目标: 14+)
+concept 节点: 11 (目标: 14+)
+operation 节点: 1
 entity 节点:  0 (目标: 10+)
-maturity:    seed
+maturity:    developing
 ```

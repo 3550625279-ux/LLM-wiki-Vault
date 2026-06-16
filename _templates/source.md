@@ -13,11 +13,21 @@ updated: <% tp.date.now("YYYY-MM-DD") %>
 tags:
   - source
 status: seed
+domain: ""
 related: []
 sources: []
+raw_path: ""
+thumbnail: ""
 ---
 
 # <% tp.file.title %>
+
+## 🔗 关系链接
+
+- spawns: [[concepts/诞生的概念]]
+- belongs_to: [[domains/所属域]]
+
+---
 
 ## Summary
 

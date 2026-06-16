@@ -19,6 +19,14 @@ thumbnail: ""
 
 # LLM 嵌入的双曲几何结构
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Architecture]]
+- extends: [[concepts/lora]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
+---
+
 > **一句话**：LLM 的 token 嵌入天然具有双曲（树状）层次结构，高频词聚集在原点附近，低频词向外扩散，形成幂律分布。
 
 ---

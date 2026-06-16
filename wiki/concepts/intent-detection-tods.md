@@ -21,6 +21,16 @@ thumbnail: ""
 
 # 意图检测（Intent Detection for TODS）
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Agents]]
+- part_of: [[concepts/out-of-scope-detection]]
+- extends: [[concepts/multimodal-intent-recognition]]
+- applied_in: [[concepts/setfit]] | [[concepts/adaptive-in-context-learning]] | [[concepts/uncertainty-routing]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 定义
 
 意图检测是任务导向对话系统（TODS）自然语言理解层的核心组件，负责将用户在每个对话轮次的查询映射到系统可执行的动作。

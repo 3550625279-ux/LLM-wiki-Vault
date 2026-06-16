@@ -5,7 +5,7 @@ status: seed
 domain: Engineering
 tags: [mlops, evaluation, data-engineering, monitoring, prompt-engineering]
 created: 2026-06-13
-updated: 2026-06-14
+updated: 2026-06-15
 confidence: high
 ---
 
@@ -53,6 +53,12 @@ Engineering
     ├── 模型选择策略 (大/小模型路由)
     ├── Caching 策略
     └── Batch 处理
+
+├── 推理引擎与部署基础设施
+│   ├── 推理引擎选型 (transformers/lmdeploy/onnxruntime)
+│   ├── CUDA/DLL 依赖管理
+│   ├── 环境兼容性调试
+│   └── MCP 工具链故障排查
 ```
 
 ---
@@ -63,12 +69,22 @@ Engineering
 - [x] [[concepts/claude-code-configuration]] — Claude Code 7层配置文件体系 | status:seed
 - [x] [[concepts/mcp-tool-calling-flow]] — MCP 工具调用 5 阶段全链路 | status:seed
 - [x] [[concepts/uncertainty-routing]] — 不确定性路由：混合系统设计模式 | status:seed
+- [x] [[concepts/inference-engine]] — 推理引擎：AI 模型的执行引擎 | status:seed
+- [x] [[concepts/cuda-and-dll]] — CUDA 与 DLL：GPU 计算的基础设施 | status:seed
+
+**来源节点：**
+- [x] [[sources/mineru-mcp-debugging-session]] — MinerU MCP 调试会话 | status:developing
+
+**洞察节点：**
+- [x] [[insights/when-import-succeeds-but-runtime-fails]] — import 成功 ≠ 能运行 | status:seed
 
 **`contains::` 边（域 → 节点）：**
 - `contains::` [[concepts/mcp-protocol]]
 - `contains::` [[concepts/claude-code-configuration]]
 - `contains::` [[concepts/mcp-tool-calling-flow]]
 - `contains::` [[concepts/uncertainty-routing]]
+- `contains::` [[concepts/inference-engine]]
+- `contains::` [[concepts/cuda-and-dll]]
 
 ## 🔴 关键缺口
 
@@ -109,7 +125,9 @@ Engineering
 ## 📊 领域统计
 
 ```
-concept 节点: 4 (目标: 12+)
+concept 节点: 6 (目标: 12+)
 entity 节点:  0 (目标: 8+)
+insight 节点: 1
+source 节点:  1
 maturity:    seed
 ```

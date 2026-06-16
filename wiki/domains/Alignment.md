@@ -5,7 +5,7 @@ status: seed
 domain: Alignment
 tags: [alignment, safety, interpretability, red-teaming, value-alignment]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-16
 confidence: medium
 ---
 
@@ -56,16 +56,18 @@ Alignment
 
 ## 🧮 已有节点
 
-*(暂无已创建节点)*
+- [x] [[concepts/rlhf]] — 基于人类反馈的强化学习（SFT→RM→PPO三阶段） | status:seed
+- [x] [[concepts/reward-hacking]] — 奖励Hacking：模型利用奖励信号漏洞 | status:seed
 
-**`contains::` 边：**
-*(暂无)*
+**`contains::` 边（域 → 节点）：**
+- `contains::` [[concepts/rlhf]]
+- `contains::` [[concepts/reward-hacking]]
 
 ## 🔴 关键缺口
 
 - `alignment-definition` — 对齐到底对齐什么？
 - `goodharts-law` — 指标优化导致指标失效
-- `reward-hacking` — 强化学习中的目标偏离
+- ~~`reward-hacking`~~ — ✅ 已创建 [[concepts/reward-hacking]]
 - `mechanistic-interpretability` — 逆向工程神经网络
 - `rlhf` — 从人类反馈中学习（跨 Training 域）
 - `dpo` — DPO 对齐（跨 Training 域）
@@ -103,7 +105,7 @@ Alignment
 ## 📊 领域统计
 
 ```
-concept 节点: 0 (目标: 12+)
+concept 节点: 2 (目标: 12+)
 entity 节点:  0 (目标: 6+)
 矛盾对:       5 个已预识别
 maturity:    seed

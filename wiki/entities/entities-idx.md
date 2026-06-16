@@ -28,7 +28,8 @@
 
 ## 模型 (Models)
 
-> *待填充*
+- [[entities/deepseek-r1]] — DeepSeek-R1: GRPO验证推理能力可纯RL获得 | 2025 | status:seed
+- [[entities/deepseek-r1-zero]] — DeepSeek-R1-Zero: 无SFT纯RL训练涌现推理能力 | 2025 | status:seed
 
 **高优先级待创建**:
 - `gpt-series` — GPT-1/2/3/4 系列
@@ -82,11 +83,11 @@
 ## 统计
 
 ```
-总 entity 节点: 0 (独立 entity 页面尚未创建)
+总 entity 节点: 2 (独立 entity 页面已创建)
   论文:    0 (以 source 页面存在，索引 3 条)
-  模型:    0 (目标: 12+)
+  模型:    2 (DeepSeek-R1, DeepSeek-R1-Zero)
   作者:    0 (目标: 8+)
   数据集:  0 (索引 2 条，待创建页面)
   工具:    0 (目标: 6+)
-上次更新:  2026-06-14
+上次更新:  2026-06-16
 ```

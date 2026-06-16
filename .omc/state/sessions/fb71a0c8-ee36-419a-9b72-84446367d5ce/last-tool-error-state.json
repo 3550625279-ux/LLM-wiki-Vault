@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd \\\"D:\\\\Workspace\\\\AI_Learning\\\\AI Vault\\\" && rm -f \\\"2026-06-13.md\\\" && echo \\\"Deleted empty 2026-06-13.md\\\" && cp \\\"D:/UserData/Downloads/AI_Vault_v2.0 (1)/AI_Vault/.raw/articles/claude...",
-  "error": "Exit code 1\nDeleted empty 2026-06-13.md\ncp: cannot create regular file '.raw/articles/claude-code-config-and-mcp-flow.txt': No such file or directory",
-  "timestamp": "2026-06-13T12:49:04.074Z",
-  "retry_count": 1
-}

@@ -19,6 +19,15 @@ thumbnail: ""
 
 # 负面数据增强（Negative Data Augmentation）
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Training]]
+- improves: [[concepts/setfit]] | [[concepts/out-of-scope-detection]]
+- applied_in: [[concepts/intent-detection-tods]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 定义
 
 负面数据增强是一种通过生成"看似合理但实际上是域外"的训练样本来增强模型 OOS 检测能力的方法。核心思路：**破坏原始句子的关键词，使残缺版本成为 OOS 样本**。

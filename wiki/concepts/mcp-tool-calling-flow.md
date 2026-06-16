@@ -20,6 +20,15 @@ related:
 
 # MCP 工具调用完整流程
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Engineering]]
+- depends_on: [[concepts/mcp-protocol]] | [[concepts/claude-code-configuration]]
+- extends: [[concepts/mcp-protocol]]
+- produced_by: [[sources/claude-code-config-and-mcp-flow]]
+
+---
+
 > 从用户输入到结果返回的 5 阶段全链路。
 
 ![[mcp-tool-calling-flow.png]]

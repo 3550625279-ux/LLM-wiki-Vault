@@ -17,6 +17,14 @@ related:
 
 # HypLoRA 学习洞察：几何直觉与研究启发
 
+## 🔗 关系链接
+
+- extends: [[concepts/hyplora]] | [[insights/llm-embedding-geometry]]
+- motivates: [[questions/hyplora-research-directions]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
+---
+
 > 来源：个人学习笔记 [[raw/papers/hyperbolic-fine-tuning-llms/双曲微调的笔记输出.pdf]]
 
 ---

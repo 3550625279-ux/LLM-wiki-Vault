@@ -17,6 +17,14 @@ related:
 
 # HypLoRA 研究方向与开放问题
 
+## 🔗 关系链接
+
+- extends: [[concepts/hyplora]] | [[insights/hyplora-learning-insights]]
+- applied_in: [[concepts/lora]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
+---
+
 > 基于论文阅读后的深度思考，识别出 5 个有潜力的研究方向。
 
 ---

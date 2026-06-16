@@ -20,6 +20,14 @@ related:
 
 # Hyperbolic Fine-Tuning for Large Language Models
 
+## 🔗 关系链接
+
+- spawns: [[concepts/hyplora]] | [[concepts/hyperbolic-geometry-llm]] | [[insights/llm-embedding-geometry]] | [[insights/hyplora-learning-insights]] | [[questions/hyplora-thought-experiments]] | [[questions/hyplora-research-directions]]
+- extends: [[concepts/lora]]
+- belongs_to: [[domains/Training]]
+
+---
+
 > **来源**: NeurIPS 2025 | **PDF**: [[raw/papers/hyperbolic-fine-tuning-llms/paper.pdf]]
 > **作者**: Menglin Yang, Ram Samarth B B, Aosong Feng, Bo Xiong, Jiahong Liu, Irwin King, Rex Ying
 > **机构**: HKUST(GZ), Yale, Stanford, CUHK

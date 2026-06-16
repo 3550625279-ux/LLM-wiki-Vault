@@ -1,7 +1,7 @@
 ---
 type: meta
 title: "Domains Index — 领域导航"
-updated: 2026-06-14
+updated: 2026-06-16
 tags: [meta, index, domains]
 status: evergreen
 ---
@@ -18,12 +18,13 @@ status: evergreen
 |------|----------|--------|------|
 | [[Foundations]] | 为什么 AI 有效？ | 2 | seed |
 | [[Architecture]] | 模型怎么设计？ | 2 | developing |
-| [[Training]] | 模型怎么训练？ | 5 | seed |
-| [[Alignment]] | 模型怎么对齐人类？ | 0 | seed |
-| [[Inference]] | 模型怎么高效运行？ | 0 | seed |
+| [[Training]] | 模型怎么训练？ | 16 | developing |
+| [[Alignment]] | 模型怎么对齐人类？ | 2 | seed |
+| [[Inference]] | 模型怎么高效运行？ | 1 | seed |
 | [[Multimodal]] | 多种信息怎么融合？ | 5 | developing |
 | [[Agents]] | 模型怎么自主行动？ | 3 | seed |
 | [[Engineering]] | 怎么工程化落地？ | 4 | seed |
+| [[common-computer]] | 通用计算机基础设施 | 8 | seed |
 
 ---
 
@@ -39,7 +40,8 @@ wiki/domains/
 ├── Inference.md
 ├── Multimodal.md
 ├── Agents.md
-└── Engineering.md
+├── Engineering.md
+└── common-computer.md
 ```
 
 每个域页面包含：
@@ -55,9 +57,9 @@ wiki/domains/
 
 | 指标 | 值 |
 |------|-----|
-| 领域数 | 8/8 |
-| developing | 2 (Architecture, Multimodal) |
+| 领域数 | 9/9 |
+| developing | 3 (Architecture, Training, Multimodal) |
 | seed | 6 |
-| 总节点 | 21 |
+| 总节点 | 43 |
 
-*上次更新: 2026-06-14 | 系统健康修复*
+*上次更新: 2026-06-16 | LLM推理能力后训练技术栈 ingest*

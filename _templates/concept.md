@@ -10,9 +10,18 @@ sources: []
 related: []
 confidence: medium
 thumbnail: ""
+raw_path: ""
 ---
 
 # {{title}}
+
+## 🔗 关系链接
+
+- belongs_to: [[domains/{{domain}}]]
+- depends_on: [[前置概念]]
+- produced_by: [[sources/来源页]]
+
+---
 
 > **一句话定义**: （用一句话精确定义这个概念，不超过 30 字）
 

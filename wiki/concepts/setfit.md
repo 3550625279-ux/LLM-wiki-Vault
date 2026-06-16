@@ -20,6 +20,17 @@ thumbnail: ""
 
 # SetFit（Sentence Transformer Fine-Tuning）
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Training]]
+- extends: [[concepts/adaptive-in-context-learning]]
+- part_of: [[concepts/uncertainty-routing]]
+- applied_in: [[concepts/intent-detection-tods]]
+- contrasts: [[concepts/out-of-scope-detection]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 定义
 
 SetFit 是一种高效的少样本学习方法，通过对比微调句子转换器实现文本分类，无需提示模板或大量标注数据。由 Tunstall et al. (2022) 提出。

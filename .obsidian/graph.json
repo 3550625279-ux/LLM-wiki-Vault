@@ -39,7 +39,21 @@
       "query": "path:wiki/domains  ",
       "color": {
         "a": 1,
-        "rgb": 15468809
+        "rgb": 16711693
+      }
+    },
+    {
+      "query": "path:wiki/questions  ",
+      "color": {
+        "a": 1,
+        "rgb": 14810880
+      }
+    },
+    {
+      "query": "path:wiki/insights  ",
+      "color": {
+        "a": 1,
+        "rgb": 255
       }
     }
   ],
@@ -53,6 +67,6 @@
   "repelStrength": 20,
   "linkStrength": 1,
   "linkDistance": 120,
-  "scale": 0.6839995499314454,
+  "scale": 0.34799290075847666,
   "close": true
 }

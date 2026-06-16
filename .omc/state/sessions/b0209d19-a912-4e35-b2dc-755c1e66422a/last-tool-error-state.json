@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd \\\"D:\\\\Workspace\\\\AI_Learning\\\\AI Vault\\\" && powershell -Command \\\"Write-Host '=== wiki/meta/ ==='; Get-ChildItem wiki\\\\meta | Select-Object Name; Write-Host ''; Write-Host '=== wiki 1/m...",
-  "error": "Exit code 1\n=== wiki/meta/ ===\n\r\n\n=== wiki 1/meta/ ===\n\n=== wiki 1 nested wiki 1/ ===\nName        \r\n----        \r\ndashboard.md\r\nGet-ChildItem : �Ҳ���·����D:\\Workspace\\AI_Learning\\AI Vault\\wiki 1\\meta������Ϊ��·�������ڡ�\r\n����λ�� ��:1 �ַ�: 130\r\n+ ... rite-Host '=== wiki 1/meta/ ==='; Get-ChildItem 'wiki 1\\meta' | Selec ...\r\n+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : ObjectNotFound: (D:\\Workspace\\AI...ult\\wiki 1\\meta:String) [Get-ChildItem], I...",
-  "timestamp": "2026-06-12T16:57:14.896Z",
-  "retry_count": 1
-}

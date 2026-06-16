@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"type \\\"C:\\\\Users\\\\35506\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--Workspace-AI-Learning-AI-Vault\\\\c0cb2c7d-b05a-4975-b9fb-3f777cfa8185\\\\tasks\\\\bmno8mye8.output\\\"\",\"description\":\"Check push output\"...",
-  "error": "Exit code 1\n/usr/bin/bash: line 1: type: C:\\Users\\35506\\AppData\\Local\\Temp\\claude\\D--Workspace-AI-Learning-AI-Vault\\c0cb2c7d-b05a-4975-b9fb-3f777cfa8185\\tasks\\bmno8mye8.output: not found",
-  "timestamp": "2026-06-12T16:20:50.706Z",
-  "retry_count": 1
-}

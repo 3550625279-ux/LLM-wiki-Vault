@@ -18,6 +18,15 @@ thumbnail: ""
 
 # Monte Carlo Dropout
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Foundations]]
+- applied_in: [[concepts/uncertainty-routing]]
+- extends: [[concepts/setfit]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 定义
 
 Monte Carlo (MC) Dropout 是一种用标准 Dropout 网络近似贝叶斯不确定性估计的方法。由 Gal & Ghahramani (2016) 提出，证明 Dropout 训练的网络在推理时保持 Dropout 开启并多次前向传播，可以近似变分贝叶斯推断。

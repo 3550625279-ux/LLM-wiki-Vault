@@ -17,6 +17,13 @@ thumbnail: ""
 
 # CAGC vs 多模态意图识别基线方法对比
 
+## 🔗 关系链接
+
+- contrasts: [[concepts/context-augmented-transformer]] | [[concepts/global-context-guided-contrastive-learning]]
+- produced_by: [[sources/cagc-cvpr2024]]
+
+---
+
 ## 对比对象
 
 | 方法 | 会议/年份 | 核心思想 | 与 CAGC 的关系 |

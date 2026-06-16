@@ -4,33 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "477f1cf965ca606e",
+        "id": "c3a497854f714893",
         "type": "tabs",
         "children": [
           {
-            "id": "a31de1b302cdc5cf",
+            "id": "e300915fcb734fc9",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "_attachments/assets/mcp-tool-calling-flow.png"
+                "file": "wiki/concepts/hyplora.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "mcp-tool-calling-flow"
-            }
-          },
-          {
-            "id": "886a7efc8d6fb4a0",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "icon": "lucide-file",
+              "title": "hyplora"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -62,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:环境变量",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "搜索"
             }
           },
           {
@@ -196,7 +187,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 498.5
+    "width": 591.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -215,50 +206,54 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "886a7efc8d6fb4a0",
+  "active": "a92cb137e5918e8b",
   "lastOpenFiles": [
-    "skills/flux-illustrate/SKILL.md.tmp.29296.b082762979ed",
-    "skills/ingest/SKILL.md.tmp.29296.a08bf51edb4c",
-    "CLAUDE.md.tmp.29296.584cb68427a0",
-    "CLAUDE.md.tmp.29296.50d1f2bd6098",
-    "wiki/concepts/mcp-protocol.md",
-    "wiki/concepts/concepts-idx.md",
-    "wiki/entities/entities-idx.md",
-    "skills/flux-illustrate/SKILL.md",
-    "skills/flux-illustrate/SKILL.md.tmp.12824.bcf106036a4f",
-    "skills/flux-illustrate",
-    "CLAUDE.md",
-    "wiki/concepts/mcp-tool-calling-flow.md",
-    "_attachments/assets/mcp-tool-calling-flow.png",
-    "_attachments/assets/mcp-protocol-architecture.png",
-    "wiki/meta/flux-queue.md",
-    "wiki/meta/flux-queue.md.tmp.12824.cf6dd137c1fe",
-    "wiki/meta/flux-queue.md.tmp.12824.77afc5bb50e7",
-    "wiki/meta/contradiction-register.md",
-    "assets/diagrams/vault-flow.svg",
-    "assets/diagrams/multi-writer-locking.svg",
-    "assets/social-preview.png",
-    "assets/diagrams/hybrid-retrieval.svg",
-    "wiki/concepts/mcp-protocol.md.tmp.12824.9c8ca221386d",
-    "wiki/concepts/mcp-tool-calling-flow.md.tmp.12824.e8133d4a6194",
-    "wiki/meta/flux-queue.md.tmp.12824.3b885f37e0dc",
-    "wiki/concepts/claude-code-configuration.md",
-    "wiki/index.md",
-    "wiki/domains/Engineering.md",
-    "wiki/sources/claude-code-config-and-mcp-flow.md",
-    "raw/articles/claude-code-config-and-mcp-flow.md",
-    "wiki/operations/operations-idx.md",
-    "wiki/getting-started.md",
+    "wiki/domains/domains-idx.md.tmp.71892.fdeb09b9544c",
+    "wiki/domains/Agents.md.tmp.71892.b0f35fdbeb56",
+    "wiki/domains/domains-idx.md.tmp.71892.b69c78431099",
+    "wiki/sources/hyplora-neurips2025.md",
     "wiki/meta/dashboard.md",
-    "wiki/meta/lint-report-2026-06-13.md",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的？_16_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的？_9_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的？_7_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的？_5_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的？_3_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的？_1_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的.md",
+    "raw/articles/claude-code-config-and-mcp-flow.md",
+    "raw/articles/llm-reasoning-ability/images/LLM是如何获得推理能力的？_14_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/images/LLM是如何获得推理能力的？_13_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/images/LLM是如何获得推理能力的？_12_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/images/LLM是如何获得推理能力的？_11_番茄的算法日记_来自小红书网页版.jpg",
+    "raw/articles/llm-reasoning-ability/images",
+    "raw/articles/llm-reasoning-ability/LLM是如何获得推理能力的.md.tmp.63176.5ed87de93cff",
+    "CLAUDE.md.tmp.63176.8cf9fcd48db1",
+    "CLAUDE.md.tmp.63176.03521875512f",
+    "CLAUDE.md.tmp.63176.876cb9fa7966",
+    "wiki/domains/Agents.md",
+    "CLAUDE.md.tmp.63176.d7d400881189",
+    "log.md",
+    "CLAUDE.md.tmp.63176.bcc6072c2a37",
+    "log.md.tmp.63176.a093c107698b",
     "wiki/log.md",
-    "wiki/insights/insights-idx.md",
-    "wiki/domains/domains-idx.md",
+    "wiki/concepts/setfit.md",
+    "wiki/domains/Inference.md",
+    "wiki/domains/Training.md",
     "wiki/overview.md",
-    "wiki/operations/idx.md",
-    "wiki/insights/idx.md",
-    "wiki/domains/idx.md",
-    "wiki/hot.md",
+    "wiki/sources/llm-reasoning-ability.md",
+    "wiki/concepts/sft.md",
+    "wiki/concepts/post-training.md",
+    "wiki/entities/deepseek-r1.md",
+    "wiki/operations/sft-cot-data-pipeline.md",
+    "wiki/comparisons/orm-vs-prm.md",
+    "wiki/entities/deepseek-r1-zero.md",
+    "wiki/concepts/aha-moment.md",
+    "wiki/concepts/data-flywheel.md",
+    "wiki/concepts/test-time-compute.md",
+    "wiki/concepts/reward-hacking.md",
+    "wiki/concepts/grpo.md",
+    "wiki/concepts/process-reward-model.md",
+    "wiki/concepts/rlhf.md",
     "wiki/Wiki Map.canvas"
   ]
 }

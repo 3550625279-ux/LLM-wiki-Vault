@@ -17,12 +17,16 @@
 
 ### 关于工程实践
 - [[insights/hybrid-beats-pure-llm]] — 混合系统胜过纯 LLM：不确定性路由的工程启示 | status:seed
+- [[insights/when-import-succeeds-but-runtime-fails]] — import 成功 ≠ 能运行：Python 包的安装≠可用陷阱 | status:seed
+
+### 关于通用计算基础
+- [[insights/path-search-priority-is-isolation]] — PATH 从前往后搜索 = 环境隔离的核心手段 | status:seed
 
 ### 关于研究方法
 > *待填充*
 
 ### 关于认知偏见与陷阱
-> *待填充 — 记录学习过程中遇到的常见认知误区*
+- [[insights/when-import-succeeds-but-runtime-fails]] — import 成功 ≠ 能运行（跨列引用，也属于认知陷阱）
 
 ---
 
@@ -65,8 +69,8 @@
 ## 统计
 
 ```
-总 insight 节点: 3
+总 insight 节点: 5
 目标总数:        20+
 矛盾待处理:      4 个
-上次更新:        2026-06-14
+上次更新:        2026-06-16
 ```

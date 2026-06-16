@@ -9,9 +9,18 @@ updated: {{date}}
 sources: []
 related: []
 confidence: medium
+thumbnail: ""
+raw_path: ""
 ---
 
 # {{title}}
+
+## 🔗 关系链接
+
+- belongs_to: [[domains/{{domain}}]]
+- produced_by: [[sources/来源页]]
+
+---
 
 > **洞察类型**: 
 > - [ ] 反直觉发现 (Counter-intuitive)

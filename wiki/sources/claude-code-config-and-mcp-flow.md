@@ -18,6 +18,13 @@ thumbnail: ""
 
 > 📄 原始资料: [[raw/articles/claude-code-config-and-mcp-flow]]
 
+## 🔗 关系链接
+
+- spawns: [[concepts/mcp-protocol]] | [[concepts/claude-code-configuration]] | [[concepts/mcp-tool-calling-flow]]
+- belongs_to: [[domains/Engineering]]
+
+---
+
 # Claude Code 配置文件和 MCP 工具调用流程
 
 > 个人学习笔记，系统梳理了 Claude Code 的配置体系和 MCP 工具调用全链路。

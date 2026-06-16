@@ -1,7 +1,0 @@
-{
-  "tool_name": "mcp__flux__flux_generate_image",
-  "tool_input_preview": "{\"model\":\"flux-2-max\",\"prompt\":\"A highly detailed horizontal flowchart showing 5 stages of MCP (Model Context Protocol) tool calling in Claude Code. White background, clean vector educational diagram,...",
-  "error": "Unable to connect. Is the computer able to access the url?",
-  "timestamp": "2026-06-13T13:52:19.562Z",
-  "retry_count": 1
-}

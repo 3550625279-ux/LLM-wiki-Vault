@@ -20,6 +20,17 @@ thumbnail: ""
 
 # 域外检测（Out-of-Scope Detection）
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Agents]]
+- part_of: [[concepts/intent-detection-tods]]
+- applied_in: [[concepts/uncertainty-routing]]
+- extends: [[concepts/monte-carlo-dropout]]
+- contrasts: [[concepts/setfit]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 定义
 
 OOS 检测是识别不属于系统任何已知意图的查询的能力。由于 OOS 查询空间是无限的，系统无法通过枚举 OOS 样本来训练——这是一个根本性挑战。

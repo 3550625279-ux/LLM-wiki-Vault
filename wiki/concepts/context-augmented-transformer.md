@@ -21,6 +21,15 @@ thumbnail: ""
 
 # Context-Augmented Transformer (CAT) 上下文增强 Transformer
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Multimodal]] | [[domains/Architecture]]
+- depends_on: [[concepts/transformer-attention]]
+- contrasts: [[comparisons/cagc-vs-baselines]]
+- produced_by: [[sources/cagc-cvpr2024]]
+
+---
+
 ## 定义
 
 CAT 是 CAGC 方法中的上下文增强注意力模块，通过**渐进式地**引入 Cross-video Bank 中的跨视频特征，捕获长程上下文依赖关系，从而缓解意图理解中的感知偏差。

@@ -21,6 +21,17 @@ thumbnail: ""
 
 # 不确定性路由（Uncertainty-based Routing）
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Engineering]]
+- depends_on: [[concepts/monte-carlo-dropout]] | [[concepts/setfit]]
+- extends: [[concepts/adaptive-in-context-learning]]
+- applied_in: [[concepts/intent-detection-tods]]
+- improves: [[concepts/out-of-scope-detection]]
+- produced_by: [[sources/intent-detection-age-of-llms]]
+
+---
+
 ## 定义
 
 不确定性路由是一种混合系统设计模式：**轻量模型做"快速通道"，重量级模型做"精确后备"**。通过估计轻量模型的预测不确定性，仅在不确定时才调用重量级模型，从而在准确率和延迟/成本之间取得平衡。

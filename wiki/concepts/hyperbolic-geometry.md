@@ -18,6 +18,14 @@ thumbnail: ""
 
 # 双曲几何基础
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Foundations]]
+- applied_in: [[concepts/hyplora]] | [[concepts/hyperbolic-geometry-llm]]
+- produced_by: [[sources/hyplora-neurips2025]]
+
+---
+
 > **一句话**：具有恒定负曲率的非欧几何，体积呈指数增长，天然适合表示树状层次结构。
 
 ---

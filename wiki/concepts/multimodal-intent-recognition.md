@@ -19,6 +19,14 @@ thumbnail: ""
 
 # Multimodal Intent Recognition (MIR) 多模态意图识别
 
+## 🔗 关系链接
+
+- belongs_to: [[domains/Multimodal]]
+- extends: [[concepts/multimodal-sentiment-analysis]] | [[concepts/multimodal-fusion]]
+- produced_by: [[sources/cagc-cvpr2024]]
+
+---
+
 ## 定义
 
 多模态意图识别 (MIR) 是通过整合**语言、视觉和听觉**三种模态来理解人类意图的任务。与单模态意图识别不同，MIR 面临模态间表达不一致、意图歧义等独特挑战。

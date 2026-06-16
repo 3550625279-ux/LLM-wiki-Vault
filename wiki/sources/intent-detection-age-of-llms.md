@@ -23,11 +23,20 @@ thumbnail: ""
 paper_pdf: "raw/papers/intent-detection-age-of-llms/paper.pdf"
 venue: "EMNLP 2024 Industry Track"
 year: 2024
+---
 authors: ["Gaurav Arora", "Shreya Jain", "Srujana Merugu"]
 affiliation: ["Amazon", "IIT Jammu"]
 ---
 
 # Intent Detection in the Age of LLMs
+
+## 🔗 关系链接
+
+- spawns: [[concepts/setfit]] | [[concepts/uncertainty-routing]] | [[concepts/negative-data-augmentation]] | [[concepts/out-of-scope-detection]] | [[concepts/adaptive-in-context-learning]] | [[concepts/intent-detection-tods]] | [[concepts/monte-carlo-dropout]] | [[insights/hybrid-beats-pure-llm]]
+- contrasts: [[sources/cagc-cvpr2024]]
+- belongs_to: [[domains/Agents]]
+
+---
 
 > EMNLP 2024 Industry Track | Amazon & IIT Jammu
 
